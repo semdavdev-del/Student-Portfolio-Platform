@@ -12,35 +12,135 @@
 
 <body class="bg-blue-50 m-0 p-0">
     
-    <nav class="flex justify-between px-10 bg-white py-4 ">
-        <div class="flex gap-3 items-center">
-            <h3 class="font-bold text-2xl ">ARINDRA<Span class="text-blue-800 font-bold">.DEV</Span></h3>
-            <div class="bg-white shadow-sm rounded-full  px-4 text-xs font-medium py-0.5 flex items-center gap-2">
-                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                <h4>Available for internships</h4>
+    <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
+        <div class="flex items-center justify-between">
+
+            <!-- Logo + Status -->
+            <div class="flex gap-3 items-center">
+                <h3 class="font-bold text-sm sm:text-2xl">
+                    ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
+                </h3>
+
+                <div
+                    class="bg-transparent shadow-none p-0 sm:bg-white sm:shadow-sm sm:rounded-full sm:px-4 sm:py-0.5 text-xs font-medium flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <h4 class="hidden sm:block">
+                        Available for internships
+                    </h4>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="flex items-center gap-3 text-gray-600 text-sm">
+
+                <!-- Desktop Menu -->
+                <div id="desktop-menu" class="hidden md:flex items-center gap-2">
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        HOME
+                    </a>
+
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        ABOUT ME
+                    </a>
+
+                    <a href="./project.html"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        PROJECT
+                    </a>
+
+                    <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">
+                        ACHUEVEMENTS
+                    </a>
+
+                    <button type="button"
+                        class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">
+                        CONTACT ME
+                    </button>
+                </div>
+
+                <!-- Profile -->
+                <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png"
+                    alt="Profile">
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn"
+                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
+                    type="button" aria-label="Open menu" aria-expanded="false">
+                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+
+                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+
+                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                </button>
             </div>
         </div>
-        <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-gray-600">
-            <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">Home</a>
-            <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">About Me</a>
-<<<<<<< HEAD
-            <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:text-white bg-blue-800 text-white hover:bg-blue-900">Projects</a>
-            <a href="./achievements.html" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">Achievements</a>
-            <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">Contact</a>
-            <button
-                class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">Contact Me</button>
-            <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png" alt="profile">
-=======
-            <a href="" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 text-white bg-blue-800">Projects</a>
-            <a href="./achievements.html" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">Achievements</a>
-            <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">Contact</a>
-            <button class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">ContactMe</button>
-            <img class="w-9 h-9 rounded-full object-cover border border-blue-100"
-                src="./image/profile.png"
-                alt="profile">
->>>>>>> feature/achievements
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-gray-100 pt-3">
+            <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
+
+                <a href="#"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    HOME
+                </a>
+
+                <a href="#"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    ABOUT ME
+                </a>
+
+                <a href="./project.html"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    PROJECTS
+                </a>
+
+                <a href="#" class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+                    ACHUEVEMENTS
+                </a>
+
+                <button type="button"
+                    class="bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full">
+                    CONTACT ME
+                </button>
+
+            </div>
         </div>
     </nav>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        const bar1 = document.getElementById("bar1");
+        const bar2 = document.getElementById("bar2");
+        const bar3 = document.getElementById("bar3");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+
+            const isOpen = !mobileMenu.classList.contains("hidden");
+
+            menuBtn.setAttribute("aria-expanded", isOpen);
+            menuBtn.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
+
+            // Hamburger animation
+            if (isOpen) {
+                bar1.classList.add("rotate-45", "translate-y-1.5");
+                bar2.classList.add("opacity-0");
+                bar3.classList.add("-rotate-45", "-translate-y-1.5");
+            } else {
+                bar1.classList.remove("rotate-45", "translate-y-1.5");
+                bar2.classList.remove("opacity-0");
+                bar3.classList.remove("-rotate-45", "-translate-y-1.5");
+            }
+        });
+    </script>
 
     <main class="px-10 py-16 flex flex-col justify-center items-center">
         <div class="flex flex-col justify-center items-center gap-3">
