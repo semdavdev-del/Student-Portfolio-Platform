@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-blue-50 m-0 p-0">
+    
+    <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
+        <div class="flex items-center justify-between">
+
+            <!-- Logo + Status -->
+            <div class="flex gap-3 items-center">
+                <h3 class="font-bold text-sm sm:text-2xl">
+                    ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
+                </h3>
+
+                <div
+                    class="bg-transparent shadow-none p-0 sm:bg-white sm:shadow-sm sm:rounded-full sm:px-4 sm:py-0.5 text-xs font-medium flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <h4 class="hidden sm:block">
+                        Available for internships
+                    </h4>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="flex items-center gap-3 text-gray-600 text-sm">
+
+                <!-- Desktop Menu -->
+                <div id="desktop-menu" class="hidden md:flex items-center gap-2">
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        HOME
+                    </a>
+
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        ABOUT ME
+                    </a>
+
+                    <a href="./project.html"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        PROJECT
+                    </a>
+
+                    <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">
+                        ACHUEVEMENTS
+                    </a>
+
+                    <button type="button"
+                        class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">
+                        CONTACT ME
+                    </button>
+                </div>
+
+                <!-- Profile -->
+                <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png"
+                    alt="Profile">
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn"
+                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
+                    type="button" aria-label="Open menu" aria-expanded="false">
+                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+
+                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+
+                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-gray-100 pt-3">
+            <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
+
+                <a href="#"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    HOME
+                </a>
+
+                <a href="#"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    ABOUT ME
+                </a>
+
+                <a href="./project.html"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    PROJECTS
+                </a>
+
+                <a href="#" class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+                    ACHUEVEMENTS
+                </a>
+
+                <button type="button"
+                    class="bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full">
+                    CONTACT ME
+                </button>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        const bar1 = document.getElementById("bar1");
+        const bar2 = document.getElementById("bar2");
+        const bar3 = document.getElementById("bar3");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+
+            const isOpen = !mobileMenu.classList.contains("hidden");
+
+            menuBtn.setAttribute("aria-expanded", isOpen);
+            menuBtn.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
+
+            // Hamburger animation
+            if (isOpen) {
+                bar1.classList.add("rotate-45", "translate-y-1.5");
+                bar2.classList.add("opacity-0");
+                bar3.classList.add("-rotate-45", "-translate-y-1.5");
+            } else {
+                bar1.classList.remove("rotate-45", "translate-y-1.5");
+                bar2.classList.remove("opacity-0");
+                bar3.classList.remove("-rotate-45", "-translate-y-1.5");
+            }
+        });
+    </script>
+
+    <main class="px-10 py-16 flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center gap-3">
+            <p class="border-blue-800 border w-50 text-xs text-center font-medium text-blue-800 py-0.5 rounded-full">
+                <span class="w-4 h-4 bg-green-500 rounded-full"></span>PORTFOLIO & CASE STUDIES
+            </p>
+            <h1 class="font-bold text-5xl">Crafted with Code & Design</h1>
+            <p class="w-180 text-gray-500  text-sm text-center">A curated selection of production web platforms, mobile
+                applications, open-
+                source utilities, and student research projects bridging architectural precision
+                with human-centered product craft.</p>
+        </div>
+        <div class="flex gap-4 mt-8">
+            <p class="bg-blue-800 px-5 py-2 rounded-full text-white transition-all duration-300 hover:-translate-y-0.5">All Projects (6) </p>
+            <p class="bg-white px-5 py-2 text-gray-500 rounded-full shadow-sm font-medium hover:bg-blue-100 transition-all duration-300 hover:-translate-y-0.5">UI/UX Design (3) </p>
+            <p class="bg-white px-5 py-2 text-gray-500 rounded-full shadow-sm font-medium hover:bg-blue-100 transition-all duration-300 hover:-translate-y-0.5">Web Development (6)</p>
+            <p class="bg-white px-5 py-2 text-gray-500 rounded-full shadow-sm font-medium hover:bg-blue-100 transition-all duration-300 hover:-translate-y-0.5">Mobile App (6)</p>
+        </div>
+    </main>
+
+    <section class="px-12 py-3">
+        <div class=" bg-white p-8 rounded-md flex gap-6 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+            <div class="flex-1">
+                <p class="text-xs text-blue-800 bg-blue-100  font-medium w-50 text-center py-0.5 rounded-full">FEATUURED
+                    CASE STUDY 2024</p>
+                <h3 class="text-3xl font-medium py-4">UniPay-student Expense & Banking</h3>
+                <p>A frictionless, mobile-first financial companion
+                    tailored to Southeast Asian undergraduate lifestyles.
+                    Re-engineered budget visualization and simplified
+                    group billing splits with instant micro-transfers.
+                <p>
+                <div class="bg-blue-100 my-4 py-4 px-4 flex gap-32 rounded-md shadow mt-6">
+                    <div>
+                        <p class="font-medium text-blue-800">84%</p>
+                        <p>Task completion rate</p>
+                    </div>
+                    <div>
+                        <p class="font-medium">3.2m</p>
+                        <p>Task completion rate</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <p class="text-sm font-medium bg-blue-50 px-3 py-1 rounded-full transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100 shadow-sm">Figma UI Kit </p>
+                    <p class="text-sm font-medium bg-blue-50 px-3 py-1 rounded-full transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100 shadow-sm">User Interviews</p>
+                    <p class="text-sm font-medium bg-blue-50 px-3 py-1 rounded-full transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100 shadow-sm"> Design Tokens</p>
+                    <p class="text-sm font-medium bg-blue-50 px-3 py-1 rounded-full transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100 shadow-sm">Interactive Prototype</p>
+                </div>
+                <button class="mt-8 bg-blue-800 text-white font-semibold py-2 px-3 rounded-md hover:bg-blue-900 transition-all duration-300 hover:-translate-y-0.5 shadow">View Case Study</button>
+                <button class="mt-6 ml-2 bg-blue-100 text-black font-semibold py-2 px-3 rounded-md hover:bg-blue-200 transition-all duration-300 hover:-translate-y-0.5 shadow">Figma Prototype</button>
+            </div>
+
+            <div class="flex-1 flex justify-center items-center">
+                <img class="max-w-110 h-auto mx-auto object-contain" src="./image/unipay.png" alt="unipay">
+            </div>
+        </div>
+    </section>
+
+    <section class="px-10 mb-10 mt-6">
+        <div class="grid grid-cols-2 gap-6 ">
+            <div class="bg-white p-6 shadow rounded-lg flex flex-col border-t-4 border-blue-800 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+                <img class="w-full h-auto rounded-md object-cover" src="./image/scholar.png" alt="scholar">
+                <p class="text-blue-800 text-xs font-medium py-3 uppercase tracking-wide">Web Application <span
+                        class="text-lg text-green-500">•</span> AI & Stack</p>
+                <h3 class="text-2xl font-semibold">ScholarAI Academic Research Assistant</h3>
+                <p class="py-3 text-gray-500 flex-1">Synthesizes dense literature reviews, generates context-aware
+                    vector
+                    citations, and maps conceptual lineage across arXiv corpuses with sub-second semantic retrieval.</p>
+
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">120ms Latency</p>
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">40k+ Papers Indexed</p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-xs pt-6">
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">React</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Next.js</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Python</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">OpenAI API</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">FastAPI</p>
+                </div>
+                <div class="flex justify-between border-t mt-6 text-xs font-medium pt-4">
+                    <a href="#" class="text-blue-700 hover:text-blue-800"></i>View Case Study</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-600"><i class="fas fa-external-link-alt mx-1"></i>Live Demo</a>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-lg flex flex-col border-t-4 border-blue-800 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+                <img class="w-full h-auto rounded-md object-cover" src="./image/khmer.png" alt="khmer">
+                <p class="text-blue-800 text-xs font-medium py-3 uppercase tracking-wide">Type System Utility <span
+                        class="text-lg text-green-500">•</span> Open Source</p>
+                <h3 class="text-2xl font-semibold">KhmerTypo Bilingual Typography Playground</h3>
+                <p class="py-3 text-gray-500 flex-1">An open-source browser workbench pairing Southeast Asian script
+                    calligraphy with modern Latin display typefaces. Solves optical baseline mismatch and rhythm
+                    alignment in digital interfaces.</p>
+
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">12k+ GitHub Stars</p>
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">18 Contributors</p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-xs pt-6">
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">TypeScript</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">Canvas</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">Tailwind CSS</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">Open Source</p>
+                </div>
+                <div class="flex justify-between border-t mt-6 text-xs font-medium pt-4">
+                    <a href="#" class="text-blue-700 hover:text-blue-800">Explore Tool & Code →</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-600"> <> </a>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-lg flex flex-col border-t-4 border-blue-800 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+                <img class="w-full h-auto rounded-md object-cover" src="./image/campusbite.png" alt="khmer">
+                <p class="text-blue-800 text-xs font-medium py-3 uppercase tracking-wide">
+                    MOBILE EXPERIENCE <span class="text-lg text-green-500">•</span> CAMPUSLIFWCYCLE</p>
+                <h3 class="text-2xl font-semibold">CampusBite University Canteen Pre-ordering App</h3>
+                <p class="py-3 text-gray-500 flex-1">Eliminated peak lunch queues by 65% across three campus canteens
+                    with real-time pickup slots, kitchen ticket queue synchronization, and localized QR checkout.</p>
+
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">-65% Queue Wait</p>
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">1,800+ Dally Orders
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-xs pt-6">
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">Flutter</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm  transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">Firebase</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm  transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">UI Design</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm  transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-100">UX Benchmarking</p>
+                </div>
+                <div class="flex justify-between border-t mt-6 text-xs font-medium pt-4">
+                    <a href="#" class="text-blue-700 hover:text-blue-800">Read Product Breakdown →</a>
+                    <i class="fas fa-desktop-alt"></i>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-lg flex flex-col border-t-4 border-blue-800 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+                <img class="w-full h-auto rounded-md object-cover" src="./image/devpulse.png" alt="khmer">
+                <p class="text-blue-800 text-xs font-medium py-3 uppercase tracking-wide">DEVELOPER TOOLING <span class="text-lg text-green-500">•</span> DESKTOP
+                    UTILITY</p>
+                <h3 class="text-2xl font-semibold">DevPulse Developer Activity & Health Monitor</h3>
+                <p class="py-3 text-gray-500 flex-1">A lightweight menu-bar companion that cross-references Git commit
+                    velocity against ergonomic break patterns to safeguard deep-work focus and prevent developer
+                    burnout.</p>
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">42MB RAM Footprint
+                    </p>
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">100% Local Privacy
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-xs pt-6">
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Election</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">React</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Tailwind</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Chart.js</p>
+                </div>
+                <div class="flex justify-between border-t mt-6 text-xs font-medium pt-4">
+                    <a href="#" class="text-blue-700 hover:text-blue-800">Read Product Breakdown →</a>
+                    <i class="fas fa-download"></i>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-lg flex flex-col border-t-4 border-blue-800 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10 ">
+                <img class="w-full h-auto rounded-md object-cover" src="./image/algoviz.png" alt="khmer">
+                <p class="text-blue-800 text-xs font-medium py-3 uppercase tracking-wide">EDUCATIONAL SOFTWARE CS
+                    EDUCATION</p>
+                <h3 class="text-2xl font-semibold">AlgoViz Interactive Algorithem Visualizer</h3>
+                <p class="py-3 text-gray-500 flex-1">Step-by-step interactive playground rendering graph traversals
+                    (Dijkstra, A*), Dynamic programming matrixes, and recursive tree splits for undergraduate CS
+                    students.</p>
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">500+ Students
+                        Assisted</p>
+                    <p class="bg-amber-100 px-3 py-1.5 font-medium text-sm rounded-full shadow-sm">60 FPS Animations</p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-xs pt-6">
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">TypeScript</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Canvas</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Algorithms</p>
+                    <p class="bg-blue-50 font-medium py-1.5 px-4 text-blue-600 rounded-full shadow-sm transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:bg-blue-200">Web Audio API</p>
+                </div>
+                <div class="flex justify-between border-t mt-6 text-xs font-medium pt-4">
+                    <a href="#" class="text-blue-700 hover:text-blue-800 ">Read Product Breakdown →</a>
+                    <i class="far fa-play-circle"></i>
+                </div>
+            </div>
+
+            <div class="bg-blue-800 p-6 shadow rounded-lg border-t-4 border-orange-300 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+                <p class="text-white text-xs font-medium py-1 uppercase tracking-wide bg-blue-900 w-45 rounded-full text-center">
+                    CLI &DEVELOPER TOOLS</p>
+                <h3 class="text-2xl font-semibold text-white pt-3 w-130">Explore Open-Source Repositories & Micro-tools</h3>
+                <p class="py-3 text-gray-200 flex-1 w-130 text-sm">Beyond flagship case studies, I maintain lightweight NPM packages,
+                    bespoke Tailwind plugins, and university lecture algorithm implementations publlicly accessible on
+                    GitHub.</p>
+                <div class="flex text-white bg-blue-900 mt-6 py-2 px-4 rounded-lg gap-2 text-xs">
+                    <i>$</i>
+                    <p>npm i @arindra/tailwind-fluid-tpe</p>
+                    <p class="ml-57 py-0.5 rounded-md bg-red-700 px-2 text-xs">1.8k dls</p>
+                </div>
+                <div class="flex text-white bg-blue-900 mt-3 py-2 px-4 rounded-lg gap-2 text-xs">
+                    <i>$</i>
+                    <p>github.com/Arindra/cambodia-geodata-geojson</p>
+                    <p class="ml-41 text-xs rounded-md py-0.5 px-2 bg-green-700">MIT</p>
+                </div>
+
+                <div class="mt-70">
+                    <p class="bg-blue-50 font-medium py-3 text-blue-800 rounded-lg text-center">Explore All Repositories </p>
+                </div>
+            </div>
+    </section>
+
+    <section class="px-10 my-10 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
+        <div class="bg-white p-8 rounded-lg shadow border-l-4 border-blue-800">
+            <h3 class="font-semibold text-5xl ">Have a project or internship opportunity in mind?</h3>
+            <p class="text-lg font-normal text-gray-500 py-4">Looking fr custom UI/UX design or frontend development? Let's discuss your idea and translate complex requirements into fluid user experiences.</p>
+            <div class="flex gap-2 justify-end">
+                <button class=" bg-blue-800 text-white font-medium py-2 px-3 text-sm rounded-md hover:bg-blue-900 transition-all duration-300 hover:-translate-y-0.5 shadow">Let's Discuss Your Idea</button>
+                <button class="bg-blue-100 text-black font-medium py-2 px-3 text-sm rounded-md hover:bg-blue-200 transition-all duration-300 hover:-translate-y-0.5 shadow ">About My Process</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class=" bg-white mt-10">
+        <div class="flex justify-between px-10 py-5 items-center font-medium">
+            <p class="text-xs text-gray-500">@ 2024 Arindra. All right reseved. Built with methematical persicion </p>
+            <div class="flex gap-4 text-sm text-gray-500 ">
+                <a href="#" class="transition-all duration-300 hover:-translate-y-0.5 hover:text-blue-700">GitHub</a>
+                <a href="#" class="transition-all duration-300 hover:-translate-y-0.5 hover:text-blue-700">Linkedin</a>
+                <a href="#" class="transition-all duration-300 hover:-translate-y-0.5 hover:text-blue-700">Figma</a>
+                <a href="#" class="transition-all duration-300 hover:-translate-y-0.5 hover:text-blue-700">Telegram </a>
+                <a href="#" class="text-blue-700 transition-all duration-300 hover:-translate-y-0.5 hover:text-blue-800">Get in Touch</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

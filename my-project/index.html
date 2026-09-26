@@ -1,13 +1,234 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arindra - Portfolio</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E40AF',
+            primaryHover: '#1E3A8A',
+            bodyBg: '#FFFFFF',
+            lightBg: '#F5F7FF',
+            darkText: '#111827',
+            secondaryText: '#6B7280',
+            success: '#22C55E',
+            highlight: '#F59E0B',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Poppins', 'Noto Sans Khmer', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="/src/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-blue-50 m-0 p-0 text-darkText font-sans">
+
+ 
+  <nav class="flex justify-between items-center px-8 bg-white py-4 shadow-sm">
+    <div class="flex gap-3 items-center">
+      <h3 class="font-bold text-2xl">ARINDRA <span class="text-blue-800 font-bold">.DEV</span></h3>
+      <div class="bg-white shadow-sm border border-slate-100 rounded-full px-4 text-xs font-medium py-1 flex items-center gap-2">
+        <div class="w-2 h-2 bg-green-500  rounded-full animate-pulse"></div>
+        <h4 class="hover:underline">Available for internships</h4>
+      </div>
+    </div>
+    
+    <div class="flex gap-4 items-center text-xs font-medium text-gray-600">
+      <a href="home.html" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer">HOME</a>
+      <a href="#about" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer">ABOUT ME</a>
+      <a href="#projects" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer">PROJECTS</a>
+      <a href="#achievements" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer">ACHIEVEMENTS</a>
+      <a href="contact.html" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer">CONTACT</a>
+      
+      <a href="./contact me.html" class="bg-blue-800 py-1.5 px-3 text-white rounded-md transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-900">CONTACT ME</a>
+      <img src="./image/profile.png" alt="ARINDRA" class="w-9 h-9 rounded-full object-cover border border-slate-300">
+    </div>
+  </nav>
+
+  <main class="px-4 md:px-8 space-y-16 py-2 w-full max-w-8xl mx-auto">
+    
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-8 space-y-6">
+        <span class="inline-block px-3 py-1 hover:underline text-xs md:text-sm font-normal text-primary bg-white rounded-full border border-slate-200 shadow-sm">
+          Career Goal: COMPUTER SCIENCE STUDENT • UI/UX DESIGNER
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-darkText leading-tight">
+          Hello, I'm <span class="text-primary">Arindra</span>
+        </h1>
+        <p class="text-secondaryText text-base md:text-lg font-normal leading-relaxed max-w-xl">
+          Undergrad developer & product designer exploring the sweet spot between algorithmic logic and human delight. I craft simple, mathematically grounded digital experiences blending robust software architecture with human-centered product craft.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#projects" class="px-5 py-2.5 bg-white text-darkText text-base font-semibold rounded-lg hover:bg-blue-800 hover:text-white transition shadow-sm border border-slate-200">View My Projects</a>
+          
+          <a href="./home.html" class="px-5 py-2.5 bg-white  text-darkText text-base font-semibold rounded-lg hover:bg-blue-900 hover:text-white transition shadow-sm border border-slate-200">Contact Me</a>
+          <a href="#" class="px-5 py-2.5 bg-white text-darkText text-base font-semibold rounded-lg hover:bg-blue-800 hover:text-white transition shadow-sm border border-slate-200">Resume (PDF)</a>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 pt-4 text-xs md:text-sm text-secondaryText">
+          <span class="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-slate-200 shadow-sm hover:underline">
+            Available for summer 2026 Internship & Freelance
+          </span>
+          <div class="flex items-center space-x-1.5">
+            <a href="#" class="w-8 h-8 bg-highlight text-white rounded-full flex items-center justify-center text-xs hover:opacity-90 transition"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="w-8 h-8 bg-highlight text-white rounded-full flex items-center justify-center text-xs hover:opacity-90 transition"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="w-8 h-8 bg-highlight text-white rounded-full flex items-center justify-center text-xs hover:opacity-90 transition"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="w-8 h-8 bg-highlight text-white rounded-full flex items-center justify-center text-xs hover:opacity-90 transition"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 flex justify-center lg:justify-start ">
+        <div class="relative p-2 bg-white border border-slate-400 rounded-2xl shadow-lg max-w-xs md:max-w-sm hover:border-green-500">
+          <img src="./image/profile.png" alt="Arindra portrait" class="rounded-xl object-cover w-full h-auto ">
+        </div>
+      </div>
+    </section>
+
+
+    <section class="space-y-6">
+      <div>
+        <span class="text-xs font-bold text-success uppercase tracking-wider hover:underline">Core Toolkit & Competencies</span>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-1 gap-2">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-darkText">My Skills & Technologies</h2>
+            <p class="text-secondaryText mt-1 text-sm">Technologies and tools I'm currently learning and using as a web developer student.</p>
+          </div>
+          <a href="#" class="text-xs font-semibold text-primary hover:underline self-start sm:self-auto">View All Skills</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 pt-2">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-12 h-12 mb-1">
+          <span class="font-bold text-base text-darkText">HTML</span>
+          <span class="text-xs text-slate-400">Beginner</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-12 h-12 mb-1">
+          <span class="font-bold text-base text-darkText">CSS</span>
+          <span class="text-xs text-slate-400">Beginner</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-12 h-12 mb-1 rounded-md">
+          <span class="font-bold text-base text-darkText">JavaScript</span>
+          <span class="text-xs text-slate-400">Beginner</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12 mb-1">
+          <span class="font-bold text-base text-darkText">Python</span>
+          <span class="text-xs text-slate-400">Beginner</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-12 h-12 mb-1">
+          <span class="font-bold text-base text-darkText">Java</span>
+          <span class="text-xs text-slate-400">Beginner</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Git & GitHub" class="w-12 h-12 mb-1">
+          <span class="font-bold text-base text-darkText">Git & GitHub</span>
+          <span class="text-xs text-slate-400">Beginner</span>
+        </div>
+      </div>
+    </section>
+
+  
+    <section class="space-y-6 pt-4" id="projects">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-3xl font-extrabold text-darkText">Featured Work</h2>
+          <p class="text-secondaryText text-sm mt-1">A few projects I've built to practice and improve my coding skills.<br class="hidden sm:inline">These are learning projects, not real businesses.</p>
+        </div>
+        <a href="#" class="text-xs font-semibold text-primary hover:underline">View All Projects</a>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-6 space-y-4">
+          <div class="flex items-center space-x-3 text-[11px] font-semibold text-slate-500">
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md">Mobile App</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md">UI/UX Design</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-darkText">Unipay - Student Expense & Banking</h3>
+          <p class="text-secondaryText text-sm leading-relaxed">
+            A frictionless, mobile-first financial companion tailored to Southeast Asian undergraduate lifestyles. Re-engineered budget visualization and simplified group billing with instant micro-transfers.
+          </p>
+          
+          <div class="bg-[#F8FAFC] p-4 rounded-xl border border-slate-100 grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-xl font-extrabold text-[#2B54D8]">84%</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Task completion rate</p>
+            </div>
+            <div>
+              <span class="text-xl font-extrabold text-[#2B54D8]">3.2m</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Active Monthly Users</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 text-xs text-slate-600 pt-2">
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">Figma UI kit</span>
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">User Interviews</span>
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">Design Tokens</span>
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">Interactive prototype</span>
+          </div>
+
+          <div class="flex items-center space-x-3 pt-2">
+            <a href="#" class="px-4 py-2 bg-[#2B54D8] hover:bg-primaryHover text-white text-xs font-semibold rounded-lg shadow-sm transition">View Case Study</a>
+            <a href="#" class="px-4 py-2 bg-slate-100 text-darkText text-xs font-semibold rounded-lg hover:bg-slate-200 transition">Figma Prototype</a>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 bg-slate-50 rounded-2xl p-4 flex items-center justify-center border border-slate-100">
+          <img src="./image/photo-1551288049-bebda4e38f71.avif" alt="Unipay Project Showcase" class="rounded-xl shadow-sm w-full h-auto max-h-80 object-cover">
+        </div>
+      </div>
+    </section>
+
+   
+    <section class="bg-[#2B54D8] text-white rounded-3xl p-8 sm:p-10 space-y-5 shadow-md" id="contact">
+      <span class="inline-block px-3.5 py-1 text-xs font-medium bg-blue-600 rounded-full border border-blue-400">
+        Typically responds within 24 hours
+      </span>
+      <div class="max-w-2xl space-y-3">
+        <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
+          Have a project or internship opportunity in mind?
+        </h2>
+        <p class="text-blue-100 text-xs sm:text-sm leading-relaxed">
+          I am currently seeking summer 2026 internship roles (Software Engineering, UI/UX Design, or Product Design) as well as selective freelance product collaborations.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        
+        <a href="home.html" class="px-4 py-2.5 bg-white text-black text-xs font-bold rounded-lg shadow-sm hover:bg-slate-100 transition">View Case Study </a>
+        <a href="./home.html" class="px-4 py-2.5 bg-blue-800 text-white text-xs font-semibold rounded-lg border border-blue-400 hover:bg-blue-900 transition">Schedule a Quick Chat</a>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="w-full px-8 md:px-16 py-8 border-t border-slate-200 mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 bg-white">
+    <p>© 2026 Arindra. All rights reserved. Built with mathematical precision.</p>
+    <div class="flex items-center space-x-4 font-medium">
+      <a href="#" class="hover:text-primary transition">GitHub</a>
+      <a href="#" class="hover:text-primary transition">LinkedIn</a>
+      <a href="#" class="hover:text-primary transition">Figma</a>
+      <a href="#" class="hover:text-primary transition">Telegram</a>
+      
+      <a href="contact.html" class="text-[#2B54D8] font-bold hover:underline">Get in Touch</a>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
 </html>
