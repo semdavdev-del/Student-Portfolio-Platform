@@ -105,9 +105,8 @@
     </nav>
 
     <!-- JavaScript -->
-    <script>
-        co
-[9/28/2026 10:06 AM] TAING SREYPIN (WEP A 2027): nst menuBtn = document.getElementById("menu-btn");
+   <script>
+        const menuBtn = document.getElementById("menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
         const bar1 = document.getElementById("bar1");
         const bar2 = document.getElementById("bar2");
@@ -132,7 +131,6 @@
             }
         });
     </script>
-
   <!-- MAIN CONTENT -->
   <main class="px-4 sm:px-6 md:px-8 space-y-8 md:space-y-12 py-6 w-full max-w-7xl mx-auto">
     
@@ -320,27 +318,5 @@
             </div>
         </div>
     </footer>
-
-  <!-- JAVASCRIPT FOR MOBILE MENU TOGGLE -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const menuIcon = document.getElementById('menu-icon');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      
-      // Toggle Hamburger and Close Icon
-      if (mobileMenu.classList.contains('hidden')) {
-        menuIcon.classList.remove('fa-xmark');
-        menuIcon.classList.add('fa-bars');
-      } else {
-        menuIcon.classList.remove('fa-bars');
-        menuIcon.classList.add('fa-xmark');
-      }
-    });
-  </script>
-
-  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
