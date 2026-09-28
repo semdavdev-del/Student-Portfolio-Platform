@@ -35,58 +35,103 @@
 <body class="bg-blue-50 m-0 p-0 overflow-x-hidden">
 
   <!-- NAVBAR -->
-  <nav class="bg-white py-4 shadow-sm px-4 md:px-10">
-    <div class="flex justify-between items-center">
-      <!-- BRAND LOGO & STATUS (DESKTOP ORIGINAL STYLE) -->
-      <div class="flex gap-3 items-center">
-        <h3 class="font-bold text-2xl hover:-translate-y-0.5">ARINDRA <span class="text-blue-800 font-bold hover:-translate-y-0.5">.DEV</span></h3>
-        <div class="bg-white shadow-sm rounded-full px-4 text-xs font-medium py-0.5 hidden sm:flex items-center gap-2 hover:-translate-y-0.5">
-          <div class="w-2 h-2 bg-green-500 rounded-full hover:-translate-y-0.5"></div>
-          <h4>Available for internships</h4>
+ <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex gap-3 items-center">
+                <h3 class="font-bold text-sm sm:text-2xl">ARINDRA <span class="text-blue-800 font-bold">.DEV</span></h3>
+                <div
+                    class="bg-transparent shadow-none p-0 sm:bg-white sm:shadow-sm sm:rounded-full sm:px-4 sm:py-0.5 text-xs font-medium flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <h4 class="hidden sm:block"> Available for internships</h4>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="flex items-center gap-3 text-gray-600 text-xs">
+
+                <!-- Desktop Menu -->
+                <div id="desktop-menu" class="hidden md:flex items-center gap-2">
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        HOME</a>
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        ABOUT ME</a>
+                    <a href="./project.html"
+                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">PROJECT</a>
+                    <a href="#"
+                        class="px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">ACHUEVEMENTS</a>
+                    <button type="button"
+                        class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">CONTACT
+                        ME</button>
+                </div>
+                <!-- Profile -->
+                <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png"
+                    alt="Profile">
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn"
+                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
+                    ype="button" aria-label="Open menu" aria-expanded="false">
+                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                </button>
+            </div>
         </div>
-      </div>
-      
-      <!-- DESKTOP NAVIGATION LINKS (ORIGINAL STYLE) -->
-      <div class="hidden lg:flex gap-2 items-center text-xs font-medium text-gray-600">
-        <a href="home.html" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-4 px-3 rounded-md cursor-pointer">HOME</a>
-        <a href="#about" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-4 px-3 rounded-md cursor-pointer">ABOUT ME</a>
-        <a href="#projects" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-4 px-3 rounded-md cursor-pointer">PROJECTS</a>
-        <a href="#achievements" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-4 px-3 rounded-md cursor-pointer">ACHIEVEMENTS</a>
-        <a href="contact.html" class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-4 px-3 rounded-md cursor-pointer">CONTACT</a>
-        
-        <a href="./contact me.html" class="bg-blue-800 py-4 px-3 text-white rounded-md transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-900">CONTACT ME</a>
-        <img src="./image/profile.png" alt="ARINDRA" class="w-9 h-9 rounded-full object-cover border border-slate-300 transition-transform duration-300 hover:-translate-y-0.5">
-      </div>
 
-      <!-- MOBILE / TABLET HAMBURGER BUTTON -->
-      <button id="menu-btn" aria-label="Toggle Menu" class="lg:hidden p-2 text-slate-700 focus:outline-none">
-        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
-      </button>
-    </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-gray-100 pt-3">
+            <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
+                <a href="#"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">HOME</a>
+                <a href="#"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">ABOUT
+                    ME</a>
+                <a href="./project.html" class="px-3 py-2.5 rounded-lg transition-all duration-200
+                
+                hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                    PROJECTS
+                </a>
 
-    <!-- MOBILE & TABLET MENU DRAWER -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white pt-4 pb-6 mt-3 space-y-3 shadow-lg">
-      <div class="flex sm:hidden items-center gap-2 px-3 py-1 bg-green-50 border border-green-200 rounded-full text-xs font-medium text-green-700 w-fit mb-2">
-        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-        <span>Available for internships</span>
-      </div>
+                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+                    ACHIEVEMENTS
+                </a>
+                <button type="button"
+                    class="bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full">
+                    CONTACT ME
+                </button>
+            </div>
+        </div>
+    </nav>
 
-      <div class="flex flex-col space-y-1 text-xs font-semibold text-gray-600">
-        <a href="home.html" class="px-3 py-2.5 rounded-md hover:bg-blue-800 hover:text-white">HOME</a>
-        <a href="#about" class="px-3 py-2.5 rounded-md hover:bg-blue-800 hover:text-white">ABOUT ME</a>
-        <a href="#projects" class="px-3 py-2.5 rounded-md hover:bg-blue-800 hover:text-white">PROJECTS</a>
-        <a href="#achievements" class="px-3 py-2.5 rounded-md hover:bg-blue-800 hover:text-white">ACHIEVEMENTS</a>
-        <a href="contact.html" class="px-3 py-2.5 rounded-md hover:bg-blue-800 hover:text-white">CONTACT</a>
-      </div>
-
-      <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3 px-1">
-        <a href="./contact me.html" class="flex-1 text-center py-3 bg-blue-800 text-white text-xs font-medium rounded-md hover:bg-blue-900">
-          CONTACT ME
-        </a>
-        <img src="./image/profile.png" alt="ARINDRA" class="w-9 h-9 rounded-full object-cover border border-slate-300">
-      </div>
-    </div>
-  </nav>
+    <!-- JavaScript -->
+    <script>
+        co
+[9/28/2026 10:06 AM] TAING SREYPIN (WEP A 2027): nst menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const bar1 = document.getElementById("bar1");
+        const bar2 = document.getElementById("bar2");
+        const bar3 = document.getElementById("bar3");
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+            const isOpen = !mobileMenu.classList.contains("hidden");
+            menuBtn.setAttribute("aria-expanded", isOpen);
+            menuBtn.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
+            // Hamburger animation
+            if (isOpen) {
+                bar1.classList.add("rotate-45", "translate-y-1.5");
+                bar2.classList.add("opacity-0");
+                bar3.classList.add("-rotate-45", "-translate-y-1.5");
+            } else {
+                bar1.classList.remove("rotate-45", "translate-y-1.5");
+                bar2.classList.remove("opacity-0");
+                bar3.classList.remove("-rotate-45", "-translate-y-1.5");
+            }
+        });
+    </script>
 
   <!-- MAIN CONTENT -->
   <main class="px-4 sm:px-6 md:px-8 space-y-8 md:space-y-12 py-6 w-full max-w-7xl mx-auto">
@@ -249,16 +294,32 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="w-full px-4 sm:px-8 md:px-16 py-8 border-t border-slate-200 mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 bg-white text-center sm:text-left">
-    <p class="transition-all duration-300 hover:-translate-y-0.5 text-xs sm:text-sm">© 2026 Arindra. All rights reserved. Built with mathematical precision.</p>
-    <div class="flex flex-wrap justify-center items-center gap-4 font-medium text-xs sm:text-sm">
-      <a href="#" class="hover:text-primary transition-all duration-300 hover:-translate-y-1">GitHub</a>
-      <a href="#" class="hover:text-primary transition-all duration-300 hover:-translate-y-1">LinkedIn</a>
-      <a href="#" class="hover:text-primary transition-all duration-300 hover:-translate-y-1">Figma</a>
-      <a href="#" class="hover:text-primary transition-all duration-300 hover:-translate-y-1">Telegram</a>
-      <a href="contact.html" class="text-[#2B54D8] font-bold hover:underline transition-all duration-300 hover:-translate-y-1">Get in Touch</a>
-    </div>
-  </footer>
+ <footer class="mt-10 bg-slate-950 text-white">
+        <div class="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-10">
+            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <div>
+                    <div class="flex items-center  gap-2 md:justify-start">
+                        <span class="h-2 w-2 rounded-full bg-blue-500"></span>
+                        <p class="text-sm font-semibold tracking-wide">Arindra</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4 text-[10px] sm:gap-6 sm:text-xs font-medium text-slate-400">
+                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">GitHub</a>
+                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">LinkedIn</a>
+                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">Figma</a>
+                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">Telegram</a>
+                    </div>
+                    <a href="#"
+                        class="shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs
+                    font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500">
+                        Get in Touch
+                        <span class="ml-1">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
   <!-- JAVASCRIPT FOR MOBILE MENU TOGGLE -->
   <script>
