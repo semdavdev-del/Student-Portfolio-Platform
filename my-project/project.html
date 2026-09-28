@@ -749,6 +749,545 @@
         </div>
     </footer>
 
+
+<!-- =========================================================
+     ADDED FUNCTIONALITY ONLY — existing code kept unchanged
+     ========================================================= -->
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"
+    class="fixed top-0 left-0 z-[100] h-1 w-0 bg-blue-800 transition-[width] duration-150 ease-out">
+</div>
+
+<!-- Back To Top -->
+<button id="back-to-top" type="button" aria-label="Back to top"
+    class="fixed bottom-5 right-5 z-50 hidden h-11 w-11 items-center justify-center rounded-full bg-blue-800 text-white shadow-xl
+    transition-all duration-300 hover:-translate-y-1 hover:bg-blue-900 active:translate-y-0">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- Project Quick View Modal -->
+<div id="project-modal"
+    class="fixed inset-0 z-[90] flex items-center justify-center bg-slate-950/60 p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="project-modal-panel"
+        class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl scale-95 transition-all duration-300 sm:p-7">
+
+        <div class="flex items-start justify-between gap-4">
+            <div class="min-w-0">
+                <p id="modal-category"
+                    class="w-fit rounded-full bg-blue-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-blue-800">
+                    Project
+                </p>
+                <h3 id="modal-title" class="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
+                    Project
+                </h3>
+            </div>
+
+            <button id="modal-close" type="button" aria-label="Close"
+                class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-all duration-200 hover:bg-gray-200 hover:rotate-90">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <img id="modal-image"
+            class="mt-5 hidden w-full rounded-xl border border-gray-100 object-cover shadow-sm"
+            alt="Project preview">
+
+        <p id="modal-description" class="mt-5 text-sm leading-7 text-gray-600 sm:text-base">
+            Project details
+        </p>
+
+        <div class="mt-6">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">Technologies</p>
+            <div id="modal-tags" class="mt-3 flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="mt-7 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+            <button id="modal-secondary" type="button"
+                class="rounded-md bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200">
+                Close
+            </button>
+            <button id="modal-primary" type="button"
+                class="rounded-md bg-blue-800 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-900">
+                Continue
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Image Lightbox -->
+<div id="image-lightbox"
+    class="fixed inset-0 z-[95] flex items-center justify-center bg-slate-950/80 p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <button id="lightbox-close" type="button" aria-label="Close image"
+        class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur
+        transition-all duration-200 hover:bg-white/20 hover:rotate-90">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="flex max-h-[90vh] max-w-6xl items-center justify-center">
+        <img id="lightbox-image" class="max-h-[85vh] max-w-full rounded-xl object-contain shadow-2xl" alt="Project image">
+    </div>
+</div>
+
+<!-- Toast -->
+<div id="project-toast"
+    class="fixed bottom-5 left-1/2 z-[110] -translate-x-1/2 translate-y-5 pointer-events-none opacity-0
+    rounded-full bg-slate-900 px-4 py-2.5 text-xs font-medium text-white shadow-xl transition-all duration-300">
+    Copied
+</div>
+
+<script>
+(() => {
+    "use strict";
+
+    // ---------- Helpers ----------
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+    const toast = $("#project-toast");
+    let toastTimer;
+
+    function showToast(message) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.remove("opacity-0", "translate-y-5");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+            toast.classList.add("opacity-0", "translate-y-5");
+        }, 1800);
+    }
+
+    function copyText(text, successMessage = "Copied to clipboard") {
+        if (!text) return;
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(successMessage);
+            }).catch(() => {
+                fallbackCopy(text, successMessage);
+            });
+        } else {
+            fallbackCopy(text, successMessage);
+        }
+    }
+
+    function fallbackCopy(text, successMessage) {
+        const helper = document.createElement("textarea");
+        helper.value = text;
+        helper.style.position = "fixed";
+        helper.style.opacity = "0";
+        document.body.appendChild(helper);
+        helper.select();
+
+        try {
+            document.execCommand("copy");
+            showToast(successMessage);
+        } catch {
+            showToast("Copy failed");
+        }
+
+        helper.remove();
+    }
+
+    // ---------- Smooth scrolling ----------
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    // ---------- Scroll progress + back-to-top ----------
+    const progress = $("#scroll-progress");
+    const backToTop = $("#back-to-top");
+
+    function updateScrollUI() {
+        const doc = document.documentElement;
+        const scrollable = doc.scrollHeight - doc.clientHeight;
+        const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+
+        if (progress) {
+            progress.style.width = `${percent}%`;
+        }
+
+        if (backToTop) {
+            if (window.scrollY > 450) {
+                backToTop.classList.remove("hidden");
+                backToTop.classList.add("flex");
+            } else {
+                backToTop.classList.add("hidden");
+                backToTop.classList.remove("flex");
+            }
+        }
+    }
+
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    updateScrollUI();
+
+    backToTop?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ---------- Find the 6 project cards ----------
+    const projectGridSection = $("img[src*='scholar.png']")?.closest("section");
+    const projectGrid = projectGridSection?.querySelector(".grid");
+
+    let projectCards = [];
+    if (projectGrid) {
+        projectCards = Array.from(projectGrid.children).filter((card) => card.querySelector("h3"));
+    }
+
+    // Assign filter metadata without changing the original HTML.
+    const projectMeta = [
+        {
+            keywords: ["unipay", "expense", "banking"],
+            categories: ["uiux", "mobile"],
+            type: "UI/UX Design • Mobile App"
+        },
+        {
+            keywords: ["scholarai", "academic", "research"],
+            categories: ["web"],
+            type: "Web Development"
+        },
+        {
+            keywords: ["khmertypo", "typography"],
+            categories: ["uiux", "web"],
+            type: "UI/UX Design • Web"
+        },
+        {
+            keywords: ["campusbite", "canteen", "pre-ordering"],
+            categories: ["uiux", "mobile"],
+            type: "UI/UX Design • Mobile App"
+        },
+        {
+            keywords: ["devpulse", "activity", "health monitor"],
+            categories: ["web"],
+            type: "Web Development"
+        },
+        {
+            keywords: ["open-source", "micro-tools", "repositories"],
+            categories: ["web"],
+            type: "Developer Tools"
+        }
+    ];
+
+    const cardInfo = projectCards.map((card, index) => {
+        const title = $("h3", card)?.textContent.trim() || `Project ${index + 1}`;
+        const image = $("img", card);
+        const description = $("p.py-3", card)?.textContent.trim()
+            || $("p.flex-1", card)?.textContent.trim()
+            || "Project details are available in this portfolio.";
+
+        const lowerTitle = title.toLowerCase();
+        const matched = projectMeta[index] || {};
+        const categories = matched.categories || (
+            projectMeta.find((item) => item.keywords.some((word) => lowerTitle.includes(word)))?.categories
+            || ["web"]
+        );
+
+        return {
+            card,
+            title,
+            imageSrc: image?.getAttribute("src") || "",
+            imageAlt: image?.getAttribute("alt") || title,
+            description,
+            categories,
+            type: matched.type || "Project"
+        };
+    });
+
+    // ---------- Filter buttons ----------
+    const filterButtons = $$("main p.cursor-pointer.rounded-full");
+    const filterMap = [
+        "all",
+        "uiux",
+        "web",
+        "mobile"
+    ];
+
+    filterButtons.forEach((button, index) => {
+        button.setAttribute("role", "button");
+        button.setAttribute("tabindex", "0");
+        button.dataset.filter = filterMap[index] || "all";
+
+        const applyFilter = () => {
+            const filter = button.dataset.filter;
+
+            filterButtons.forEach((btn) => {
+                const active = btn === button;
+                btn.classList.toggle("bg-blue-800", active);
+                btn.classList.toggle("text-white", active);
+                btn.classList.toggle("bg-white", !active);
+                btn.classList.toggle("text-gray-600", !active);
+            });
+
+            cardInfo.forEach((item) => {
+                const visible = filter === "all" || item.categories.includes(filter);
+
+                item.card.classList.toggle("hidden", !visible);
+
+                if (visible) {
+                    item.card.classList.remove("opacity-0", "translate-y-4");
+                    item.card.classList.add("opacity-100", "translate-y-0");
+                }
+            });
+
+            showToast(
+                filter === "all"
+                    ? "Showing all projects"
+                    : `Showing ${button.textContent.trim().replace(/\(\d+\)/, "").trim()}`
+            );
+        };
+
+        button.addEventListener("click", applyFilter);
+        button.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                applyFilter();
+            }
+        });
+    });
+
+    // ---------- Scroll reveal for cards/sections ----------
+    const revealTargets = [
+        ...cardInfo.map((item) => item.card),
+        $("main"),
+        $("img[src*='unipay.png']")?.closest("section"),
+        $$("section").at(-2)
+    ].filter(Boolean);
+
+    revealTargets.forEach((element) => {
+        element.classList.add("opacity-0", "translate-y-4", "transition-all", "duration-700", "ease-out");
+    });
+
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.remove("opacity-0", "translate-y-4");
+                entry.target.classList.add("opacity-100", "translate-y-0");
+                obs.unobserve(entry.target);
+            });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach((element) => observer.observe(element));
+    });
+
+    // ---------- Project modal ----------
+    const projectModal = $("#project-modal");
+    const projectModalPanel = $("#project-modal-panel");
+    const modalTitle = $("#modal-title");
+    const modalCategory = $("#modal-category");
+    const modalDescription = $("#modal-description");
+    const modalImage = $("#modal-image");
+    const modalTags = $("#modal-tags");
+    const modalClose = $("#modal-close");
+    const modalSecondary = $("#modal-secondary");
+    const modalPrimary = $("#modal-primary");
+
+    let currentModalProject = null;
+
+    function openProjectModal(info, actionText = "Continue") {
+        if (!projectModal || !projectModalPanel || !info) return;
+
+        currentModalProject = info;
+        modalTitle.textContent = info.title;
+        modalCategory.textContent = info.type;
+        modalDescription.textContent = info.description;
+
+        if (info.imageSrc) {
+            modalImage.src = info.imageSrc;
+            modalImage.alt = info.imageAlt;
+            modalImage.classList.remove("hidden");
+        } else {
+            modalImage.classList.add("hidden");
+        }
+
+        const techs = Array.from(info.card.querySelectorAll("div.flex.flex-wrap.gap-2.sm\\:gap-3.text-xs.pt-6 p, div.flex.flex-wrap.gap-2.sm\\:gap-3.text-xs.pt-6 > p"));
+        modalTags.innerHTML = "";
+
+        if (techs.length) {
+            techs.forEach((tag) => {
+                const pill = document.createElement("span");
+                pill.className = "rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700";
+                pill.textContent = tag.textContent.trim();
+                modalTags.appendChild(pill);
+            });
+        } else {
+            const pill = document.createElement("span");
+            pill.className = "rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600";
+            pill.textContent = "Project details";
+            modalTags.appendChild(pill);
+        }
+
+        modalPrimary.textContent = actionText;
+        projectModal.classList.remove("opacity-0", "pointer-events-none");
+        projectModalPanel.classList.remove("scale-95");
+        projectModalPanel.classList.add("scale-100");
+        document.body.classList.add("overflow-hidden");
+    }
+
+    function closeProjectModal() {
+        projectModal?.classList.add("opacity-0", "pointer-events-none");
+        projectModalPanel?.classList.add("scale-95");
+        projectModalPanel?.classList.remove("scale-100");
+        document.body.classList.remove("overflow-hidden");
+        currentModalProject = null;
+    }
+
+    modalClose?.addEventListener("click", closeProjectModal);
+    modalSecondary?.addEventListener("click", closeProjectModal);
+
+    projectModal?.addEventListener("click", (event) => {
+        if (event.target === projectModal) closeProjectModal();
+    });
+
+    modalPrimary?.addEventListener("click", () => {
+        if (!currentModalProject) return;
+
+        const heading = currentModalProject.title.toLowerCase();
+
+        if (heading.includes("khmertypo") || heading.includes("open-source")) {
+            showToast("Connect your real GitHub URL here");
+        } else {
+            showToast("Connect your real project URL here");
+        }
+    });
+
+    // Handle existing project links/buttons without replacing them.
+    $$("button, a, p").forEach((element) => {
+        const label = element.textContent.trim().replace(/\s+/g, " ");
+        const normalized = label.toLowerCase();
+
+        const isProjectAction =
+            normalized.includes("view case study") ||
+            normalized.includes("figma prototype") ||
+            normalized.includes("live demo") ||
+            normalized.includes("explore tool & code") ||
+            normalized.includes("read product breakdown") ||
+            normalized.includes("explore all repositories") ||
+            normalized.includes("about my process") ||
+            normalized.includes("let's discuss your idea");
+
+        if (!isProjectAction) return;
+
+        element.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            let info = cardInfo.find((item) => element.closest("div")?.closest(".grid")?.contains(item.card));
+            const containingCard = element.closest(".grid > div");
+
+            if (containingCard) {
+                info = cardInfo.find((item) => item.card === containingCard) || info;
+            }
+
+            if (normalized.includes("about my process") || normalized.includes("let's discuss your idea")) {
+                showToast(
+                    normalized.includes("about my process")
+                        ? "My process: Discover → Design → Build → Test"
+                        : "Ready to discuss your idea"
+                );
+                return;
+            }
+
+            if (!info && normalized.includes("explore all repositories")) {
+                info = cardInfo[5];
+            }
+
+            if (info) {
+                const actionText = normalized.includes("figma")
+                    ? "Open Prototype"
+                    : normalized.includes("demo")
+                    ? "Open Demo"
+                    : normalized.includes("explore")
+                    ? "Explore"
+                    : "Continue";
+
+                openProjectModal(info, actionText);
+            }
+        });
+    });
+
+    // ---------- Image lightbox ----------
+    const lightbox = $("#image-lightbox");
+    const lightboxImage = $("#lightbox-image");
+    const lightboxClose = $("#lightbox-close");
+
+    function openLightbox(src, alt) {
+        if (!lightbox || !lightboxImage || !src) return;
+        lightboxImage.src = src;
+        lightboxImage.alt = alt || "Project image";
+        lightbox.classList.remove("opacity-0", "pointer-events-none");
+        document.body.classList.add("overflow-hidden");
+    }
+
+    function closeLightbox() {
+        lightbox?.classList.add("opacity-0", "pointer-events-none");
+        document.body.classList.remove("overflow-hidden");
+    }
+
+    cardInfo.forEach((info) => {
+        const image = $("img", info.card);
+        if (!image) return;
+
+        image.classList.add("cursor-zoom-in", "transition-transform", "duration-300");
+
+        image.addEventListener("click", () => {
+            openLightbox(info.imageSrc, info.imageAlt);
+        });
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
+    lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+    });
+
+    // ---------- Copy npm / GitHub command blocks ----------
+    $$("#" + "not-used-selector").length; // harmless no-op to keep selectors localized
+
+    const codeBlocks = $$("p.break-all").filter((p) => {
+        const text = p.textContent.trim();
+        return text.startsWith("npm i ") || text.startsWith("github.com/");
+    });
+
+    codeBlocks.forEach((block) => {
+        const parent = block.parentElement;
+        if (!parent) return;
+
+        parent.classList.add("cursor-pointer", "transition-all", "duration-200", "hover:-translate-y-0.5", "hover:bg-blue-800");
+        parent.title = "Click to copy";
+
+        parent.addEventListener("click", () => {
+            const text = block.textContent.trim();
+            copyText(text, "Copied to clipboard");
+        });
+    });
+
+    // ---------- Keyboard shortcuts ----------
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeProjectModal();
+            closeLightbox();
+        }
+
+        if (event.key.toLowerCase() === "home" && (event.ctrlKey || event.metaKey)) {
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    });
+
+    // ---------- Subtle image hover ----------
+    cardInfo.forEach((info) => {
+        const image = $("img", info.card);
+        if (!image) return;
+
+        info.card.addEventListener("mouseenter", () => {
+            image.classList.add("scale-[1.015]");
+        });
+
+        info.card.addEventListener("mouseleave", () => {
+            image.classList.remove("scale-[1.015]");
+        });
+    });
+
+})();
+</script>
+
 </body>
 
 </html>

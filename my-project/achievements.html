@@ -514,6 +514,7 @@
                 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-900">
                     Request Academic Transcripts →
                 </button>
+
                 <button class="w-full sm:w-auto bg-white text-black font-medium py-2.5 px-4 rounded-md shadow
                         transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-50">
                     Open LinkedIn Badges
@@ -564,6 +565,343 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- ============================================================
+         ADD-ON FEATURES ONLY — original HTML above is preserved
+         ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1) Smooth scrolling
+            document.documentElement.style.scrollBehavior = 'smooth';
+
+            // 2) Small floating "back to top" button
+            const topBtn = document.createElement('button');
+            topBtn.type = 'button';
+            topBtn.setAttribute('aria-label', 'Back to top');
+            topBtn.className = [
+                'fixed', 'bottom-5', 'right-5', 'z-[90]', 'hidden',
+                'h-11', 'w-11', 'items-center', 'justify-center',
+                'rounded-full', 'bg-blue-800', 'text-white', 'shadow-xl',
+                'transition-all', 'duration-300', 'hover:-translate-y-1',
+                'hover:bg-blue-900', 'focus:outline-none', 'focus:ring-4',
+                'focus:ring-blue-200'
+            ].join(' ');
+            topBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+            document.body.appendChild(topBtn);
+
+            const toggleTopButton = () => {
+                if (window.scrollY > 500) {
+                    topBtn.classList.remove('hidden');
+                    topBtn.classList.add('flex');
+                } else {
+                    topBtn.classList.add('hidden');
+                    topBtn.classList.remove('flex');
+                }
+            };
+            window.addEventListener('scroll', toggleTopButton, { passive: true });
+            toggleTopButton();
+            topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // 3) Scroll reveal animation — no existing markup needs to be edited
+            const revealTargets = document.querySelectorAll('main, main ~ section, main ~ section > div, footer');
+            revealTargets.forEach((el, index) => {
+                el.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-700', 'ease-out');
+                el.style.transitionDelay = `${Math.min(index * 70, 420)}ms`;
+            });
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.remove('opacity-0', 'translate-y-5');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.08 });
+            revealTargets.forEach(el => revealObserver.observe(el));
+
+            // 4) Add a subtle card lift/tilt effect using pointer movement
+            const cards = document.querySelectorAll('main ~ section > div, main ~ section .bg-white, main ~ section .rounded-xl');
+            cards.forEach(card => {
+                card.addEventListener('pointermove', (event) => {
+                    if (window.innerWidth < 768) return;
+                    const rect = card.getBoundingClientRect();
+                    const x = (event.clientX - rect.left) / rect.width - 0.5;
+                    const y = (event.clientY - rect.top) / rect.height - 0.5;
+                    card.style.transform = `perspective(900px) rotateX(${(-y * 1.7).toFixed(2)}deg) rotateY(${(x * 1.7).toFixed(2)}deg) translateY(-4px)`;
+                });
+                card.addEventListener('pointerleave', () => {
+                    card.style.transform = '';
+                });
+            });
+
+            // 5) Create search + filter controls from existing content
+            const filterRow = Array.from(document.querySelectorAll('main p.cursor-pointer')).filter(el => el.textContent.trim());
+            const detailedCards = Array.from(document.querySelectorAll('main ~ section'))
+                .flatMap(section => Array.from(section.querySelectorAll(':scope > div')))
+                .filter(el => el.querySelector('h3'));
+
+            // Ignore the first compact statistics section when filtering.
+            const achievementCards = detailedCards.filter(card => {
+                const title = card.querySelector('h3')?.textContent.trim().toLowerCase() || '';
+                return !/3x|3\.92|100%/.test(title);
+            });
+
+            const searchWrap = document.createElement('div');
+            searchWrap.className = 'mx-auto mt-5 flex w-full max-w-6xl flex-col gap-3 px-4 sm:px-6 lg:px-10 sm:flex-row sm:items-center sm:justify-between';
+            const existingFilterParent = filterRow[0]?.parentElement;
+            if (existingFilterParent) existingFilterParent.insertAdjacentElement('afterend', searchWrap);
+
+            const normalize = value => value.toLowerCase().replace(/\s+/g, ' ').trim();
+
+            const getCategory = card => {
+                const text = normalize(card.textContent);
+                if (text.includes('hackathon') || text.includes('challenge') || text.includes('winner') || text.includes('finalist') || text.includes('podium')) return 'competition';
+                if (text.includes('certificate') || text.includes('certified') || text.includes('coursera') || text.includes('meta specialization') || text.includes('credential')) return 'certification';
+                return 'academic';
+            };
+
+            let activeCategory = 'all';
+            let query = '';
+
+            const updateCount = visible => {
+                const countEl = document.getElementById('achievement-count');
+                if (!countEl) return;
+            };
+
+            const applyFilter = () => {
+                let visible = 0;
+                achievementCards.forEach(card => {
+                    const haystack = normalize(card.textContent);
+                    const matchesCategory = activeCategory === 'all' || getCategory(card) === activeCategory;
+                    const matchesSearch = !query || haystack.includes(query);
+                    const show = matchesCategory && matchesSearch;
+                    card.style.display = show ? '' : 'none';
+                    if (show) {
+                        visible++;
+                        card.classList.remove('opacity-0', 'scale-95');
+                        card.classList.add('opacity-100', 'scale-100');
+                    }
+                });
+                updateCount(visible);
+            };
+
+            const setActiveFilter = (clicked) => {
+                filterRow.forEach(btn => {
+                    btn.classList.remove('bg-blue-800', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-600');
+                });
+                clicked.classList.remove('bg-white', 'text-gray-600');
+                clicked.classList.add('bg-blue-800', 'text-white');
+            };
+
+            filterRow.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const label = normalize(btn.textContent);
+                    if (label.startsWith('all')) activeCategory = 'all';
+                    else if (label.includes('competitions') || label.includes('hackathons')) activeCategory = 'competition';
+                    else if (label.includes('academic')) activeCategory = 'academic';
+                    else activeCategory = 'certification';
+                    setActiveFilter(btn);
+                    applyFilter();
+                });
+            });
+
+            document.getElementById('achievement-search')?.addEventListener('input', e => {
+                query = normalize(e.target.value);
+                applyFilter();
+            });
+
+            applyFilter();
+
+            // 6) Detail modal for achievement cards and verification/project links
+            const modal = document.createElement('div');
+            modal.id = 'achievement-modal';
+            modal.className = 'fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm';
+            modal.innerHTML = `
+                <div class="w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+                    <div class="flex items-center justify-between border-b border-gray-100 px-5 py-4 sm:px-6">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Achievement Details</p>
+                                <h3 id="modal-title" class="text-sm font-semibold text-slate-900 sm:text-base"></h3>
+                            </div>
+                        </div>
+                        <button id="modal-close" type="button" aria-label="Close" class="h-9 w-9 rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-700">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="max-h-[70vh] overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
+                        <div id="modal-body" class="space-y-4 text-sm leading-6 text-gray-600"></div>
+                    </div>
+                    <div class="flex justify-end border-t border-gray-100 px-5 py-4 sm:px-6">
+                        <button id="modal-ok" type="button" class="rounded-lg bg-blue-800 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-900">Close</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            };
+            const openModal = (title, bodyHtml) => {
+                document.getElementById('modal-title').textContent = title;
+                document.getElementById('modal-body').innerHTML = bodyHtml;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            modal.addEventListener('click', e => {
+                if (e.target === modal) closeModal();
+            });
+            document.getElementById('modal-close').addEventListener('click', closeModal);
+            document.getElementById('modal-ok').addEventListener('click', closeModal);
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            const safeText = value => value.replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[ch]));
+            const cardDetails = card => {
+                const title = card.querySelector('h3')?.textContent.trim() || 'Achievement';
+                const paragraphs = Array.from(card.querySelectorAll('p')).map(p => p.textContent.trim()).filter(Boolean);
+                const badge = card.querySelector('p.rounded-full, p[class*="rounded-full"]')?.textContent.trim() || '';
+                const links = Array.from(card.querySelectorAll('a')).map(a => a.textContent.trim()).filter(Boolean);
+                const tags = Array.from(card.querySelectorAll('.bg-blue-50')).map(p => p.textContent.trim()).filter(Boolean).slice(-8);
+                return { title, paragraphs, badge, links, tags };
+            };
+
+            achievementCards.forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', e => {
+                    if (e.target.closest('a, button, input')) return;
+                    const d = cardDetails(card);
+                    const tagHtml = d.tags.length ? `<div class="flex flex-wrap gap-2">${d.tags.map(tag => `<span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600">${safeText(tag)}</span>`).join('')}</div>` : '';
+                    openModal(d.title, `
+                        ${d.badge ? `<span class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">${safeText(d.badge)}</span>` : ''}
+                        ${d.paragraphs.slice(0, 4).map(p => `<p>${safeText(p)}</p>`).join('')}
+                        ${tagHtml}
+                        ${d.links.length ? `<p class="pt-1 text-xs text-gray-400">Available action: ${safeText(d.links.join(' · '))}</p>` : ''}
+                    `);
+                });
+            });
+
+            // 7) Copy credential IDs with one click
+            const credentialBlocks = Array.from(document.querySelectorAll('h4')).filter(h => normalize(h.textContent).includes('credential identification'));
+            const showToast = message => {
+                let toast = document.getElementById('feature-toast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'feature-toast';
+                    toast.className = 'fixed bottom-5 left-1/2 z-[110] -translate-x-1/2 rounded-full bg-slate-950 px-4 py-2.5 text-xs font-medium text-white shadow-xl transition-all duration-300';
+                    document.body.appendChild(toast);
+                }
+                toast.textContent = message;
+                toast.classList.remove('opacity-0', 'translate-y-2');
+                toast.classList.add('opacity-100', '-translate-y-0');
+                clearTimeout(toast._timer);
+                toast._timer = setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-2');
+                }, 1800);
+            };
+
+            credentialBlocks.forEach(label => {
+                const wrapper = label.parentElement;
+                if (!wrapper) return;
+                const value = wrapper.querySelector('p');
+                if (!value) return;
+                const row = value.parentElement;
+                row.classList.add('cursor-copy');
+                row.title = 'Click to copy credential ID';
+                row.addEventListener('click', async () => {
+                    const text = value.textContent.trim();
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        showToast(`Copied: ${text}`);
+                    } catch {
+                        showToast('Copy is not supported by this browser.');
+                    }
+                });
+            });
+
+            // 8) Contact modal for all existing contact CTAs
+            const contactLinks = Array.from(document.querySelectorAll('button, a')).filter(el => {
+                const t = normalize(el.textContent);
+                return t === 'contact me' || t.includes('get in touch with dara') || t === 'get in touch';
+            });
+
+            const contactModal = document.createElement('div');
+            contactModal.className = 'fixed inset-0 z-[105] hidden items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm';
+            contactModal.innerHTML = `
+                <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-7">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-blue-700">Let’s connect</p>
+                            <h3 class="mt-1 text-2xl font-semibold text-slate-900">Contact Me</h3>
+                            <p class="mt-2 text-sm leading-6 text-gray-500">Choose a contact method and continue your conversation.</p>
+                        </div>
+                        <button type="button" data-contact-close class="h-9 w-9 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="mt-6 grid gap-3">
+                        <a href="mailto:sem.dav.dev@gmail.com" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
+                            <i class="fa-solid fa-envelope w-5 text-center text-blue-700"></i><span class="text-sm font-medium text-gray-700">Email</span>
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
+                            <i class="fa-brands fa-github w-5 text-center text-slate-800"></i><span class="text-sm font-medium text-gray-700">GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
+                            <i class="fa-brands fa-linkedin w-5 text-center text-blue-700"></i><span class="text-sm font-medium text-gray-700">LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(contactModal);
+
+            const closeContact = () => {
+                contactModal.classList.add('hidden');
+                contactModal.classList.remove('flex');
+            };
+            const openContact = e => {
+                e.preventDefault();
+                contactModal.classList.remove('hidden');
+                contactModal.classList.add('flex');
+            };
+            contactLinks.forEach(el => el.addEventListener('click', openContact));
+            contactModal.addEventListener('click', e => {
+                if (e.target === contactModal || e.target.closest('[data-contact-close]')) closeContact();
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeContact();
+            });
+
+            // 9) Active nav feedback on clicks
+            const navItems = document.querySelectorAll('#desktop-menu a, #mobile-menu a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navItems.forEach(link => link.classList.remove('ring-2', 'ring-blue-200'));
+                    item.classList.add('ring-2', 'ring-blue-200');
+                });
+            });
+
+            // 10) Lightweight page-load progress line
+            const progress = document.createElement('div');
+            progress.className = 'fixed left-0 top-0 z-[120] h-1 w-0 bg-blue-700 transition-all duration-150';
+            document.body.appendChild(progress);
+            const updateProgress = () => {
+                const doc = document.documentElement;
+                const max = doc.scrollHeight - doc.clientHeight;
+                const value = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+                progress.style.width = `${value}%`;
+            };
+            document.addEventListener('scroll', updateProgress, { passive: true });
+            updateProgress();
+        });
+    </script>
 
 </body>
 
