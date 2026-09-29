@@ -1,444 +1,2380 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About page</title>
+
     <link href="/src/style.css" rel="stylesheet" />
-    
-  </head>
-  <body class="bg-blue-50 m-0 p-0 ">
- <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-blue-50 m-0 p-0">
+
+    <!-- =========================================================
+         NAVBAR
+         ========================================================= -->
+    <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
         <div class="flex items-center justify-between">
-            <div class="flex gap-3 items-center">
-                <h3 class="font-bold text-sm sm:text-2xl">ARINDRA <span class="text-blue-800 font-bold">.DEV</span></h3>
+
+            <!-- Logo -->
+            <div class="flex gap-3 items-center min-w-0">
+                <h3 class="font-bold text-sm sm:text-2xl whitespace-nowrap">
+                    ARINDRA
+                    <span class="text-blue-800 font-bold">.DEV</span>
+                </h3>
+
                 <div
                     class="bg-transparent shadow-none p-0 sm:bg-white sm:shadow-sm sm:rounded-full sm:px-4 sm:py-0.5 text-xs font-medium flex items-center gap-2">
                     <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <h4 class="hidden sm:block"> Available for internships</h4>
+                    <h4 class="hidden sm:block">
+                        Available for internships
+                    </h4>
                 </div>
             </div>
+
 
             <!-- Right Side -->
             <div class="flex items-center gap-3 text-gray-600 text-xs">
 
                 <!-- Desktop Menu -->
                 <div id="desktop-menu" class="hidden md:flex items-center gap-2">
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        HOME</a>
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        ABOUT ME</a>
+
+                    <a href="./index.html"
+                        class="nav-item px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        HOME
+                    </a>
+
+                    <a href="#top"
+                        class="nav-item px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">
+                        ABOUT ME
+                    </a>
+
                     <a href="./project.html"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">PROJECT</a>
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">ACHUEVEMENTS</a>
-                    <button type="button"
-                        class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">CONTACT
-                        ME</button>
+                        class="nav-item px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        PROJECT
+                    </a>
+
+                    <a href="./achievements.html"
+                        class="nav-item px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        ACHIEVEMENTS
+                    </a>
+
+                    <button
+                        type="button"
+                        class="contact-trigger bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-900">
+                        CONTACT ME
+                    </button>
+
                 </div>
+
+
                 <!-- Profile -->
-                <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png"
-                    alt="Profile">
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn"
-                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
-                    ype="button" aria-label="Open menu" aria-expanded="false">
-                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
-                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
-                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                <button
+                    id="profile-button"
+                    type="button"
+                    aria-label="Open profile"
+                    class="focus:outline-none"
+                >
+                    <img
+                        class="w-9 h-9 rounded-full object-cover border border-blue-100 ring-2 ring-transparent hover:ring-blue-600 transition-all duration-300"
+                        src="./image/profile.png"
+                        alt="Profile"
+                    >
                 </button>
+
+
+                <!-- Mobile Menu Button -->
+                <button
+                    id="menu-btn"
+                    type="button"
+                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+                    <span
+                        id="bar1"
+                        class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300">
+                    </span>
+
+                    <span
+                        id="bar2"
+                        class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300">
+                    </span>
+
+                    <span
+                        id="bar3"
+                        class="block w-5 h-0.5 bg-gray-600 transition-all duration-300">
+                    </span>
+                </button>
+
             </div>
         </div>
 
+
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-gray-100 pt-3">
-            <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
-                <a href="#"
-                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">HOME</a>
-                <a href="#"
-                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">ABOUT
-                    ME</a>
-                <a href="./project.html" class="px-3 py-2.5 rounded-lg transition-all duration-200
-                
-                hover:bg-blue-800 hover:text-white active:bg-blue-900">
+        <div
+            id="mobile-menu"
+            class="hidden md:hidden mt-4 border-t border-gray-100 pt-3"
+        >
+            <div
+                class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100"
+            >
+
+                <a
+                    href="./index.html"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900"
+                >
+                    HOME
+                </a>
+
+                <a
+                    href="#top"
+                    class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm"
+                >
+                    ABOUT ME
+                </a>
+
+                <a
+                    href="./project.html"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900"
+                >
                     PROJECTS
                 </a>
 
-                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+                <a
+                    href="./achievements.html"
+                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900"
+                >
                     ACHIEVEMENTS
                 </a>
-                <button type="button"
-                    class="bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full">
+
+                <button
+                    type="button"
+                    class="contact-trigger bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full"
+                >
                     CONTACT ME
                 </button>
+
             </div>
         </div>
     </nav>
 
-    <!-- JavaScript -->
-    <script>
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const bar1 = document.getElementById("bar1");
-        const bar2 = document.getElementById("bar2");
-        const bar3 = document.getElementById("bar3");
-        menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-            const isOpen = !mobileMenu.classList.contains("hidden");
-            menuBtn.setAttribute("aria-expanded", isOpen);
-            menuBtn.setAttribute(
-                "aria-label",
-                isOpen ? "Close menu" : "Open menu"
-            );
-            // Hamburger animation
-            if (isOpen) {
-                bar1.classList.add("rotate-45", "translate-y-1.5");
-                bar2.classList.add("opacity-0");
-                bar3.classList.add("-rotate-45", "-translate-y-1.5");
-            } else {
-                bar1.classList.remove("rotate-45", "translate-y-1.5");
-                bar2.classList.remove("opacity-0");
-                bar3.classList.remove("-rotate-45", "-translate-y-1.5");
-            }
-        });
-    </script>
-     <!-- profile -->
-    <section class="flex flex-col lg:flex-row px-4 sm:px-6 md:px-10 gap-5 py-5 ">
-        <div class="">
-            <div class= " w-full lg:w-[320px] h-auto bg-white flex flex-col text-center py-3 p-3 rounded-2xl shadow">
-                <img class="w-full max-w-130 rounded-2xl mx-auto "  src="./image/profile.png" alt="">
-                <div class="flex py-2  items-start text-left gap-1.5 px-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-blue-800" viewBox="0 0 16 16">
-                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
-                    <p class="text-sm">Phnom Penh,Cambodia•</p>
-                </div>
-                <div class="flex gap-1.5 px-2 ">
-                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="bi bi-globe text-blue-800 " viewBox="0 0 16 16">
-                     <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/></svg>
-                     <p class="text-sm">Khmer • English (Professional)</p>
-                </div>
-                <div class="flex flex-wrap gap-3">
-              <button class="flex py-2 gap-2 items-center justify-center px-3 bg-blue-800 rounded-sm mt-5 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill text-amber-50" viewBox="0 0 16 16" >
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/></svg><p class="text-sm  text-white">Download Resume(PDF)</p>
-             </button>
-             <button class="px-4 bg-blue-100 rounded-sm mt-5">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                       <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
-                </button>
-             </button>
-           </div>         
-            </div>
 
-            <div class="bg-white shadow mt-3 px-4 p-5 rounded-2xl h-autow-full lg:w-[320px] transition duration-300 hover:-translate-y-2 ">
-                <div class="flex gap-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-mortarboard-fill text-blue-800  " viewBox="0 0 16 16">
-                    <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
-                    <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/></svg>
-                    <h1 class="text-xl  font-bold">Education</h1>
-                    <p class="text-sm bg-green-50 p-1.5 rounded-2xl  font-medium text-green-500">GPA 3.92 / 4.0</p>
-                </div>
-                <div>
-                    <h2 class="font-bold text-gray-700">B.S. in Computer Science</h2>
-                    <p class="text-sm text-gray-600">Royal University of Phnom Penh (RUPP)</p>
-                    <span class="text-xs text-blue-600 font-medium">2022 — 2026 (Expected Senior)</span>
-                    <h3 class="text-sm font-sans text-gray-700">KEY COURSEWORK</h3>
-                </div>
-                <div class="flex gap-2 py-2 text-xs font-medium text-blue-500">
-                    <p class="text-xs bg-blue-50 p-1.5 rounded-2xl">Human-Computer </p>
-                    <p class="text-xs bg-blue-50 p-1.5 rounded-2xl">Data Structures </p>
-                </div>
-                <div class="flex gap-2 text-xs font-medium text-blue-500">
-                   <p class="text-xs bg-blue-50 p-1.5 w-35 rounded-2xl">Web Systems Arch</p>
-                   <p class="text-xs bg-blue-50 p-1.5  w-40 rounded-2xl">Software Engineering</p>
-                </div>
-                <div class="text-xs font-medium text-blue-500">
-                   <p class="text-xs bg-blue-50 p-1.5 rounded-2xl mt-1.5 w-35 ">Database Systems</p>
-                </div>
-            </div>
-        </div>
+    <!-- =========================================================
+         MAIN ABOUT
+         ========================================================= -->
+    <main id="top">
+
+        <!-- =====================================================
+             PROFILE + INTRODUCTION
+             ===================================================== -->
+        <section
+            id="profile"
+            class="flex flex-col lg:flex-row px-4 sm:px-6 md:px-10 gap-5 py-5"
+        >
+
+            <!-- LEFT COLUMN -->
+            <div>
+
+                <!-- Profile Card -->
+                <div
+                    class="w-full lg:w-[320px] h-auto bg-white flex flex-col text-center py-3 p-3 rounded-2xl shadow"
+                >
+
+                    <img
+                        class="w-full max-w-130 rounded-2xl mx-auto cursor-pointer hover:opacity-90 transition"
+                        src="./image/profile.png"
+                        alt="Profile"
+                        id="profile-image"
+                    >
 
 
-        <div >
-            <div class="flex  gap-1  p-0.5 w-full rounded-2xl">
-                <p class=" mt-1 border w-86 text-xs text-center font-medium text-blue-800 py-0.5 rounded-full">GET TO KNOW ME • DESIGN & CODE ARCHITECTURE</ផ>
-            </div>
-            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mt-2">Designing Interfaces, Writing Clean Code.</h1>
-            <p class="text-gray-600 text-base lg:text-lg font-sans mt-3 w-full lg:w-3xl">Senior Computer Science student exploring the sweet spot between
-                mathematical logic and human-centered design. I architect modular
-                frontends and craft cohesive design systems that feel delightful,
-                 accessible, and fast.</p>
-        <div class="bg-blue-100 mt-3 p-3 rounded-2xl  w-full">
-            <div class="flex gap-2">
-                <h2 class="text-lg font-medium text-blue-800">99</h2>
-                <h2 class="text-lg font-medium text-blue-800">Engineering & Design Philosophy</h2>
-            </div>
-                <p class="text-gray-600 text-base lg:text-lg font-sans mt-3 w-full lg:w-3xl ">“Code without empathetic design becomes sterile. Design without technical
-                 feasibility remains fragile. My goal is to eliminate that friction by
-                 understanding token architecture, runtime performance, and visual balance
-                 concurrently.”</p>
-                 <div class="flex flex-col sm:flex-row gap-3 mt-3">
-                 <div class="bg-white p-2 rounded-2xl">
-                 <div class=" flex gap-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-transparency mt-1 text-blue-800" viewBox="0 0 16 16">
-                     <path d="M0 6.5a6.5 6.5 0 0 1 12.346-2.846 6.5 6.5 0 1 1-8.691 8.691A6.5 6.5 0 0 1 0 6.5m5.144 6.358a5.5 5.5 0 1 0 7.714-7.714 6.5 6.5 0 0 1-7.714 7.714m-.733-1.269q.546.226 1.144.33l-1.474-1.474q.104.597.33 1.144m2.614.386a5.5 5.5 0 0 0 1.173-.242L4.374 7.91a6 6 0 0 0-.296 1.118zm2.157-.672q.446-.25.838-.576L5.418 6.126a6 6 0 0 0-.587.826zm1.545-1.284q.325-.39.576-.837L6.953 4.83a6 6 0 0 0-.827.587l4.6 4.602Zm1.006-1.822q.183-.562.242-1.172L9.028 4.078q-.58.096-1.118.296l3.823 3.824Zm.186-2.642a5.5 5.5 0 0 0-.33-1.144 5.5 5.5 0 0 0-1.144-.33z"/>
-                     </svg>
-                    <h3 class="text-blue-800 font-medium">Systemic Design</h3>
+                    <!-- Location -->
+                    <div class="flex py-2 items-start text-left gap-1.5 px-2">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="text-blue-800 shrink-0"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+                            />
+                        </svg>
+
+                        <p class="text-sm">
+                            Phnom Penh, Cambodia•
+                        </p>
+
                     </div>
-                    <p class="text-sm mt-1.5">Obsessed with typography scales, auto-layout tokens, and atomic design libraries bridging Figma into zero-drift code.</p>
-                 
-                 </div>
-               <div class="bg-white p-2 rounded-2xl">
-                 <div class="flex gap-1.5 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock mt-1 text-blue-800" viewBox="0 0 16 16">
-                     <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                     <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/></svg>
-                    <h3 class="text-blue-800 font-medium">Runtime Precision</h3>
-                 </div>
-                    <p class="text-sm w-sm mt-1.5">Prioritizing 60fps animations, lightweight bundles, semantic accessibility, and deterministic state management.</p>
-                 </div>
-          </div>
-          </div>
-             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
-                    <div class="bg-white p-5 shadow rounded-xl">
-                        <h1 class="text-4xl text-yellow-500 font-bold">14+</h1>
-                        <p class="font-bold text-gray-700">Shipped Projects</p>
+
+
+                    <!-- Language -->
+                    <div class="flex gap-1.5 px-2">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="text-blue-800"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"
+                            />
+                        </svg>
+
+                        <p class="text-sm">
+                            Khmer • English (Professional)
+                        </p>
+
                     </div>
-                    <div class="bg-white p-5 shadow rounded-xl">
-                        <h1 class="text-4xl text-yellow-500 font-bold">2.5k+</h1>
-                        <p class="font-bold text-gray-700">Git Commits</p>
+
+
+                    <!-- Profile Buttons -->
+                    <div class="flex flex-wrap gap-3">
+
+                        <button
+                            id="resume-button"
+                            type="button"
+                            class="flex py-2 gap-2 items-center justify-center px-3 bg-blue-800 rounded-sm mt-5 hover:bg-blue-900 transition"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="text-amber-50"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                                />
+                            </svg>
+
+                            <p class="text-sm text-white">
+                                Download Resume(PDF)
+                            </p>
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="contact-trigger px-4 bg-blue-100 rounded-sm mt-5 hover:bg-blue-200 transition"
+                            aria-label="Contact me"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="text-blue-800"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"
+                                />
+                            </svg>
+                        </button>
+
                     </div>
-                    <div class="bg-white p-5 shadow rounded-xl">
-                        <h1 class="text-4xl text-yellow-500 font-bold">100%</h1>
-                        <p class="font-bold text-gray-700">A11y & Web Standards</p>
+
+                </div>
+
+
+                <!-- Education -->
+                <div
+                    class="bg-white shadow mt-3 px-4 p-5 rounded-2xl h-auto w-full lg:w-[320px] transition duration-300 hover:-translate-y-2"
+                >
+
+                    <div class="flex gap-4 items-center">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="30"
+                            fill="currentColor"
+                            class="text-blue-800 shrink-0"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"
+                            />
+                            <path
+                                d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"
+                            />
+                        </svg>
+
+                        <h1 class="text-xl font-bold">
+                            Education
+                        </h1>
+
+                        <p class="text-sm bg-green-50 p-1.5 rounded-2xl font-medium text-green-500">
+                            GPA 3.92 / 4.0
+                        </p>
+
                     </div>
-                 </div>
-    </section>
-    <!-- skills -->
-    <section class="bg-blue-50 ">
-        <p class="px-10 p-3  text-blue-600 font-medium text-sm">COMPETENCY OVERVIEW</p>
-        <h1 class="px-10  text-3xl font-bold">Full Technical & Design Matrix</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-10 py-5">
-            <div class="bg-white p-5 rounded-xl shadow h-auto min-h-500px">
-               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-palette-fill bg-blue-100 w-13 p-1 rounded-sm text-blue-800" viewBox="0 0 16 16">
-               <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>
-               <h1 class="font-bold text-2xl mt-1.5">Design & Prototyping</h1>
-                <p class="text-gray-600 text-5lg  font-sans mt-1.5 w-full ">Transforming complex user journeys into
-                    intuitive, accessible interfaces through
-                     continuous iteration and validation.</p>
-                     <div class="mt-2 flex gap-2 text-xs font-medium text-blue-500">
-                        <p class="bg-blue-50 p-1 w-20 px-5 rounded-2xl ">Figma</p>
-                        <p class="bg-blue-50 p-1.5 w-30 px-4 rounded-2xl">Wireframing</p>
-                        <p class="bg-blue-50 p-1.5 w-20 px-4 rounded-2xl">FigJam</p>
-                     </div>
-                     <div class="flex mt-3 gap-2 text-xs font-medium text-blue-500">
-                        <p class="bg-blue-50 p-1.5 w-40 px-6 rounded-2xl">Usability Testing</p>
-                        <p class="bg-blue-50 p-1.5 w-35 px-3 rounded-2xl">User Personas</p>
-                     </div>
-                     <div class="flex mt-3 gap-2 text-xs font-medium text-blue-500">
-                        <P class="bg-blue-50 p-1.5 w-40 px-5 rounded-2xl">Design Tokens</P>
-                        <P class="bg-blue-50 p-1.5 w-40 px-5 rounded-2xl">Micro-interactions</P>
-                     </div>
-                     <div class="flex mt-3 gap-2 text-xs font-medium text-blue-500">
-                        <P class="bg-blue-50 p-1.5 w-45 px-3 rounded-2xl">Information Architecture</P>
-                        <P class="bg-blue-50 p-1.5  w-30 px-2 rounded-2xl">User platform</P>
-                     </div>
-                     <div class="bg-blue-100 mt-16 p-4 w-full transition duration-300 hover:-translate-y-2 rounded-xl ">
-                     <div class="flex  gap-8">
-                        <p class="font-medium ">Figma & Token Architecture</p>
-                        <p class=" text-green-700 font-medium">Advanced</p>
-                     </div>
-                     </div>
-            </div>
-            <div class="bg-white p-4 rounded-xl shadow min-h-480px">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-folder-symlink-fill bg-blue-100 w-13 p-1 rounded-sm text-blue-800" viewBox="0 0 16 16">
-                    <path d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3M2.19 3q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742"/></svg>
-                    <h1 class="font-bold text-2xl mt-1.5">Frontend Engineering</h1>
-                    <p class="text-gray-600 text-5lg  font-sans mt-1.5 w-80">Writing strongly-typed, component-driven
-                       client applications with exceptional
-                        performance and clean abstractions.</p>
-                        <div class="mt-2 flex gap-2 text-xs font-medium text-blue-500">
-                            <p class="bg-blue-50 p-1.5 w-25 px-5 rounded-2xl">TypeScript</p>
-                            <p class="bg-blue-50 p-1.5 w-25 px-5 rounded-2xl">Next.js 14</p>
-                            <p class="bg-blue-50 p-1.5 w-30 px-5 rounded-2xl">Tailwind CSS</p>
-                        </div>
-                        <div class="flex flex-wrap mt-3 gap-2 text-xs font-medium text-blue-500">
-                            <p class="bg-blue-50 p-1.5 w-40 px-5 rounded-2xl">JavaScript (ES6+)</p>
-                            <p class="bg-blue-50 p-1.5 w-35 px-5 rounded-2xl"> Semantic Web</p>
-                        </div>
-                        <div class="mt-3 text-xs font-medium text-blue-500">
-                            <p class="bg-blue-50 p-1.5 w-30 px-4 rounded-2xl">Canvas API</p>
-                        </div>
-                        <div class="bg-blue-100 mt-28 p-4 w-90 transition duration-300 hover:-translate-y-2 rounded-xl">
-                        <div class="flex gap-10">
-                            <P class="font-medium">React & Modern TypeScript</P>
-                            <P class="text-green-700 font-medium">Proficient</P>
-                        </div>
-                        </div>
+
+
+                    <div>
+
+                        <h2 class="font-bold text-gray-700">
+                            B.S. in Computer Science
+                        </h2>
+
+                        <p class="text-sm text-gray-600">
+                            Royal University of Phnom Penh (RUPP)
+                        </p>
+
+                        <span class="text-xs text-blue-600 font-medium">
+                            2022 — 2026 (Expected Senior)
+                        </span>
+
+                        <h3 class="text-sm font-sans text-gray-700">
+                            KEY COURSEWORK
+                        </h3>
+
+                    </div>
+
+
+                    <div class="flex gap-2 py-2 text-xs font-medium text-blue-500">
+                        <p class="text-xs bg-blue-50 p-1.5 rounded-2xl">
+                            Human-Computer
+                        </p>
+
+                        <p class="text-xs bg-blue-50 p-1.5 rounded-2xl">
+                            Data Structures
+                        </p>
+                    </div>
+
+
+                    <div class="flex gap-2 text-xs font-medium text-blue-500">
+                        <p class="text-xs bg-blue-50 p-1.5 rounded-2xl">
+                            Web Systems Arch
+                        </p>
+
+                        <p class="text-xs bg-blue-50 p-1.5 rounded-2xl">
+                            Software Engineering
+                        </p>
+                    </div>
+
+
+                    <div class="text-xs font-medium text-blue-500">
+
+                        <p class="text-xs bg-blue-50 p-1.5 rounded-2xl mt-1.5">
+                            Database Systems
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="bg-white p-4 rounded-xl shadow  h-120">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list-task bg-blue-100 w-13 p-1 rounded-sm text-blue-800 " viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"/>
-                     <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
-                     <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"/></svg>
-                     <h1 class="font-bold text-2xl mt-1.5">Backend & Tooling</h1>
-                     <p class="">Building secure data pipelines,
+
+            <!-- RIGHT COLUMN -->
+            <div class="flex-1">
+
+                <div class="flex gap-1 p-0.5 w-full rounded-2xl">
+                    <p
+                        class="mt-1 border w-86 text-xs text-center font-medium text-blue-800 py-0.5 rounded-full"
+                    >
+                        GET TO KNOW ME • DESIGN & CODE ARCHITECTURE
+                    </p>
+                </div>
+
+
+                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mt-2">
+                    Designing Interfaces, Writing Clean Code.
+                </h1>
+
+
+                <p class="text-gray-600 text-base lg:text-lg font-sans mt-3 w-full lg:w-3xl">
+                    Senior Computer Science student exploring the sweet spot between
+                    mathematical logic and human-centered design. I architect modular
+                    frontends and craft cohesive design systems that feel delightful,
+                    accessible, and fast.
+                </p>
+
+
+                <!-- Philosophy -->
+                <div class="bg-blue-100 mt-3 p-3 rounded-2xl w-full">
+
+                    <div class="flex gap-2">
+                        <h2 class="text-lg font-medium text-blue-800">
+                            99
+                        </h2>
+
+                        <h2 class="text-lg font-medium text-blue-800">
+                            Engineering & Design Philosophy
+                        </h2>
+                    </div>
+
+
+                    <p class="text-gray-600 text-base lg:text-lg font-sans mt-3 w-full lg:w-3xl">
+                        “Code without empathetic design becomes sterile. Design without technical
+                        feasibility remains fragile. My goal is to eliminate that friction by
+                        understanding token architecture, runtime performance, and visual balance
+                        concurrently.”
+                    </p>
+
+
+                    <div class="flex flex-col sm:flex-row gap-3 mt-3">
+
+                        <!-- Systemic Design -->
+                        <div class="bg-white p-2 rounded-2xl">
+
+                            <div class="flex gap-1.5">
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="mt-1 text-blue-800"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path
+                                        d="M0 6.5a6.5 6.5 0 0 1 12.346-2.846 6.5 6.5 0 1 1-8.691 8.691A6.5 6.5 0 0 1 0 6.5m5.144 6.358a5.5 5.5 0 1 0 7.714-7.714 6.5 6.5 0 0 1-7.714 7.714m-.733-1.269q.546.226 1.144.33l-1.474-1.474q.104.597.33 1.144m2.614.386a5.5 5.5 0 0 0 1.173-.242L4.374 7.91a6 6 0 0 0-.296 1.118zm2.157-.672q.446-.25.838-.576L5.418 6.126a6 6 0 0 0-.587.826zm1.545-1.284q.325-.39.576-.837L6.953 4.83a6 6 0 0 0-.827.587l4.6 4.602Zm1.006-1.822q.183-.562.242-1.172L9.028 4.078q-.58.096-1.118.296l3.823 3.824Zm.186-2.642a5.5 5.5 0 0 0-.33-1.144 5.5 5.5 0 0 0-1.144-.33z"
+                                    />
+                                </svg>
+
+                                <h3 class="text-blue-800 font-medium">
+                                    Systemic Design
+                                </h3>
+
+                            </div>
+
+                            <p class="text-sm mt-1.5">
+                                Obsessed with typography scales, auto-layout tokens, and atomic design libraries bridging Figma into zero-drift code.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Runtime Precision -->
+                        <div class="bg-white p-2 rounded-2xl">
+
+                            <div class="flex gap-1.5">
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="mt-1 text-blue-800"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path
+                                        d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+                                    />
+                                    <path
+                                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+                                    />
+                                </svg>
+
+                                <h3 class="text-blue-800 font-medium">
+                                    Runtime Precision
+                                </h3>
+
+                            </div>
+
+                            <p class="text-sm mt-1.5">
+                                Prioritizing 60fps animations, lightweight bundles, semantic accessibility, and deterministic state management.
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Stats -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
+
+                    <div class="stat-card bg-white p-5 shadow rounded-xl">
+                        <h1 class="text-4xl text-yellow-500 font-bold">
+                            14+
+                        </h1>
+
+                        <p class="font-bold text-gray-700">
+                            Shipped Projects
+                        </p>
+                    </div>
+
+
+                    <div class="stat-card bg-white p-5 shadow rounded-xl">
+                        <h1 class="text-4xl text-yellow-500 font-bold">
+                            2.5k+
+                        </h1>
+
+                        <p class="font-bold text-gray-700">
+                            Git Commits
+                        </p>
+                    </div>
+
+
+                    <div class="stat-card bg-white p-5 shadow rounded-xl">
+                        <h1 class="text-4xl text-yellow-500 font-bold">
+                            100%
+                        </h1>
+
+                        <p class="font-bold text-gray-700">
+                            A11y & Web Standards
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SKILLS
+             ===================================================== -->
+        <section id="skills" class="bg-blue-50 py-5">
+
+            <p class="px-10 p-3 text-blue-600 font-medium text-sm">
+                COMPETENCY OVERVIEW
+            </p>
+
+            <h1 class="px-10 text-3xl font-bold">
+                Full Technical & Design Matrix
+            </h1>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-10 py-5">
+
+                <!-- Design -->
+                <div
+                    class="interactive-card bg-white p-5 rounded-xl shadow h-auto min-h-500px transition duration-300"
+                >
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="40"
+                        height="40"
+                        fill="currentColor"
+                        class="bg-blue-100 w-13 p-1 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-2xl mt-1.5">
+                        Design & Prototyping
+                    </h1>
+
+                    <p class="text-gray-600 font-sans mt-1.5 w-full">
+                        Transforming complex user journeys into
+                        intuitive, accessible interfaces through
+                        continuous iteration and validation.
+                    </p>
+
+
+                    <div class="mt-2 flex flex-wrap gap-2 text-xs font-medium text-blue-500">
+                        <p class="bg-blue-50 p-1 rounded-2xl">Figma</p>
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">Wireframing</p>
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">FigJam</p>
+                    </div>
+
+                    <div class="flex flex-wrap mt-3 gap-2 text-xs font-medium text-blue-500">
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">Usability Testing</p>
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">User Personas</p>
+                    </div>
+
+                    <div class="flex flex-wrap mt-3 gap-2 text-xs font-medium text-blue-500">
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">Design Tokens</p>
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">Micro-interactions</p>
+                    </div>
+
+                    <div class="flex flex-wrap mt-3 gap-2 text-xs font-medium text-blue-500">
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">Information Architecture</p>
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">User platform</p>
+                    </div>
+
+
+                    <div
+                        class="bg-blue-100 mt-16 p-4 w-full transition duration-300 hover:-translate-y-2 rounded-xl"
+                    >
+                        <div class="flex justify-between gap-4">
+
+                            <p class="font-medium">
+                                Figma & Token Architecture
+                            </p>
+
+                            <p class="text-green-700 font-medium">
+                                Advanced
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Frontend -->
+                <div
+                    class="interactive-card bg-white p-4 rounded-xl shadow min-h-480px transition duration-300"
+                >
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="40"
+                        height="40"
+                        fill="currentColor"
+                        class="bg-blue-100 w-13 p-1 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3M2.19 3q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-2xl mt-1.5">
+                        Frontend Engineering
+                    </h1>
+
+                    <p class="text-gray-600 font-sans mt-1.5 w-full">
+                        Writing strongly-typed, component-driven
+                        client applications with exceptional
+                        performance and clean abstractions.
+                    </p>
+
+
+                    <div class="mt-2 flex flex-wrap gap-2 text-xs font-medium text-blue-500">
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            TypeScript
+                        </p>
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Next.js 14
+                        </p>
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Tailwind CSS
+                        </p>
+                    </div>
+
+
+                    <div class="flex flex-wrap mt-3 gap-2 text-xs font-medium text-blue-500">
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            JavaScript (ES6+)
+                        </p>
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Semantic Web
+                        </p>
+
+                    </div>
+
+
+                    <div class="mt-3 text-xs font-medium text-blue-500">
+                        <p class="bg-blue-50 p-1.5 w-fit rounded-2xl">
+                            Canvas API
+                        </p>
+                    </div>
+
+
+                    <div
+                        class="bg-blue-100 mt-28 p-4 w-full transition duration-300 hover:-translate-y-2 rounded-xl"
+                    >
+                        <div class="flex justify-between gap-4">
+
+                            <p class="font-medium">
+                                React & Modern TypeScript
+                            </p>
+
+                            <p class="text-green-700 font-medium">
+                                Proficient
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Backend -->
+                <div
+                    class="interactive-card bg-white p-4 rounded-xl shadow h-120 transition duration-300"
+                >
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="40"
+                        height="40"
+                        fill="currentColor"
+                        class="bg-blue-100 w-13 p-1 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"
+                        />
+                        <path
+                            d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-2xl mt-1.5">
+                        Backend & Tooling
+                    </h1>
+
+                    <p>
+                        Building secure data pipelines,
                         microservices, and continuous delivery flows
-                        to power modern web products.</p>
-                        <Div class="mt-2 flex gap-2 text-xs font-medium text-blue-500 ">
-                            <p class="bg-blue-50 p-1.5 w-20 px-4 rounded-2xl ">Python</p>
-                            <p cltext-gray-600 text-5lg  font-sans mt-1.5 w-80ass="bg-blue-50 p-1.5 w-20 px-4 rounded-2xl">FastAPI</p>
-                            <p class="bg-blue-50 p-1.5 w-20 px-4 rounded-2xl">Node.js</p>
-                        </Div>
-                        <Div class="flex gap-2 mt-3 text-xs font-medium text-blue-500">
-                            <p class="bg-blue-50 p-1.5 w-30 px-4 rounded-2xl">PostgreSQL </p>
-                            <p class="bg-blue-50 p-1.5 w-30 px-4 rounded-2xl">RESTful APIs</p>
-                        </Div>
-                        <Div class="mt-3 text-xs font-medium text-blue-500">
-                            <P class="bg-blue-50 p-1.5 w-40 px-5 rounded-2xl">Docker containers</P>
-                        </Div>
-                        <Div class="mt-3 text-xs font-medium text-blue-500">
-                            <p class="bg-blue-50 p-1.5 w-30 px-4 rounded-2xl">Vercel & Cloud</p>
-                        </Div>
-                        <Div class="flex bg-blue-100 gap-12 mt-18 p-4 transition duration-300 hover:-translate-y-2 rounded-xl">
-                            <P class="font-medium">Python & RESTful</P>
-                            <P class="text-green-700 font-medium">Intermediate</P>
-                      </Div>
-            </div>
-        </div>
-    </section>
-    <section class="bg-blue-50">
-        <div>
-        <p class="px-10 p-3  text-blue-600 font-medium text-sm">HOW I WORK</p>
-        <h1 class="px-10  text-3xl font-bold">Core Principles & Soft Skills</h1>
-        <p class="px-10 w-180 text-gray-600">Software is built by people, for people. Here are the professional habits and mindsets I
-            cultivate in cross-functional team settings.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-10 mt-5 mb-5">
-            <div class="bg-white p-5  transition duration-300 hover:-translate-y-2 rounded-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-people-fill  bg-blue-100 w-10 p-2  rounded-sm text-blue-800" viewBox="0 0 16 16">
-                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/></svg>
-                <h1 class="font-bold text-xl mt-4">Collaborative&Mindset Active listener </h1>
-                <p class="w-full min-h-120px h-automt-3 text-gray-600 text-5lg  font-sans ">Active listener whohrives in open critique,pair programming, andtransparent asynchronousdocumentation.</p>
-            </div>
-            <div class="bg-white p-5 transition duration-300 hover:-translate-y-2  rounded-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-lightning-charge-fill  bg-blue-100 w-10 p-2  rounded-sm text-blue-800" viewBox="0 0 16 16">
-                       <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/></svg>
-                <h1 class="font-bold text-xl mt-4">Fast Learner &Adapter</h1>
-                <p class="w-full min-h-120px h-auto mt-3 text-gray-600 text-5lg  font-sans ">Unpacking newframeworks, APIs, andmental models swiftly todeliver practical,unblocked value.</p>
-            </div>
-            <div class="bg-white p-5 transition duration-300 hover:-translate-y-2 rounded-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-heart-fill  bg-blue-100 w-10 p-2 rounded-sm text-blue-800 " viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/></svg>
-                <h1 class="font-bold text-xl w-10 mt-4">Empathy-DrivenDesign</h1>
-                <p class="w-full min-h-120px h-auto mt-3 text-gray-600 text-5lg  font-sans ">Breaking ambiguousarchitectural bottlenecksdown into testable,discrete computationalmodules.</p>
-            </div>
-            <div class="bg-white p-5 transition duration-300 hover:-translate-y-2 rounded-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-back  bg-blue-100 w-10 p-2 rounded-sm text-blue-800" viewBox="0 0 16 16">
-                      <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/></svg>
-                <h1 class="font-bold text-xl  mt-4">Detail-Oriented &Rigorous</h1>
-                <p class="w-full min-h-120px h-auto mt-3 text-gray-600 text-5lg  font-sans ">Pixel-perfect spacing,strict type safety, edge-case coverage, and zerolinting shortcuts.</p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div>
-            <p class="px-10 p-3  text-blue-600 text-sm font-medium">INTERESTS & INSPIRATION</p>
-            <h1 class="px-10  text-3xl font-bold">Beyond the Terminal</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-4 md:px-10 mt-5 bg-white p-5">
-                <div class=" bg-blue-50 shadow p-3 rounded-xl">
-                    <img src="./image/coffee.png" alt="" >
-                    <h1 class="font-medium mt-2">Coffee Brewing (V60)</h1>
-                    <p class="text-gray-600 text-sm mt-2">Fascinated by extractionvariables: grind micron sizes,water temperature curves, andsingle-origin profiles.</p>
+                        to power modern web products.
+                    </p>
+
+
+                    <div class="mt-2 flex flex-wrap gap-2 text-xs font-medium text-blue-500">
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Python
+                        </p>
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            FastAPI
+                        </p>
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Node.js
+                        </p>
+
+                    </div>
+
+
+                    <div class="flex flex-wrap gap-2 mt-3 text-xs font-medium text-blue-500">
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            PostgreSQL
+                        </p>
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            RESTful APIs
+                        </p>
+
+                    </div>
+
+
+                    <div class="mt-3 text-xs font-medium text-blue-500">
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Docker containers
+                        </p>
+
+                    </div>
+
+
+                    <div class="mt-3 text-xs font-medium text-blue-500">
+
+                        <p class="bg-blue-50 p-1.5 rounded-2xl">
+                            Vercel & Cloud
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="flex justify-between gap-4 bg-blue-100 mt-18 p-4 transition duration-300 hover:-translate-y-2 rounded-xl"
+                    >
+                        <p class="font-medium">
+                            Python & RESTful
+                        </p>
+
+                        <p class="text-green-700 font-medium">
+                            Intermediate
+                        </p>
+                    </div>
+
                 </div>
 
-                <div class="bg-blue-50 shadow p-3 rounded-xl ">
-                    <img src="./image/people.png" alt="">
-                    <h1 class="font-medium mt-2">Desk Setups & Tech</h1>
-                    <p class="text-gray-600 text-sm mt-2">Curating clutter-free workth mechanical keyboards,lighting, and minimal distractionzones.</p>
-                </div>
-
-                <div class="bg-blue-50 shadow p-3 rounded-xl">
-                    <img src="./image/Container.png" alt="">
-                    <h1 class="font-medium mt-2">Street Photography</h1>
-                    <p class="text-gray-600 text-sm mt-2">Framing candid city moments,arhitetural geometry, andgolden hour street life acrossSoutheast Asia.</p>
-                </div>
-
-                <div class="bg-blue-50 shadow p-3 rounded-xl">
-                    <img src="./image/databases.png" alt="">
-                    <h1 class="font-medium mt-2">Open Source Contributing</h1>
-                    <p class="text-gray-600 text-sm mt-2">Submitting documentationenhnceents, accessibilitypatches, and small UI bug fixecommunity repos.</p>
-                </div>
-
-                <div class="bg-blue-50 shadow p-3 w- rounded-xl">
-                    <img src="./image/group.png" alt="">
-                    <h1 class="font-medium mt-2">Detail-Oriented </h1>
-                    <p class="text-gray-600 text-sm mt-2">Championing users withrse cognitive orphysical constraints tobuild truly inclusive.</p>
-                </div>
             </div>
-        </div>
-    </section>
-    <section class="bg-white p-5 ">
-        <div class="bg-blue-800 px-4 md:px-5 mb-10 flex flex-col lg:flex-row gap-6 lg:gap-12 p-5 w-full rounded-t-xl ">
-        <div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SOFT SKILLS
+             ===================================================== -->
+        <section id="principles" class="bg-blue-50 py-5">
+
             <div>
-                <div class="flex gap-2  w-90 p-1 rounded-2xl">
-                      <h1 class="text-xs mt-1 border p-1 w-150 font-medium text-white py-0.5 rounded-full ">Looking for 2025/2026 Engineering & Design Internships</h1>
+
+                <p class="px-10 p-3 text-blue-600 font-medium text-sm">
+                    HOW I WORK
+                </p>
+
+                <h1 class="px-10 text-3xl font-bold">
+                    Core Principles & Soft Skills
+                </h1>
+
+                <p class="px-10 w-full max-w-4xl text-gray-600">
+                    Software is built by people, for people. Here are the professional habits and mindsets I
+                    cultivate in cross-functional team settings.
+                </p>
+
+            </div>
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-10 mt-5 mb-5">
+
+                <!-- Card 1 -->
+                <div class="interactive-card bg-white p-5 transition duration-300 hover:-translate-y-2 rounded-xl">
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="35"
+                        height="35"
+                        fill="currentColor"
+                        class="bg-blue-100 w-10 p-2 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-xl mt-4">
+                        Collaborative & Mindset Active listener
+                    </h1>
+
+                    <p class="w-full mt-3 text-gray-600 font-sans">
+                        Active listener who thrives in open critique,
+                        pair programming, and transparent asynchronous
+                        documentation.
+                    </p>
 
                 </div>
-                <h1 class="text-2xl md:text-3xl font-medium text-white">Let's build something exceptionaltogether.</h1>
-                <p class="text-blue-200 text-sm mt-3">Have a product role, an open-source collaboration, or just want to chatabout type scales and React architecture? My inbox is always open.</p>
-            </div>
-        </div>
 
-        <div class="flex flex-col sm:flex-row flex-wrap gap-3 mt-8 lg:mt-20">
-            <div class="flex gap-4 ">
-                <div class="flex gap-2 bg-amber-500 p-4.5 rounded-xl transition duration-300 hover:-translate-y-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left-text-fill mt-2 text-blue-800" viewBox="0 0 16 16">
-                              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z"/></svg>
-                              <p class="text-blue-800">SayHello</p>
+
+                <!-- Card 2 -->
+                <div class="interactive-card bg-white p-5 transition duration-300 hover:-translate-y-2 rounded-xl">
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="35"
+                        height="35"
+                        fill="currentColor"
+                        class="bg-blue-100 w-10 p-2 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-xl mt-4">
+                        Fast Learner & Adapter
+                    </h1>
+
+                    <p class="w-full mt-3 text-gray-600 font-sans">
+                        Unpacking new frameworks, APIs, and mental
+                        models swiftly to deliver practical,
+                        unblocked value.
+                    </p>
+
                 </div>
+
+
+                <!-- Card 3 -->
+                <div class="interactive-card bg-white p-5 transition duration-300 hover:-translate-y-2 rounded-xl">
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="35"
+                        height="35"
+                        fill="currentColor"
+                        class="bg-blue-100 w-10 p-2 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-xl mt-4">
+                        Empathy-Driven Design
+                    </h1>
+
+                    <p class="w-full mt-3 text-gray-600 font-sans">
+                        Breaking ambiguous architectural bottlenecks
+                        down into testable, discrete computational
+                        modules.
+                    </p>
+
+                </div>
+
+
+                <!-- Card 4 -->
+                <div class="interactive-card bg-white p-5 transition duration-300 hover:-translate-y-2 rounded-xl">
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="35"
+                        height="35"
+                        fill="currentColor"
+                        class="bg-blue-100 w-10 p-2 rounded-sm text-blue-800"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"
+                        />
+                    </svg>
+
+                    <h1 class="font-bold text-xl mt-4">
+                        Detail-Oriented & Rigorous
+                    </h1>
+
+                    <p class="w-full mt-3 text-gray-600 font-sans">
+                        Pixel-perfect spacing, strict type safety,
+                        edge-case coverage, and zero linting shortcuts.
+                    </p>
+
+                </div>
+
             </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INTERESTS
+             ===================================================== -->
+        <section id="interests" class="py-5">
+
             <div>
-            <div class="flex gap-2 bg-blue-100 p-5 rounded-xl transition duration-300 hover:-translate-y-2">
-                <p class="text-blue-800">View FeaturedProjects</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up-right-square text-blue-800" viewBox="0 0 16 16">
-                           <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"/></svg>
-            </div>
-            </div>
-        </div>
-        </div>
-    </section>
 
+                <p class="px-10 p-3 text-blue-600 text-sm font-medium">
+                    INTERESTS & INSPIRATION
+                </p>
+
+                <h1 class="px-10 text-3xl font-bold">
+                    Beyond the Terminal
+                </h1>
+
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-4 md:px-10 mt-5 bg-white p-5"
+                >
+
+                    <!-- Coffee -->
+                    <div
+                        class="interest-card bg-blue-50 shadow p-3 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src="./image/coffee.png"
+                            alt="Coffee Brewing"
+                            class="w-full rounded-lg"
+                        >
+
+                        <h1 class="font-medium mt-2">
+                            Coffee Brewing (V60)
+                        </h1>
+
+                        <p class="text-gray-600 text-sm mt-2">
+                            Fascinated by extraction variables:
+                            grind micron sizes, water temperature curves,
+                            and single-origin profiles.
+                        </p>
+                    </div>
+
+
+                    <!-- Desk -->
+                    <div
+                        class="interest-card bg-blue-50 shadow p-3 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src="./image/people.png"
+                            alt="Desk Setups"
+                            class="w-full rounded-lg"
+                        >
+
+                        <h1 class="font-medium mt-2">
+                            Desk Setups & Tech
+                        </h1>
+
+                        <p class="text-gray-600 text-sm mt-2">
+                            Curating clutter-free work with mechanical
+                            keyboards, lighting, and minimal distraction
+                            zones.
+                        </p>
+                    </div>
+
+
+                    <!-- Photography -->
+                    <div
+                        class="interest-card bg-blue-50 shadow p-3 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src="./image/Container.png"
+                            alt="Street Photography"
+                            class="w-full rounded-lg"
+                        >
+
+                        <h1 class="font-medium mt-2">
+                            Street Photography
+                        </h1>
+
+                        <p class="text-gray-600 text-sm mt-2">
+                            Framing candid city moments, architectural geometry,
+                            and golden hour street life across Southeast Asia.
+                        </p>
+                    </div>
+
+
+                    <!-- Open Source -->
+                    <div
+                        class="interest-card bg-blue-50 shadow p-3 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src="./image/databases.png"
+                            alt="Open Source"
+                            class="w-full rounded-lg"
+                        >
+
+                        <h1 class="font-medium mt-2">
+                            Open Source Contributing
+                        </h1>
+
+                        <p class="text-gray-600 text-sm mt-2">
+                            Submitting documentation enhancements,
+                            accessibility patches, and small UI bug fixes.
+                        </p>
+                    </div>
+
+
+                    <!-- Detail -->
+                    <div
+                        class="interest-card bg-blue-50 shadow p-3 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src="./image/group.png"
+                            alt="Detail Oriented"
+                            class="w-full rounded-lg"
+                        >
+
+                        <h1 class="font-medium mt-2">
+                            Detail-Oriented
+                        </h1>
+
+                        <p class="text-gray-600 text-sm mt-2">
+                            Championing users with diverse cognitive or
+                            physical constraints to build truly inclusive
+                            experiences.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACT CTA
+             ===================================================== -->
+        <section class="bg-white p-5">
+
+            <div
+                class="bg-blue-800 px-4 md:px-5 mb-10 flex flex-col lg:flex-row gap-6 lg:gap-12 p-5 w-full rounded-t-xl"
+            >
+
+                <div class="flex-1">
+
+                    <div>
+
+                        <div class="flex gap-2 w-full p-1 rounded-2xl">
+
+                            <h1
+                                class="text-xs mt-1 border p-1 font-medium text-white py-0.5 rounded-full"
+                            >
+                                Looking for 2025/2026 Engineering & Design Internships
+                            </h1>
+
+                        </div>
+
+
+                        <h1 class="text-2xl md:text-3xl font-medium text-white">
+                            Let's build something exceptional together.
+                        </h1>
+
+
+                        <p class="text-blue-200 text-sm mt-3">
+                            Have a product role, an open-source collaboration,
+                            or just want to chat about type scales and React architecture?
+                            My inbox is always open.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 mt-8 lg:mt-20">
+
+                    <!-- Say Hello -->
+                    <button
+                        type="button"
+                        class="contact-trigger flex gap-2 bg-amber-500 p-4 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="currentColor"
+                            class="mt-2 text-blue-800"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z"
+                            />
+                        </svg>
+
+                        <p class="text-blue-800">
+                            Say Hello
+                        </p>
+
+                    </button>
+
+
+                    <!-- Featured Project -->
+                    <a
+                        href="./project.html"
+                        class="flex gap-2 bg-blue-100 p-5 rounded-xl transition duration-300 hover:-translate-y-2"
+                    >
+
+                        <p class="text-blue-800">
+                            View Featured Projects
+                        </p>
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="currentColor"
+                            class="text-blue-800"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"
+                            />
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
     <footer class="mt-10 bg-slate-950 text-white">
+
         <div class="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-10">
+
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+
                 <div>
-                    <div class="flex items-center  gap-2 md:justify-start">
+
+                    <div class="flex items-center gap-2 md:justify-start">
+
                         <span class="h-2 w-2 rounded-full bg-blue-500"></span>
-                        <p class="text-sm font-semibold tracking-wide">Arindra</p>
+
+                        <p class="text-sm font-semibold tracking-wide">
+                            Arindra
+                        </p>
+
                     </div>
+
                 </div>
-                <div class="flex items-center justify-between gap-4">
-                    <div class="flex items-center gap-4 text-[10px] sm:gap-6 sm:text-xs font-medium text-slate-400">
-                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">GitHub</a>
-                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">LinkedIn</a>
-                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">Figma</a>
-                        <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">Telegram</a>
+
+
+                <div class="flex flex-wrap items-center justify-between gap-4">
+
+                    <div
+                        class="flex items-center gap-4 text-[10px] sm:gap-6 sm:text-xs font-medium text-slate-400"
+                    >
+
+                        <a href="#" class="footer-link transition duration-300 hover:text-white">
+                            GitHub
+                        </a>
+
+                        <a href="#" class="footer-link transition duration-300 hover:text-white">
+                            LinkedIn
+                        </a>
+
+                        <a href="#" class="footer-link transition duration-300 hover:text-white">
+                            Figma
+                        </a>
+
+                        <a href="#" class="footer-link transition duration-300 hover:text-white">
+                            Telegram
+                        </a>
+
                     </div>
-                    <a href="#"
-                        class="shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs
-                    font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500">
+
+
+                    <button
+                        type="button"
+                        class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500"
+                    >
                         Get in Touch
                         <span class="ml-1">↗</span>
-                    </a>
+                    </button>
+
                 </div>
+
             </div>
+
         </div>
+
     </footer>
-  </body>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // =====================================================
+            // HELPERS
+            // =====================================================
+
+            const $ = (selector, root = document) =>
+                root.querySelector(selector);
+
+            const $$ = (selector, root = document) =>
+                [...root.querySelectorAll(selector)];
+
+
+            // =====================================================
+            // MOBILE MENU
+            // =====================================================
+
+            const menuBtn = $("#menu-btn");
+            const mobileMenu = $("#mobile-menu");
+            const bar1 = $("#bar1");
+            const bar2 = $("#bar2");
+            const bar3 = $("#bar3");
+
+
+            if (menuBtn && mobileMenu) {
+
+                menuBtn.addEventListener("click", () => {
+
+                    mobileMenu.classList.toggle("hidden");
+
+                    const isOpen =
+                        !mobileMenu.classList.contains("hidden");
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        isOpen
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        isOpen
+                            ? "Close menu"
+                            : "Open menu"
+                    );
+
+
+                    if (isOpen) {
+
+                        bar1?.classList.add(
+                            "rotate-45",
+                            "translate-y-1.5"
+                        );
+
+                        bar2?.classList.add(
+                            "opacity-0"
+                        );
+
+                        bar3?.classList.add(
+                            "-rotate-45",
+                            "-translate-y-1.5"
+                        );
+
+                    } else {
+
+                        bar1?.classList.remove(
+                            "rotate-45",
+                            "translate-y-1.5"
+                        );
+
+                        bar2?.classList.remove(
+                            "opacity-0"
+                        );
+
+                        bar3?.classList.remove(
+                            "-rotate-45",
+                            "-translate-y-1.5"
+                        );
+
+                    }
+
+                });
+
+            }
+
+
+            // Close mobile menu after clicking a link
+            $$("#mobile-menu a").forEach((link) => {
+
+                link.addEventListener("click", () => {
+
+                    mobileMenu?.classList.add("hidden");
+
+                    bar1?.classList.remove(
+                        "rotate-45",
+                        "translate-y-1.5"
+                    );
+
+                    bar2?.classList.remove(
+                        "opacity-0"
+                    );
+
+                    bar3?.classList.remove(
+                        "-rotate-45",
+                        "-translate-y-1.5"
+                    );
+
+                    menuBtn?.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuBtn?.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                });
+
+            });
+
+
+            // =====================================================
+            // TOAST
+            // =====================================================
+
+            let toastTimer;
+
+            function showToast(message) {
+
+                let toast =
+                    document.getElementById("about-toast");
+
+
+                if (!toast) {
+
+                    toast =
+                        document.createElement("div");
+
+                    toast.id =
+                        "about-toast";
+
+                    toast.className =
+                        "fixed bottom-5 left-1/2 z-[140] " +
+                        "-translate-x-1/2 translate-y-4 " +
+                        "rounded-full bg-slate-950 " +
+                        "px-4 py-2.5 text-xs sm:text-sm " +
+                        "font-medium text-white shadow-xl " +
+                        "opacity-0 pointer-events-none " +
+                        "transition-all duration-300";
+
+                    document.body.appendChild(
+                        toast
+                    );
+
+                }
+
+
+                toast.textContent =
+                    message;
+
+
+                toast.classList.remove(
+                    "opacity-0",
+                    "translate-y-4"
+                );
+
+
+                toast.classList.add(
+                    "opacity-100",
+                    "translate-y-0"
+                );
+
+
+                clearTimeout(
+                    toastTimer
+                );
+
+
+                toastTimer =
+                    setTimeout(() => {
+
+                        toast.classList.add(
+                            "opacity-0",
+                            "translate-y-4"
+                        );
+
+                        toast.classList.remove(
+                            "opacity-100",
+                            "translate-y-0"
+                        );
+
+                    }, 1800);
+
+            }
+
+
+            // =====================================================
+            // SMOOTH SCROLL
+            // =====================================================
+
+            document.documentElement.style.scrollBehavior =
+                "smooth";
+
+
+            $$('a[href^="#"]').forEach((link) => {
+
+                link.addEventListener("click", (event) => {
+
+                    const targetId =
+                        link.getAttribute("href");
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        $(targetId);
+
+
+                    if (!target) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                });
+
+            });
+
+
+            // =====================================================
+            // PROFILE MODAL
+            // =====================================================
+
+            function createProfileModal() {
+
+                if (
+                    $("#profile-modal")
+                ) {
+                    return $("#profile-modal");
+                }
+
+
+                const modal =
+                    document.createElement("div");
+
+
+                modal.id =
+                    "profile-modal";
+
+
+                modal.className =
+                    "fixed inset-0 z-[120] " +
+                    "hidden items-center justify-center " +
+                    "bg-black/70 backdrop-blur-sm p-4";
+
+
+                modal.innerHTML = `
+                    <div class="relative">
+
+                        <button
+                            id="profile-modal-close"
+                            type="button"
+                            aria-label="Close profile"
+                            class="absolute -top-3 -right-3
+                            z-10 w-10 h-10 rounded-full
+                            bg-white text-gray-700 text-xl
+                            shadow-lg flex items-center justify-center
+                            hover:bg-gray-100 transition"
+                        >
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <img
+                            src="./image/profile.png"
+                            alt="Arindra Profile"
+                            class="w-64 h-64 sm:w-80 sm:h-80
+                            md:w-96 md:h-96 rounded-2xl
+                            object-cover ring-4 ring-blue-600
+                            shadow-2xl"
+                        >
+
+                    </div>
+                `;
+
+
+                document.body.appendChild(
+                    modal
+                );
+
+
+                const close = () => {
+
+                    modal.classList.add(
+                        "hidden"
+                    );
+
+                    modal.classList.remove(
+                        "flex"
+                    );
+
+                    document.body.classList.remove(
+                        "overflow-hidden"
+                    );
+
+                };
+
+
+                const open = () => {
+
+                    modal.classList.remove(
+                        "hidden"
+                    );
+
+                    modal.classList.add(
+                        "flex"
+                    );
+
+                    document.body.classList.add(
+                        "overflow-hidden"
+                    );
+
+                };
+
+
+                $("#profile-modal-close", modal)
+                    ?.addEventListener(
+                        "click",
+                        close
+                    );
+
+
+                modal.addEventListener(
+                    "click",
+                    (event) => {
+
+                        if (
+                            event.target === modal
+                        ) {
+                            close();
+                        }
+
+                    }
+                );
+
+
+                return {
+                    open,
+                    close
+                };
+
+            }
+
+
+            const profile =
+                createProfileModal();
+
+
+            $("#profile-button")
+                ?.addEventListener(
+                    "click",
+                    profile.open
+                );
+
+
+            $("#profile-image")
+                ?.addEventListener(
+                    "click",
+                    profile.open
+                );
+
+
+            // =====================================================
+            // CONTACT MODAL
+            // =====================================================
+
+            function createContactModal() {
+
+                if (
+                    $("#contact-modal")
+                ) {
+                    return $("#contact-modal");
+                }
+
+
+                const modal =
+                    document.createElement("div");
+
+
+                modal.id =
+                    "contact-modal";
+
+
+                modal.className =
+                    "fixed inset-0 z-[125] " +
+                    "hidden items-center justify-center " +
+                    "bg-slate-950/60 p-4 " +
+                    "backdrop-blur-sm";
+
+
+                modal.innerHTML = `
+                    <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-7">
+
+                        <div class="flex items-start justify-between gap-4">
+
+                            <div>
+
+                                <p class="text-xs font-semibold uppercase tracking-wider text-blue-700">
+                                    Let's connect
+                                </p>
+
+                                <h3 class="mt-1 text-2xl font-semibold text-slate-900">
+                                    Contact Me
+                                </h3>
+
+                                <p class="mt-2 text-sm leading-6 text-gray-500">
+                                    Choose a contact method and continue your conversation.
+                                </p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                id="contact-modal-close"
+                                class="h-9 w-9 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700"
+                                aria-label="Close contact"
+                            >
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="mt-6 grid gap-3">
+
+                            <a
+                                href="mailto:sem.dav.dev@gmail.com"
+                                class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50"
+                            >
+                                <i class="fa-solid fa-envelope w-5 text-center text-blue-700"></i>
+                                <span class="text-sm font-medium text-gray-700">
+                                    Email
+                                </span>
+                            </a>
+
+
+                            <a
+                                href="https://github.com/semdavdev-del"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50"
+                            >
+                                <i class="fa-brands fa-github w-5 text-center text-slate-800"></i>
+                                <span class="text-sm font-medium text-gray-700">
+                                    GitHub
+                                </span>
+                            </a>
+
+
+                            <a
+                                href="https://www.linkedin.com/in/sem-dav-47241242b/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50"
+                            >
+                                <i class="fa-brands fa-linkedin w-5 text-center text-blue-700"></i>
+                                <span class="text-sm font-medium text-gray-700">
+                                    LinkedIn
+                                </span>
+                            </a>
+
+
+                            <a
+                                href="https://t.me/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50"
+                            >
+                                <i class="fa-brands fa-telegram w-5 text-center text-blue-500"></i>
+                                <span class="text-sm font-medium text-gray-700">
+                                    Telegram
+                                </span>
+                            </a>
+
+                        </div>
+
+                    </div>
+                `;
+
+
+                document.body.appendChild(
+                    modal
+                );
+
+
+                const close = () => {
+
+                    modal.classList.add(
+                        "hidden"
+                    );
+
+                    modal.classList.remove(
+                        "flex"
+                    );
+
+                    document.body.classList.remove(
+                        "overflow-hidden"
+                    );
+
+                };
+
+
+                const open = () => {
+
+                    modal.classList.remove(
+                        "hidden"
+                    );
+
+                    modal.classList.add(
+                        "flex"
+                    );
+
+                    document.body.classList.add(
+                        "overflow-hidden"
+                    );
+
+                };
+
+
+                $("#contact-modal-close", modal)
+                    ?.addEventListener(
+                        "click",
+                        close
+                    );
+
+
+                modal.addEventListener(
+                    "click",
+                    (event) => {
+
+                        if (
+                            event.target === modal
+                        ) {
+                            close();
+                        }
+
+                    }
+                );
+
+
+                return {
+                    open,
+                    close
+                };
+
+            }
+
+
+            const contact =
+                createContactModal();
+
+
+            // All contact buttons
+            $$(".contact-trigger").forEach((button) => {
+
+                button.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        contact.open();
+
+                    }
+                );
+
+            });
+
+
+            // =====================================================
+            // RESUME BUTTON
+            // =====================================================
+
+            $("#resume-button")
+                ?.addEventListener(
+                    "click",
+                    () => {
+
+                        showToast(
+                            "Add your Resume PDF file or link here"
+                        );
+
+                    }
+                );
+
+
+            // =====================================================
+            // FOOTER PLACEHOLDER LINKS
+            // =====================================================
+
+            $$(".footer-link").forEach((link) => {
+
+                link.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        showToast(
+                            `Add your real ${link.textContent.trim()} URL here`
+                        );
+
+                    }
+                );
+
+            });
+
+
+            // =====================================================
+            // INTEREST CARDS
+            // =====================================================
+
+            $$(".interest-card").forEach((card) => {
+
+                card.style.cursor =
+                    "pointer";
+
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        const title =
+                            card.querySelector("h1")
+                                ?.textContent.trim();
+
+
+                        if (title) {
+
+                            showToast(
+                                `${title}`
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+            // =====================================================
+            // TECHNICAL CARD CLICK
+            // =====================================================
+
+            $$(".interactive-card").forEach((card) => {
+
+                card.addEventListener(
+                    "click",
+                    (event) => {
+
+                        if (
+                            event.target.closest("button, a")
+                        ) {
+                            return;
+                        }
+
+
+                        const title =
+                            card.querySelector("h1")
+                                ?.textContent.trim();
+
+
+                        if (title) {
+
+                            showToast(
+                                `${title}`
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+            // =====================================================
+            // CARD TILT
+            // =====================================================
+
+            const tiltCards = [
+                ...$$(".interactive-card"),
+                ...$$(".interest-card"),
+                ...$$(".stat-card")
+            ];
+
+
+            tiltCards.forEach((card) => {
+
+                card.addEventListener(
+                    "pointermove",
+                    (event) => {
+
+                        if (
+                            window.innerWidth < 768
+                        ) {
+                            return;
+                        }
+
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            (event.clientX - rect.left) /
+                            rect.width -
+                            0.5;
+
+
+                        const y =
+                            (event.clientY - rect.top) /
+                            rect.height -
+                            0.5;
+
+
+                        card.style.transform =
+                            `perspective(900px)
+                            rotateX(${(-y * 1.4).toFixed(2)}deg)
+                            rotateY(${(x * 1.4).toFixed(2)}deg)
+                            translateY(-4px)`;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "pointerleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            });
+
+
+            // =====================================================
+            // SCROLL REVEAL
+            // =====================================================
+
+            const revealTargets = [
+                ...document.querySelectorAll("main > section"),
+                $("footer")
+            ].filter(Boolean);
+
+
+            revealTargets.forEach(
+                (element, index) => {
+
+                    element.classList.add(
+                        "opacity-0",
+                        "translate-y-5",
+                        "transition-all",
+                        "duration-700",
+                        "ease-out"
+                    );
+
+
+                    element.style.transitionDelay =
+                        `${Math.min(index * 70, 420)}ms`;
+
+                }
+            );
+
+
+            const revealObserver =
+                new IntersectionObserver(
+                    (entries, observer) => {
+
+                        entries.forEach(
+                            (entry) => {
+
+                                if (
+                                    !entry.isIntersecting
+                                ) {
+                                    return;
+                                }
+
+
+                                entry.target.classList.remove(
+                                    "opacity-0",
+                                    "translate-y-5"
+                                );
+
+
+                                entry.target.classList.add(
+                                    "opacity-100",
+                                    "translate-y-0"
+                                );
+
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.08
+                    }
+                );
+
+
+            revealTargets.forEach((element) => {
+
+                revealObserver.observe(
+                    element
+                );
+
+            });
+
+
+            // =====================================================
+            // BACK TO TOP
+            // =====================================================
+
+            const topBtn =
+                document.createElement("button");
+
+
+            topBtn.type =
+                "button";
+
+
+            topBtn.id =
+                "about-back-to-top";
+
+
+            topBtn.setAttribute(
+                "aria-label",
+                "Back to top"
+            );
+
+
+            topBtn.innerHTML =
+                '<i class="fa-solid fa-arrow-up"></i>';
+
+
+            topBtn.className =
+                "fixed bottom-5 right-5 z-[110] " +
+                "hidden h-11 w-11 items-center justify-center " +
+                "rounded-full bg-blue-800 text-white shadow-xl " +
+                "transition-all duration-300 " +
+                "hover:-translate-y-1 hover:bg-blue-900 " +
+                "focus:outline-none focus:ring-4 focus:ring-blue-200";
+
+
+            document.body.appendChild(
+                topBtn
+            );
+
+
+            function updateTopButton() {
+
+                if (
+                    window.scrollY > 450
+                ) {
+
+                    topBtn.classList.remove(
+                        "hidden"
+                    );
+
+                    topBtn.classList.add(
+                        "flex"
+                    );
+
+                } else {
+
+                    topBtn.classList.add(
+                        "hidden"
+                    );
+
+                    topBtn.classList.remove(
+                        "flex"
+                    );
+
+                }
+
+            }
+
+
+            window.addEventListener(
+                "scroll",
+                updateTopButton,
+                {
+                    passive: true
+                }
+            );
+
+
+            updateTopButton();
+
+
+            topBtn.addEventListener(
+                "click",
+                () => {
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+
+                }
+            );
+
+
+            // =====================================================
+            // SCROLL PROGRESS
+            // =====================================================
+
+            const progress =
+                document.createElement("div");
+
+
+            progress.className =
+                "fixed top-0 left-0 z-[150] h-1 w-0 bg-blue-700 transition-all duration-150";
+
+
+            document.body.appendChild(
+                progress
+            );
+
+
+            function updateProgress() {
+
+                const documentElement =
+                    document.documentElement;
+
+
+                const max =
+                    documentElement.scrollHeight -
+                    documentElement.clientHeight;
+
+
+                const value =
+                    max > 0
+                        ? (
+                            documentElement.scrollTop /
+                            max
+                        ) * 100
+                        : 0;
+
+
+                progress.style.width =
+                    `${value}%`;
+
+            }
+
+
+            document.addEventListener(
+                "scroll",
+                updateProgress,
+                {
+                    passive: true
+                }
+            );
+
+
+            updateProgress();
+
+
+            // =====================================================
+            // ACTIVE NAV CLICK
+            // =====================================================
+
+            $$("#desktop-menu a, #mobile-menu a")
+                .forEach((item) => {
+
+                    item.addEventListener(
+                        "click",
+                        () => {
+
+                            $$("#desktop-menu a, #mobile-menu a")
+                                .forEach((link) => {
+
+                                    link.classList.remove(
+                                        "ring-2",
+                                        "ring-blue-200"
+                                    );
+
+                                });
+
+
+                            item.classList.add(
+                                "ring-2",
+                                "ring-blue-200"
+                            );
+
+                        }
+                    );
+
+                });
+
+
+            // =====================================================
+            // ESC KEY
+            // =====================================================
+
+            document.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (
+                        event.key !== "Escape"
+                    ) {
+                        return;
+                    }
+
+
+                    // Close profile
+                    $("#profile-modal")
+                        ?.classList.add(
+                            "hidden"
+                        );
+
+
+                    $("#profile-modal")
+                        ?.classList.remove(
+                            "flex"
+                        );
+
+
+                    // Close contact
+                    $("#contact-modal")
+                        ?.classList.add(
+                            "hidden"
+                        );
+
+
+                    $("#contact-modal")
+                        ?.classList.remove(
+                            "flex"
+                        );
+
+
+                    // Close mobile menu
+                    mobileMenu?.classList.add(
+                        "hidden"
+                    );
+
+
+                    // Restore hamburger
+                    bar1?.classList.remove(
+                        "rotate-45",
+                        "translate-y-1.5"
+                    );
+
+                    bar2?.classList.remove(
+                        "opacity-0"
+                    );
+
+                    bar3?.classList.remove(
+                        "-rotate-45",
+                        "-translate-y-1.5"
+                    );
+
+
+                    menuBtn?.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    document.body.classList.remove(
+                        "overflow-hidden"
+                    );
+
+                }
+            );
+
+
+            // =====================================================
+            // PAGE LOADED
+            // =====================================================
+
+            console.log(
+                "About page JavaScript loaded successfully."
+            );
+
+        });
+    </script>
+
+</body>
 </html>

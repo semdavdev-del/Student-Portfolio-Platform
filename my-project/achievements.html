@@ -13,88 +13,207 @@
     <!-- nav -->
     <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
         <div class="flex items-center justify-between">
-            <div class="flex gap-3 items-center">
-                <h3 class="font-bold text-sm sm:text-2xl">ARINDRA <span class="text-blue-800 font-bold">.DEV</span></h3>
-                <div class="bg-transparent shadow-none p-0 sm:bg-white sm:shadow-sm sm:rounded-full sm:px-4 sm:py-0.5 text-xs font-medium flex items-center gap-2">
-                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <h4 class="hidden sm:block"> Available for internships</h4>
+
+            <!-- Logo -->
+            <div class="flex gap-3 items-center min-w-0">
+                <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
+                    ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
+                </h3>
+
+                <div class="bg-transparent shadow-none p-0
+                       sm:bg-white sm:shadow-sm sm:rounded-full
+                       sm:px-3 sm:py-1
+                       text-xs font-medium flex items-center gap-2 whitespace-nowrap">
+                    <div class="w-2 h-2 bg-green-500 rounded-full shrink-0"></div>
+
+                    <h4 class="hidden sm:block">
+                        Available for internships
+                    </h4>
                 </div>
             </div>
 
             <!-- Right Side -->
-            <div class="flex items-center gap-3 text-gray-600 text-xs">
+            <div class="flex items-center gap-2 sm:gap-3 text-gray-600 text-sm">
 
-                <!-- Desktop Menu -->
-                <div id="desktop-menu" class="hidden md:flex items-center gap-2">
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        HOME</a>
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        ABOUT ME</a>
-                    <a href="./project.html"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">PROJECT</a>
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">ACHUEVEMENTS</a>
-                    <button type="button"
-                        class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">CONTACT
-                        ME</button>
+                <!-- Desktop / Tablet Menu -->
+                <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <a href="#" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        HOME
+                    </a>
+
+                    <a href="#" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        ABOUT ME
+                    </a>
+
+                    <a href="./project.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                        PROJECT
+                    </a>
+
+                    <a href="./achievements.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           bg-blue-800 text-white">
+                        ACHIEVEMENTS
+                    </a>
+
+                    <button type="button" class="bg-blue-800 px-3 xl:px-4 py-2 text-white rounded-md
+                           transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-900">
+                        CONTACT ME
+                    </button>
                 </div>
+
                 <!-- Profile -->
-                <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png"
-                    alt="Profile">
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn"
-                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
-                    ype="button" aria-label="Open menu" aria-expanded="false">
-                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
-                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
-                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                
+                <!-- Profile Image -->
+                <button type="button" onclick="openProfile()" class="shrink-0 focus:outline-none">
+                    <img class="w-8 h-8 sm:w-8 sm:h-8
+               rounded-full
+               object-cover
+               shrink-0
+               ring-2 ring-blue-600
+               ring-offset-1 ring-offset-white
+               cursor-pointer
+               transition-all duration-300
+               hover:scale-110" src="./image/profile.png" alt="Profile" />
+                </button>
+
+
+                <!-- Profile Preview -->
+                <div id="profile-modal" class="fixed inset-0  z-50
+           hidden items-center justify-center
+           bg-black/70 backdrop-blur-sm
+           px-4" onclick="closeProfile(event)">
+                    <div class="relative" onclick="event.stopPropagation()">
+
+                        <!-- Close Button -->
+                        <button type="button" onclick="closeProfile()" class="absolute -top-3 -right-3
+                   w-9 h-9
+                   rounded-full
+                   bg-white
+                   text-gray-700
+                   text-xl
+                   shadow-lg
+                   flex items-center justify-center
+                   hover:bg-gray-100
+                   transition">
+                            &times;
+                        </button>
+
+                        <!-- Large Image -->
+                        <img src="./image/profile.png" alt="Profile" class="w-64 h-64
+                   sm:w-80 sm:h-80
+                   md:w-96 md:h-96
+                   rounded-2xl
+                   object-cover
+                   ring-4 ring-blue-600
+                   shadow-2xl">
+                    </div>
+                </div>
+
+
+                <script>
+                    function openProfile() {
+                        const modal = document.getElementById("profile-modal");
+
+                        modal.classList.remove("hidden");
+                        modal.classList.add("flex");
+
+                        document.body.classList.add("overflow-hidden");
+                    }
+
+                    function closeProfile(event) {
+                        if (event && event.target.id !== "profile-modal") {
+                            return;
+                        }
+
+                        const modal = document.getElementById("profile-modal");
+
+                        modal.classList.add("hidden");
+                        modal.classList.remove("flex");
+
+                        document.body.classList.remove("overflow-hidden");
+                    }
+                </script>
+              
+
+                <!-- Mobile / Tablet Menu Button -->
+                <button id="menu-btn" type="button" class="lg:hidden w-9 h-9 p-2 rounded-md
+                       hover:bg-gray-100 active:bg-gray-200
+                       transition-all duration-200" aria-label="Open menu" aria-expanded="false">
+                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1
+                           transition-all duration-300">
+                    </span>
+
+                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1
+                           transition-all duration-300">
+                    </span>
+
+                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600
+                           transition-all duration-300">
+                    </span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-gray-100 pt-3">
-            <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
-                <a href="#"
-                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">HOME</a>
-                <a href="#"
-                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">ABOUT
-                    ME</a>
+        <!-- Mobile / Tablet Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-gray-100 pt-3">
+            <div class="flex flex-col gap-1
+                   bg-gray-50/70 rounded-xl p-2
+                   border border-gray-100">
+                <a href="#" class="px-3 py-2.5 rounded-lg transition-all duration-200
+                       hover:bg-blue-800 hover:text-white
+                       active:bg-blue-900">
+                    HOME
+                </a>
+
+                <a href="#" class="px-3 py-2.5 rounded-lg transition-all duration-200
+                       hover:bg-blue-800 hover:text-white
+                       active:bg-blue-900">
+                    ABOUT ME
+                </a>
+
                 <a href="./project.html" class="px-3 py-2.5 rounded-lg transition-all duration-200
-                
-                hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                       hover:bg-blue-800 hover:text-white
+                       active:bg-blue-900">
                     PROJECTS
                 </a>
 
-                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg
+                       bg-blue-800 text-white shadow-sm">
                     ACHIEVEMENTS
                 </a>
-                <button type="button"
-                    class="bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full">
+
+                <button type="button" class="bg-blue-800 px-4 py-2.5 text-white rounded-lg
+                       transition-all duration-200
+                       hover:bg-blue-900 hover:-translate-y-0.5
+                       active:translate-y-0 mt-1 w-full">
                     CONTACT ME
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById("menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
+
         const bar1 = document.getElementById("bar1");
         const bar2 = document.getElementById("bar2");
         const bar3 = document.getElementById("bar3");
+
         menuBtn.addEventListener("click", () => {
             mobileMenu.classList.toggle("hidden");
+
             const isOpen = !mobileMenu.classList.contains("hidden");
+
             menuBtn.setAttribute("aria-expanded", isOpen);
             menuBtn.setAttribute(
                 "aria-label",
                 isOpen ? "Close menu" : "Open menu"
             );
-            // Hamburger animation
+
             if (isOpen) {
                 bar1.classList.add("rotate-45", "translate-y-1.5");
                 bar2.classList.add("opacity-0");
@@ -136,7 +255,7 @@
     </main>
 
     <section class="px-4 py-8 sm:px-6 lg:px-10 lg:py-2">
-        <div class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 lg:grid-cols-3">
+        <div class="mx-auto grid w-full max-w-8xl grid-cols-1 gap-4 lg:grid-cols-3">
 
             <!-- Card 1 -->
             <div class="group w-full rounded-xl border border-slate-100 bg-white p-5 shadow-sm
@@ -149,7 +268,7 @@
                 </div>
                 <h3 class="mt-5 text-2xl font-semibold text-slate-900">3x <span
                         class="text-sm font-medium text-orange-700">Podiums</span></h3>
-                <p class="mt-2 text-sm leading-6 text-gray-400"> Consecutive top-tier placements in national collegiate
+                <p class="mt-2 text-sm leading-6 text-gray-500"> Consecutive top-tier placements in national collegiate
                     hackathons and UX design sprints.</p>
             </div>
 
@@ -165,7 +284,7 @@
                 </div>
                 <h3 class="mt-5 text-2xl font-semibold text-slate-900">3.92 <span
                         class="text-sm font-medium text-gray-400">/ 4.0</span></h3>
-                <p class="mt-2 text-sm leading-6 text-gray-400"> Cumulative Computer Science GPA. Ranked in the top 3%
+                <p class="mt-2 text-sm leading-6 text-gray-500"> Cumulative Computer Science GPA. Ranked in the top 3%
                     cohort across all engineering disciplines.
                 </p>
             </div>
@@ -183,14 +302,14 @@
                 </div>
                 <h3 class="mt-5 text-2xl font-semibold text-slate-900">100% <span
                         class="text-sm font-medium text-green-700">Verified</span></h3>
-                <p class="mt-2 text-sm leading-6 text-gray-400"> Publicly verifiable online digital credentials backed
+                <p class="mt-2 text-sm leading-6 text-gray-500"> Publicly verifiable online digital credentials backed
                     by Coursera, Google, and Meta registrars. </p>
             </div>
         </div>
     </section>
 
     <section class="px-4 my-8 sm:px-6 sm:my-10 lg:px-10">
-        <div class="mx-auto w-full max-w-6xl rounded-xl bg-white p-5 shadow-sm
+        <div class="mx-auto w-full max-w-8xl rounded-xl bg-white p-5 shadow-sm
                transition-all duration-300 ease-out
                hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/10
                sm:p-6">
@@ -217,16 +336,17 @@
                 and built the dynamic interface, handling live price feeds and localized
                 dialect voice input.
             </p>
-            <div class="mt-7 grid grid-cols-1 gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
+            <div class="mt-7 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-4">
                 <div class="rounded-lg border-t-2 border-orange-400 bg-blue-50 p-4 shadow-sm
                        transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-                    <h4 class="text-xs font-semibold tracking-wide text-gray-500">KEY CONTRIBUTIONS</h4>
-                    <p class="mt-1 text-sm font-medium text-slate-800">Team Lead & Full System Product Architecture</p>
+                    <h4 class="text-lg font-semibold tracking-wide text-gray-500">KEY CONTRIBUTIONS</h4>
+                    <p class="mt-1 text-sm font-semibold text-slate-800">Team Lead & Full System Product Architecture
+                    </p>
                 </div>
                 <div
                     class="rounded-lg border-t-2 border-orange-400 bg-blue-50 p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-                    <h4 class="text-xs font-semibold tracking-wide text-gray-500"> CEREMONY & RECOGNITION</h4>
-                    <p class="mt-1 text-sm font-medium text-slate-800"> Awarded by the Secretary of State, National
+                    <h4 class="text-lg font-semibold tracking-wide text-gray-500"> CEREMONY & RECOGNITION</h4>
+                    <p class="mt-1 text-sm font-semibold text-slate-800"> Awarded by the Secretary of State, National
                         Innovation Center</p>
                 </div>
             </div>
@@ -269,7 +389,7 @@
     <section class="px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
         <!-- Certificate 1 -->
         <div
-            class="bg-white p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
+            class="bg-white shadow-xs p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
             <!-- Badge + Date -->
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs">
                 <div class="flex flex-wrap gap-2">
@@ -292,9 +412,9 @@
             </p>
 
             <!-- Credential -->
-            <div class="bg-blue-100 rounded-md shadow-sm p-3 mt-6 lg:mt-14 flex justify-between items-center">
+            <div class="bg-blue-100 rounded-md shadow-sm p-3 mt-6 lg:mt-9 flex justify-between items-center">
                 <div class="min-w-0">
-                    <h4 class="text-gray-500 font-medium text-xs lg:text-sm">CREDENTIAL IDENTIFICATION</h4>
+                    <h4 class="text-gray-500 font-medium text-xs lg:text-lg">CREDENTIAL IDENTIFICATION</h4>
                     <p class="text-sm font-semibold mt-0.5">G-UX-98421 </p>
                 </div>
                 <i class="fa-solid fa-graduation-cap text-blue-700 shrink-0"></i>
@@ -331,7 +451,7 @@
 
         <!-- Certificate 2 -->
         <div
-            class="bg-white p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
+            class="bg-white shadow-xs p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs">
                 <div class="flex flex-wrap gap-2">
                     <p class="bg-blue-50 py-1 px-3 lg:px-4 rounded-full font-medium text-blue-600 shadow-sm">
@@ -354,7 +474,7 @@
             </p>
             <div class="bg-blue-100 rounded-md shadow-sm p-3 mt-6 lg:mt-8 flex justify-between items-center">
                 <div class="min-w-0">
-                    <h4 class="text-gray-500 font-medium text-xs lg:text-sm">EVALUATION FOCUS</h4>
+                    <h4 class="text-gray-500 font-medium text-xs lg:text-lg">EVALUATION FOCUS</h4>
                     <p class="text-sm font-semibold mt-0.5">Urban Accessibility & Inclusive UX</p>
                 </div>
                 <i class="fa-solid fa-graduation-cap text-blue-700 shrink-0"></i>
@@ -385,7 +505,7 @@
 
         <!-- Certificate 3 -->
         <div
-            class="bg-white p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
+            class="bg-white p-5 shadow-xs lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs">
                 <div class="flex flex-wrap gap-2">
                     <p class="bg-blue-50 py-1 px-3 lg:px-4 rounded-full font-medium text-blue-600 shadow-sm">
@@ -409,7 +529,7 @@
 
             <div class="bg-blue-100 rounded-md shadow-sm p-3 mt-6 lg:mt-8 flex justify-between items-center">
                 <div class="min-w-0">
-                    <h4 class="text-gray-500 font-medium text-xs lg:text-sm">CREDENTIAL IDENTIFICATION</h4>
+                    <h4 class="text-gray-500 font-medium text-xs lg:text-lg">CREDENTIAL IDENTIFICATION</h4>
                     <p class="text-sm font-semibold mt-0.5">META-FE-4921</p>
                 </div>
                 <i class="fa-solid fa-graduation-cap text-blue-700 shrink-0"></i>
@@ -439,7 +559,7 @@
 
         <!-- Certificate 4 -->
         <div
-            class="bg-white p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
+            class="bg-white shadow-xs p-5 lg:p-8 rounded-lg transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs">
                 <div class="flex flex-wrap gap-2">
                     <p class="bg-blue-50 py-1 px-3 lg:px-4 rounded-full font-medium text-blue-600 shadow-sm">
@@ -459,7 +579,7 @@
 
             <div class="bg-blue-100 rounded-md shadow-sm p-3 mt-6 lg:mt-8 flex justify-between items-center">
                 <div class="min-w-0">
-                    <h4 class="text-gray-500 font-medium text-xs lg:text-sm">PROJECT ARTIFACT</h4>
+                    <h4 class="text-gray-500 font-medium text-xs lg:text-lg">PROJECT ARTIFACT</h4>
                     <p class="text-sm font-semibold mt-0.5">CampusBite Micro-Commerce</p>
                 </div>
                 <i class="fa-solid fa-graduation-cap text-blue-700 shrink-0"></i>
@@ -509,7 +629,7 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex w-full flex-col gap-2 text-xs sm:flex-row lg:w-auto lg:flex-1 lg:items-end lg:justify-end">
+            <div class="flex w-full flex-col gap-2 text-sm sm:flex-row lg:w-auto lg:flex-1 lg:items-end lg:justify-end">
                 <button class="w-full sm:w-auto bg-blue-800 text-white font-medium py-2.5 px-4 rounded-md shadow
                 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-900">
                     Request Academic Transcripts →
@@ -540,7 +660,7 @@
     </section>
 
     <footer class="mt-10 bg-slate-950 text-white">
-        <div class="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-10">
+        <div class="mx-auto max-w-8xl px-5 py-4 sm:px-8 lg:px-10">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
                     <div class="flex items-center  gap-2 md:justify-start">
@@ -549,7 +669,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-between gap-4">
-                    <div class="flex items-center gap-4 text-[10px] sm:gap-6 sm:text-xs font-medium text-slate-400">
+                    <div class="flex items-center gap-4 text-sm sm:gap-6 sm:text-xs font-medium text-slate-400">
                         <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">GitHub</a>
                         <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">LinkedIn</a>
                         <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">Figma</a>
@@ -557,7 +677,7 @@
                     </div>
                     <a href="#"
                         class="shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs
-                    font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500">
+                        font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500">
                         Get in Touch
                         <span class="ml-1">↗</span>
                     </a>
@@ -766,7 +886,7 @@
                 if (e.key === 'Escape') closeModal();
             });
 
-            const safeText = value => value.replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[ch]));
+            const safeText = value => value.replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[ch]));
             const cardDetails = card => {
                 const title = card.querySelector('h3')?.textContent.trim() || 'Achievement';
                 const paragraphs = Array.from(card.querySelectorAll('p')).map(p => p.textContent.trim()).filter(Boolean);
@@ -848,13 +968,15 @@
                         <button type="button" data-contact-close class="h-9 w-9 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700"><i class="fa-solid fa-xmark"></i></button>
                     </div>
                     <div class="mt-6 grid gap-3">
-                        <a href="mailto:sem.dav.dev@gmail.com" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
-                            <i class="fa-solid fa-envelope w-5 text-center text-blue-700"></i><span class="text-sm font-medium text-gray-700">Email</span>
+                        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
+                            <i class="fa-solid fa-envelope w-5 text-center text-blue-700"></i>
+                            <span class="text-sm font-medium text-gray-700">Email</span>
                         </a>
-                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
+
+                        <a href="https://github.com/semdavdev-del" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
                             <i class="fa-brands fa-github w-5 text-center text-slate-800"></i><span class="text-sm font-medium text-gray-700">GitHub</span>
                         </a>
-                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
+                        <a href="https://www.linkedin.com/in/sem-dav-47241242b/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50">
                             <i class="fa-brands fa-linkedin w-5 text-center text-blue-700"></i><span class="text-sm font-medium text-gray-700">LinkedIn</span>
                         </a>
                     </div>
