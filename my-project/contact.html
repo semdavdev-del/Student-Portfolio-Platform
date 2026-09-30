@@ -4,251 +4,402 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Arindra - Portfolio</title>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
+  <!-- Custom CSS -->
   <link href="/src/style.css" rel="stylesheet" />
+
+  <!-- =========================================================
+       PAGE TRANSITION
+  ========================================================== -->
+  <style>
+    body {
+      opacity: 0;
+      animation: pageEnter 0.45s ease-out forwards;
+    }
+
+    @keyframes pageEnter {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body.page-leaving {
+      animation: pageLeave 0.28s ease-in forwards;
+    }
+
+    @keyframes pageLeave {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body,
+      body.page-leaving {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-blue-50 m-0 p-0 text-darkText">
-  <!-- nav -->
-    <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
-        <div class="flex items-center justify-between">
 
-            <!-- Logo -->
-            <div class="flex gap-3 items-center min-w-0">
-                <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
-                    ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
-                </h3>
+  <!-- =========================================================
+       NAVBAR
+  ========================================================== -->
+  <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
 
-                <div class="bg-transparent shadow-none p-0
-                       sm:bg-white sm:shadow-sm sm:rounded-full
-                       sm:px-3 sm:py-1
-                       text-xs font-medium flex items-center gap-2 whitespace-nowrap">
-                    <div class="w-2 h-2 bg-green-500 rounded-full shrink-0"></div>
+    <div class="flex items-center justify-between">
 
-                    <h4 class="hidden sm:block">
-                        Available for internships
-                    </h4>
-                </div>
-            </div>
+      <!-- Logo -->
+      <div class="flex gap-3 items-center min-w-0">
 
-            <!-- Right Side -->
-            <div class="flex items-center gap-2 sm:gap-3 text-gray-600 text-sm">
+        <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
+          ARINDRA
+          <span class="text-blue-800 font-bold">.DEV</span>
+        </h3>
 
-                <!-- Desktop / Tablet Menu -->
-                <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
-                    <a href="#" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
-                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        HOME
-                    </a>
+        <div
+          class="bg-transparent shadow-none p-0
+          sm:bg-white sm:shadow-sm sm:rounded-full
+          sm:px-3 sm:py-1
+          text-xs font-medium
+          flex items-center gap-2
+          whitespace-nowrap"
+        >
+          <div class="w-2 h-2 bg-green-500 rounded-full shrink-0"></div>
 
-                    <a href="#" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
-                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        ABOUT ME
-                    </a>
-
-                    <a href="./project.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
-                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
-                        PROJECT
-                    </a>
-
-                    <a href="./achievements.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
-                           bg-blue-800 text-white">
-                        ACHIEVEMENTS
-                    </a>
-
-                    <button type="button" class="bg-blue-800 px-3 xl:px-4 py-2 text-white rounded-md
-                           transition-all duration-300
-                           hover:-translate-y-0.5 hover:bg-blue-900">
-                        CONTACT ME
-                    </button>
-                </div>
-
-                <!-- Profile -->
-                
-                <!-- Profile Image -->
-                <button type="button" onclick="openProfile()" class="shrink-0 focus:outline-none">
-                    <img class="w-8 h-8 sm:w-8 sm:h-8
-               rounded-full
-               object-cover
-               shrink-0
-               ring-2 ring-blue-600
-               ring-offset-1 ring-offset-white
-               cursor-pointer
-               transition-all duration-300
-               hover:scale-110" src="./image/profile.png" alt="Profile" />
-                </button>
-
-
-                <!-- Profile Preview -->
-                <div id="profile-modal" class="fixed inset-0  z-50
-           hidden items-center justify-center
-           bg-black/70 backdrop-blur-sm
-           px-4" onclick="closeProfile(event)">
-                    <div class="relative" onclick="event.stopPropagation()">
-
-                        <!-- Close Button -->
-                        <button type="button" onclick="closeProfile()" class="absolute -top-3 -right-3
-                   w-9 h-9
-                   rounded-full
-                   bg-white
-                   text-gray-700
-                   text-xl
-                   shadow-lg
-                   flex items-center justify-center
-                   hover:bg-gray-100
-                   transition">
-                            &times;
-                        </button>
-
-                        <!-- Large Image -->
-                        <img src="./image/profile.png" alt="Profile" class="w-64 h-64
-                   sm:w-80 sm:h-80
-                   md:w-96 md:h-96
-                   rounded-2xl
-                   object-cover
-                   ring-4 ring-blue-600
-                   shadow-2xl">
-                    </div>
-                </div>
-
-
-                <script>
-                    function openProfile() {
-                        const modal = document.getElementById("profile-modal");
-
-                        modal.classList.remove("hidden");
-                        modal.classList.add("flex");
-
-                        document.body.classList.add("overflow-hidden");
-                    }
-
-                    function closeProfile(event) {
-                        if (event && event.target.id !== "profile-modal") {
-                            return;
-                        }
-
-                        const modal = document.getElementById("profile-modal");
-
-                        modal.classList.add("hidden");
-                        modal.classList.remove("flex");
-
-                        document.body.classList.remove("overflow-hidden");
-                    }
-                </script>
-              
-
-                <!-- Mobile / Tablet Menu Button -->
-                <button id="menu-btn" type="button" class="lg:hidden w-9 h-9 p-2 rounded-md
-                       hover:bg-gray-100 active:bg-gray-200
-                       transition-all duration-200" aria-label="Open menu" aria-expanded="false">
-                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1
-                           transition-all duration-300">
-                    </span>
-
-                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1
-                           transition-all duration-300">
-                    </span>
-
-                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600
-                           transition-all duration-300">
-                    </span>
-                </button>
-            </div>
+          <h4 class="hidden sm:block">
+            Available for internships
+          </h4>
         </div>
 
-        <!-- Mobile / Tablet Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-gray-100 pt-3">
-            <div class="flex flex-col gap-1
-                   bg-gray-50/70 rounded-xl p-2
-                   border border-gray-100">
-                <a href="#" class="px-3 py-2.5 rounded-lg transition-all duration-200
-                       hover:bg-blue-800 hover:text-white
-                       active:bg-blue-900">
-                    HOME
-                </a>
+      </div>
 
-                <a href="#" class="px-3 py-2.5 rounded-lg transition-all duration-200
-                       hover:bg-blue-800 hover:text-white
-                       active:bg-blue-900">
-                    ABOUT ME
-                </a>
 
-                <a href="./project.html" class="px-3 py-2.5 rounded-lg transition-all duration-200
-                       hover:bg-blue-800 hover:text-white
-                       active:bg-blue-900">
-                    PROJECTS
-                </a>
+      <!-- Right Side -->
+      <div class="flex items-center gap-2 sm:gap-3 text-gray-600 text-sm">
 
-                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg
-                       bg-blue-800 text-white shadow-sm">
-                    ACHIEVEMENTS
-                </a>
+        <!-- =====================================================
+             DESKTOP / TABLET MENU
+        ====================================================== -->
+        <div
+          id="desktop-menu"
+          class="hidden lg:flex items-center gap-1 xl:gap-2"
+        >
 
-                <button type="button" class="bg-blue-800 px-4 py-2.5 text-white rounded-lg
-                       transition-all duration-200
-                       hover:bg-blue-900 hover:-translate-y-0.5
-                       active:translate-y-0 mt-1 w-full">
-                    CONTACT ME
-                </button>
-            </div>
+          <!-- HOME -->
+          <a
+            href="./index.html"
+            class="page-link
+            px-2 xl:px-3 py-2
+            rounded-md
+            transition-all duration-300
+            hover:-translate-y-0.5
+            hover:bg-blue-800
+            hover:text-white"
+          >
+            HOME
+          </a>
+
+
+          <!-- ABOUT ME -->
+          <a
+            href="./about.html"
+            class="page-link
+            px-2 xl:px-3 py-2
+            rounded-md
+            transition-all duration-300
+            hover:-translate-y-0.5
+            hover:bg-blue-800
+            hover:text-white"
+          >
+            ABOUT ME
+          </a>
+
+
+          <!-- PROJECT -->
+          <a
+            href="./project.html"
+            class="page-link
+            px-2 xl:px-3 py-2
+            rounded-md
+            transition-all duration-300
+            hover:-translate-y-0.5
+            hover:bg-blue-800
+            hover:text-white"
+          >
+            PROJECT
+          </a>
+
+
+          <!-- ACHIEVEMENTS -->
+          <a
+            href="./achievements.html"
+            class="page-link
+            px-2 xl:px-3 py-2
+            rounded-md
+            transition-all duration-300
+            hover:-translate-y-0.5
+            hover:bg-blue-800
+            hover:text-white"
+          >
+            ACHIEVEMENTS
+          </a>
+
+
+          <!-- CONTACT ME ACTIVE -->
+          <a
+            href="./contact.html"
+            class="page-link
+            px-2 xl:px-3 py-2
+            rounded-md
+            bg-blue-800
+            text-white
+            transition-all duration-300
+            hover:-translate-y-0.5"
+          >
+            CONTACT ME
+          </a>
+
         </div>
-    </nav>
 
-    <script>
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
 
-        const bar1 = document.getElementById("bar1");
-        const bar2 = document.getElementById("bar2");
-        const bar3 = document.getElementById("bar3");
+        <!-- =====================================================
+             PROFILE BUTTON
+        ====================================================== -->
+        <button
+          type="button"
+          onclick="openProfile()"
+          class="shrink-0 focus:outline-none"
+        >
 
-        menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
+          <img
+            src="./image/profile.png"
+            alt="Profile"
+            class="w-8 h-8
+            sm:w-8 sm:h-8
+            rounded-full
+            object-cover
+            shrink-0
+            ring-2 ring-blue-600
+            ring-offset-1 ring-offset-white
+            cursor-pointer
+            transition-all duration-300
+            hover:scale-110"
+          />
 
-            const isOpen = !mobileMenu.classList.contains("hidden");
+        </button>
 
-            menuBtn.setAttribute("aria-expanded", isOpen);
-            menuBtn.setAttribute(
-                "aria-label",
-                isOpen ? "Close menu" : "Open menu"
-            );
 
-            if (isOpen) {
-                bar1.classList.add("rotate-45", "translate-y-1.5");
-                bar2.classList.add("opacity-0");
-                bar3.classList.add("-rotate-45", "-translate-y-1.5");
-            } else {
-                bar1.classList.remove("rotate-45", "translate-y-1.5");
-                bar2.classList.remove("opacity-0");
-                bar3.classList.remove("-rotate-45", "-translate-y-1.5");
-            }
-        });
-    </script>
+        <!-- =====================================================
+             MOBILE MENU BUTTON
+        ====================================================== -->
+        <button
+          id="menu-btn"
+          type="button"
+          class="lg:hidden
+          w-9 h-9
+          p-2
+          rounded-md
+          hover:bg-gray-100
+          active:bg-gray-200
+          transition-all duration-200"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+
+          <span
+            id="bar1"
+            class="block
+            w-5 h-0.5
+            bg-gray-600
+            mb-1
+            transition-all duration-300"
+          ></span>
+
+          <span
+            id="bar2"
+            class="block
+            w-5 h-0.5
+            bg-gray-600
+            mb-1
+            transition-all duration-300"
+          ></span>
+
+          <span
+            id="bar3"
+            class="block
+            w-5 h-0.5
+            bg-gray-600
+            transition-all duration-300"
+          ></span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         MOBILE / TABLET MENU
+    ========================================================== -->
+    <div
+      id="mobile-menu"
+      class="hidden
+      lg:hidden
+      mt-4
+      border-t
+      border-gray-100
+      pt-3"
+    >
+
+      <div
+        class="flex flex-col gap-1
+        bg-gray-50/70
+        rounded-xl
+        p-2
+        border border-gray-100"
+      >
+
+        <!-- HOME -->
+        <a
+          href="./index.html"
+          class="page-link
+          px-3 py-2.5
+          rounded-lg
+          transition-all duration-200
+          hover:bg-blue-800
+          hover:text-white
+          active:bg-blue-900"
+        >
+          HOME
+        </a>
+
+
+        <!-- ABOUT ME -->
+        <a
+          href="./about.html"
+          class="page-link
+          px-3 py-2.5
+          rounded-lg
+          transition-all duration-200
+          hover:bg-blue-800
+          hover:text-white
+          active:bg-blue-900"
+        >
+          ABOUT ME
+        </a>
+
+
+        <!-- PROJECT -->
+        <a
+          href="./project.html"
+          class="page-link
+          px-3 py-2.5
+          rounded-lg
+          transition-all duration-200
+          hover:bg-blue-800
+          hover:text-white
+          active:bg-blue-900"
+        >
+          PROJECT
+        </a>
+
+
+        <!-- ACHIEVEMENTS -->
+        <a
+          href="./achievements.html"
+          class="page-link
+          px-3 py-2.5
+          rounded-lg
+          transition-all duration-200
+          hover:bg-blue-800
+          hover:text-white
+          active:bg-blue-900"
+        >
+          ACHIEVEMENTS
+        </a>
+
+
+        <!-- CONTACT ME ACTIVE -->
+        <a
+          href="./contact.html"
+          class="page-link
+          px-3 py-2.5
+          rounded-lg
+          bg-blue-800
+          text-white
+          shadow-sm"
+        >
+          CONTACT ME
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
 
   <!-- =========================================================
        HERO / INTRO
   ========================================================== -->
   <section
-    class="reveal-section px-5 sm:px-6 md:px-8 lg:px-10
-    py-8 sm:py-10 lg:py-12">
+    class="reveal-section
+    px-5 sm:px-6 md:px-8 lg:px-10
+    py-8 sm:py-10 lg:py-12"
+  >
 
     <div
-      class="flex gap-2 text-blue-800 text-[12px] font-bold
-      px-2 py-1 rounded-full mb-2 w-full lg:w-90">
+      class="flex gap-2
+      text-blue-800
+      text-[12px]
+      font-bold
+      px-2 py-1
+      rounded-full
+      mb-2
+      w-full lg:w-90"
+    >
 
       <div
-        class="w-full lg:w-86 text-[10px] sm:text-xs
-        text-center font-medium text-blue-800
-        py-0.5 rounded-full">
-
+        class="w-full lg:w-86
+        text-[10px] sm:text-xs
+        text-center
+        font-medium
+        text-blue-800
+        py-0.5
+        rounded-full"
+      >
         LET'S WORK TOGETHER INQUIRIES COLLABORATIONS
       </div>
+
     </div>
 
 
@@ -257,12 +408,10 @@
     </h1>
 
 
-    <p
-      class="text-gray-600 text-base sm:text-lg
-      mt-1">
-
+    <p class="text-gray-600 text-base sm:text-lg mt-1">
       Have an internship opportunity, a project to build, or just want
       to chat about design systems and frontend architecture?
+
       <br class="hidden sm:block">
 
       My inbox is always open!
@@ -275,69 +424,104 @@
        MAIN CONTACT AREA
   ========================================================== -->
   <section
-    class="reveal-section px-5
-    grid grid-cols-1 md:grid-cols-[37%_1fr]
-    gap-10 sm:px-10">
+    class="reveal-section
+    px-5
+    grid grid-cols-1
+    md:grid-cols-[37%_1fr]
+    gap-10
+    sm:px-10"
+  >
 
-    <!-- LEFT -->
+    <!-- =====================================================
+         LEFT SIDE
+    ====================================================== -->
     <div>
 
-      <!-- Live Status -->
+
+      <!-- LIVE STATUS -->
       <div
-        class="interactive-card bg-white p-4 mb-2 shadow rounded-lg
+        class="interactive-card
+        bg-white
+        p-4
+        mb-2
+        shadow
+        rounded-lg
         transition-all duration-300 ease-out
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10">
+        hover:shadow-cyan-500/10"
+      >
 
         <div
-          class="text-green-500 text-xs font-medium
-          mb-1 rounded-2xl px-2">
-
+          class="text-green-500
+          text-xs
+          font-medium
+          mb-1
+          rounded-2xl
+          px-2"
+        >
           ● LIVE STATUS
         </div>
 
+
         <p class="text-sm leading-5 text-gray-600">
           Currently available for
+
           <span class="text-orange-500 font-semibold">
             Summer 2025 Internships
           </span>,
+
           freelance product design, and frontend contracts.
         </p>
 
       </div>
 
 
-      <!-- Email -->
+      <!-- EMAIL -->
       <div
-        class="interactive-card bg-white
+        class="interactive-card
+        bg-white
         flex items-center
-        p-4 mb-2 gap-5 mt-3
-        shadow rounded-lg
+        p-4
+        mb-2
+        gap-5
+        mt-3
+        shadow
+        rounded-lg
         transition-all duration-300 ease-out
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10">
+        hover:shadow-cyan-500/10"
+      >
 
         <div
-          class="w-12 h-12 shrink-0
-          bg-blue-100 rounded
-          flex items-center justify-center">
+          class="w-12 h-12
+          shrink-0
+          bg-blue-100
+          rounded
+          flex items-center
+          justify-center"
+        >
 
           <i
-            class="fa-solid fa-at text-[20px]
+            class="fa-solid fa-at
+            text-[20px]
             text-orange-700
             bg-orange-100
-            p-3.5 rounded-md">
-          </i>
+            p-3.5
+            rounded-md"
+          ></i>
+
         </div>
 
 
         <div
-          class="flex-1 min-w-0
-          flex flex-col">
+          class="flex-1
+          min-w-0
+          flex flex-col"
+        >
 
           <small class="text-[14px] text-gray-600">
             EMAIL ADDRESS
@@ -345,9 +529,11 @@
 
           <strong
             id="email-text"
-            class="text-[12px] break-all">
+            class="text-[12px] break-all"
+          >
             Dara.portfolio.cs@gmail.com
           </strong>
+
         </div>
 
 
@@ -364,45 +550,59 @@
           transition-all duration-300
           hover:bg-blue-800
           hover:text-white
-          hover:-translate-y-0.5">
-
+          hover:-translate-y-0.5"
+        >
           Copy
         </button>
 
       </div>
 
 
-      <!-- Phone -->
+      <!-- PHONE -->
       <div
-        class="interactive-card bg-white
+        class="interactive-card
+        bg-white
         flex items-center
-        mt-3 p-4 mb-2 gap-5
-        shadow rounded-lg
+        mt-3
+        p-4
+        mb-2
+        gap-5
+        shadow
+        rounded-lg
         transition-all duration-300 ease-out
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10">
+        hover:shadow-cyan-500/10"
+      >
 
         <div
-          class="w-12 h-12 shrink-0
-          bg-blue-100 text-blue-700
+          class="w-12 h-12
+          shrink-0
+          bg-blue-100
+          text-blue-700
           rounded
-          flex items-center justify-center">
+          flex items-center
+          justify-center"
+        >
 
           <i
             class="fa-solid fa-mobile-screen
             text-[20px]
             text-blue-700
             bg-blue-100
-            p-3.5 rounded-md">
-          </i>
+            p-3.5
+            rounded-md"
+          ></i>
+
         </div>
 
 
         <div
-          class="flex-1 min-w-0
-          flex flex-col">
+          class="flex-1
+          min-w-0
+          flex flex-col"
+        >
 
           <small class="text-[14px] text-gray-600">
             PHONE & TELEGRAM
@@ -417,37 +617,48 @@
       </div>
 
 
-      <!-- Location -->
+      <!-- LOCATION -->
       <div
-        class="interactive-card bg-white
+        class="interactive-card
+        bg-white
         flex items-center
-        gap-5 p-4 mb-2 mt-3
-        shadow rounded-lg
+        gap-5
+        p-4
+        mb-2
+        mt-3
+        shadow
+        rounded-lg
         transition-all duration-300 ease-out
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10">
+        hover:shadow-cyan-500/10"
+      >
 
         <div
-          class="w-12 h-12 shrink-0
+          class="w-12 h-12
+          shrink-0
           rounded
-          flex items-center justify-center">
+          flex items-center
+          justify-center"
+        >
 
           <i
             class="fa-solid fa-location-dot
             text-[20px]
             text-green-700
             bg-green-100
-            p-4 rounded-md">
-          </i>
+            p-4
+            rounded-md"
+          ></i>
 
         </div>
 
 
         <div
           class="min-w-0
-          flex flex-col">
+          flex flex-col"
+        >
 
           <small class="text-[14px] text-gray-600">
             PRIMARY LOCATION
@@ -462,7 +673,7 @@
       </div>
 
 
-      <!-- Social profiles -->
+      <!-- SOCIAL PROFILES -->
       <h3 class="mt-4 mb-2 font-semibold">
         DEVELOPER & DESIGN PROFILES
       </h3>
@@ -470,26 +681,38 @@
 
       <div class="grid grid-cols-2 gap-2">
 
+        <!-- GITHUB -->
         <a
           href="https://github.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="interactive-card bg-white
-          h-12 rounded-md p-2
-          flex items-center gap-2 shadow
-          border-l-2 border-orange-400
+          class="interactive-card
+          bg-white
+          h-12
+          rounded-md
+          p-2
+          flex items-center
+          gap-2
+          shadow
+          border-l-2
+          border-orange-400
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10">
+          hover:shadow-cyan-300/10"
+        >
 
           <i
             class="fa-brands fa-github
-            w-5 h-5 bg-blue-100 text-blue-700
+            w-5 h-5
+            bg-blue-100
+            text-blue-700
             rounded-full
-            flex items-center justify-center
-            text-[20px]">
-          </i>
+            flex items-center
+            justify-center
+            text-[20px]"
+          ></i>
+
 
           <div class="flex flex-col">
 
@@ -502,28 +725,42 @@
             </span>
 
           </div>
+
         </a>
 
 
+        <!-- LINKEDIN -->
         <a
           href="https://www.linkedin.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="interactive-card bg-white
-          h-12 rounded-md p-2
-          flex items-center gap-2 shadow
-          border-l-2 border-orange-400
+          class="interactive-card
+          bg-white
+          h-12
+          rounded-md
+          p-2
+          flex items-center
+          gap-2
+          shadow
+          border-l-2
+          border-orange-400
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10">
+          hover:shadow-cyan-300/10"
+        >
 
           <i
             class="fa-brands fa-linkedin
-            flex items-center justify-center
-            w-5 h-5 rounded-full
-            bg-blue-700 text-white text-sm">
-          </i>
+            flex items-center
+            justify-center
+            w-5 h-5
+            rounded-full
+            bg-blue-700
+            text-white
+            text-sm"
+          ></i>
+
 
           <div class="flex flex-col">
 
@@ -540,27 +777,38 @@
         </a>
 
 
+        <!-- TELEGRAM -->
         <a
           href="https://telegram.org/"
           target="_blank"
           rel="noopener noreferrer"
-          class="interactive-card bg-white
-          h-12 rounded-md p-2
-          flex items-center gap-2 shadow
-          border-l-2 border-orange-400
+          class="interactive-card
+          bg-white
+          h-12
+          rounded-md
+          p-2
+          flex items-center
+          gap-2
+          shadow
+          border-l-2
+          border-orange-400
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10">
+          hover:shadow-cyan-300/10"
+        >
 
           <i
             class="fa-brands fa-telegram
             w-5 h-5
-            bg-blue-100 text-blue-700
+            bg-blue-100
+            text-blue-700
             rounded-full
-            flex items-center justify-center
-            text-[20px]">
-          </i>
+            flex items-center
+            justify-center
+            text-[20px]"
+          ></i>
+
 
           <div class="flex flex-col">
 
@@ -573,30 +821,42 @@
             </span>
 
           </div>
+
         </a>
 
 
+        <!-- FACEBOOK -->
         <a
           href="https://facebook.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="interactive-card bg-white
-          h-12 rounded-md p-2
-          flex items-center gap-2 shadow
-          border-l-2 border-orange-400
+          class="interactive-card
+          bg-white
+          h-12
+          rounded-md
+          p-2
+          flex items-center
+          gap-2
+          shadow
+          border-l-2
+          border-orange-400
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10">
+          hover:shadow-cyan-300/10"
+        >
 
           <i
             class="fa-brands fa-facebook
             w-5 h-5
-            bg-blue-100 text-blue-700
+            bg-blue-100
+            text-blue-700
             rounded-full
-            flex items-center justify-center
-            text-[20px]">
-          </i>
+            flex items-center
+            justify-center
+            text-[20px]"
+          ></i>
+
 
           <div class="flex flex-col">
 
@@ -615,15 +875,21 @@
       </div>
 
 
-      <!-- Response guarantee -->
+      <!-- RESPONSE GUARANTEE -->
       <div
-        class="interactive-card bg-blue-800
-        text-white p-4 mt-8
-        flex items-center gap-4
-        shadow rounded-lg
+        class="interactive-card
+        bg-blue-800
+        text-white
+        p-4
+        mt-8
+        flex items-center
+        gap-4
+        shadow
+        rounded-lg
         transition-all duration-300
         hover:-translate-y-1
-        hover:shadow-xl">
+        hover:shadow-xl"
+      >
 
         <i class="fa-solid fa-bolt text-sm"></i>
 
@@ -636,15 +902,20 @@
     </div>
 
 
-    <!-- RIGHT FORM -->
+    <!-- =====================================================
+         RIGHT FORM
+    ====================================================== -->
     <div
-      class="interactive-card bg-white
+      class="interactive-card
+      bg-white
       p-4 sm:p-6 lg:p-10
       h-auto lg:h-158
-      shadow rounded-lg
+      shadow
+      rounded-lg
       transition-all duration-300
       hover:shadow-2xl
-      hover:shadow-cyan-500/10">
+      hover:shadow-cyan-500/10"
+    >
 
       <h2 class="text-blue-700 text-2xl font-bold mb-1">
         Send a Message
@@ -659,15 +930,17 @@
 
       <form id="contact-form" class="mt-6">
 
-        <!-- Name + Email -->
+        <!-- NAME + EMAIL -->
         <div
           class="grid grid-cols-1 sm:grid-cols-2
           gap-4 sm:gap-6
-          mb-4 py-2 sm:py-4">
+          mb-4
+          py-2 sm:py-4"
+        >
 
           <div>
-            <label
-              class="block text-sm mb-2 font-semibold">
+
+            <label class="block text-sm mb-2 font-semibold">
               Full Name<span class="text-red-500">*</span>
             </label>
 
@@ -675,18 +948,25 @@
               type="text"
               required
               placeholder="Enter your full name"
-              class="w-full h-10 bg-blue-50 rounded
-              px-2 text-sm outline-none
-              focus:ring-1 focus:ring-blue-500
+              class="w-full h-10
+              bg-blue-50
+              rounded
+              px-2
+              text-sm
+              outline-none
+              focus:ring-1
+              focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md" />
+              focus:shadow-md"
+            />
+
           </div>
 
 
           <div>
-            <label
-              class="block text-sm mb-2 font-semibold">
+
+            <label class="block text-sm mb-2 font-semibold">
               Email Address<span class="text-red-500">*</span>
             </label>
 
@@ -694,65 +974,87 @@
               type="email"
               required
               placeholder="Enter your email address"
-              class="w-full h-10 bg-blue-50 rounded
-              px-2 text-sm outline-none
-              focus:ring-1 focus:ring-blue-500
+              class="w-full h-10
+              bg-blue-50
+              rounded
+              px-2
+              text-sm
+              outline-none
+              focus:ring-1
+              focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md" />
+              focus:shadow-md"
+            />
+
           </div>
 
         </div>
 
 
-        <!-- Phone + Subject -->
+        <!-- PHONE + SUBJECT -->
         <div
           class="grid grid-cols-1 sm:grid-cols-2
-          gap-4 sm:gap-6 mb-2">
+          gap-4 sm:gap-6
+          mb-2"
+        >
 
           <div>
-            <label
-              class="block text-[14px] mb-2 font-semibold">
+
+            <label class="block text-[14px] mb-2 font-semibold">
               Phone Number
             </label>
 
             <input
               type="text"
               placeholder="Enter your phone number"
-              class="w-full h-10 bg-blue-50 rounded
-              px-2 text-sm outline-none
-              focus:ring-1 focus:ring-blue-500
+              class="w-full h-10
+              bg-blue-50
+              rounded
+              px-2
+              text-sm
+              outline-none
+              focus:ring-1
+              focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md" />
+              focus:shadow-md"
+            />
+
           </div>
 
 
           <div>
-            <label
-              class="block text-[14px] mb-2 font-semibold">
+
+            <label class="block text-[14px] mb-2 font-semibold">
               Subject
             </label>
 
             <input
               type="text"
               placeholder="What is your inquiry about?"
-              class="w-full h-10 bg-blue-50 rounded
-              px-2 text-sm outline-none
-              focus:ring-1 focus:ring-blue-500
+              class="w-full h-10
+              bg-blue-50
+              rounded
+              px-2
+              text-sm
+              outline-none
+              focus:ring-1
+              focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md" />
+              focus:shadow-md"
+            />
+
           </div>
 
         </div>
 
 
-        <!-- Message -->
+        <!-- MESSAGE -->
         <div class="mb-2 mt-6 sm:mt-8">
 
-          <label
-            class="block text-[14px] font-bold mb-2">
+          <label class="block text-[14px] font-bold mb-2">
             Message
           </label>
 
@@ -760,35 +1062,46 @@
             required
             placeholder="Write your message here..."
             class="w-full h-28 sm:h-30
-            bg-blue-100 rounded
-            p-2 text-[12px]
-            shadow outline-none
+            bg-blue-100
+            rounded
+            p-2
+            text-[12px]
+            shadow
+            outline-none
             resize-none
-            focus:ring-1 focus:ring-blue-500
+            focus:ring-1
+            focus:ring-blue-500
             transition-all duration-300
-            focus:shadow-md"></textarea>
+            focus:shadow-md"
+          ></textarea>
 
         </div>
 
 
-        <!-- Submit -->
+        <!-- SUBMIT -->
         <button
           type="submit"
-          class="w-full shadow py-3
-          bg-blue-800 border
+          class="w-full
+          shadow
+          py-3
+          bg-blue-800
+          border
           mb-4 lg:mb-8
           hover:bg-blue-900
           hover:-translate-y-0.5
-          text-white rounded-md
-          text-sm font-medium
-          transition-all duration-300">
-
+          text-white
+          rounded-md
+          text-sm
+          font-medium
+          transition-all duration-300"
+        >
           Send message
         </button>
 
       </form>
 
     </div>
+
   </section>
 
 
@@ -796,28 +1109,41 @@
        INFO CARDS
   ========================================================== -->
   <section
-    class="reveal-section px-4 sm:px-6 md:px-9
+    class="reveal-section
+    px-4 sm:px-6 md:px-9
     py-6 sm:py-8 md:py-9
-    grid grid-cols-1 md:grid-cols-3 gap-4">
+    grid grid-cols-1 md:grid-cols-3 gap-4"
+  >
 
-    <!-- Card 1 -->
+    <!-- CARD 1 -->
     <div
-      class="interactive-card bg-white
-      rounded-lg p-4
+      class="interactive-card
+      bg-white
+      rounded-lg
+      p-4
       flex gap-3 md:gap-2
-      min-h-88px shadow-sm
+      min-h-88px
+      shadow-sm
       transition-all duration-300 ease-out
       hover:-translate-y-1
       hover:shadow-lg
-      hover:shadow-cyan-300/10">
+      hover:shadow-cyan-300/10"
+    >
 
       <div
-        class="w-12 h-12 shrink-0
-        bg-blue-100 text-blue-700
-        flex items-center justify-center
-        p-5 shadow rounded-md">
+        class="w-12 h-12
+        shrink-0
+        bg-blue-100
+        text-blue-700
+        flex items-center
+        justify-center
+        p-5
+        shadow
+        rounded-md"
+      >
 
         <i class="fa-regular fa-clock text-lg"></i>
+
       </div>
 
 
@@ -833,27 +1159,39 @@
         </p>
 
       </div>
+
     </div>
 
 
-    <!-- Card 2 -->
+    <!-- CARD 2 -->
     <div
-      class="interactive-card bg-white
-      rounded-lg p-4
+      class="interactive-card
+      bg-white
+      rounded-lg
+      p-4
       flex gap-3 md:gap-2
-      min-h-88px shadow-sm
+      min-h-88px
+      shadow-sm
       transition-all duration-300 ease-out
       hover:-translate-y-1
       hover:shadow-lg
-      hover:shadow-cyan-300/10">
+      hover:shadow-cyan-300/10"
+    >
 
       <div
-        class="w-12 h-12 shrink-0
-        bg-blue-100 text-blue-700
-        flex items-center justify-center
-        p-4 shadow rounded-lg">
+        class="w-12 h-12
+        shrink-0
+        bg-blue-100
+        text-blue-700
+        flex items-center
+        justify-center
+        p-4
+        shadow
+        rounded-lg"
+      >
 
         <i class="fa-solid fa-laptop text-lg"></i>
+
       </div>
 
 
@@ -870,27 +1208,39 @@
         </p>
 
       </div>
+
     </div>
 
 
-    <!-- Card 3 -->
+    <!-- CARD 3 -->
     <div
-      class="interactive-card bg-white
-      rounded-lg p-4
+      class="interactive-card
+      bg-white
+      rounded-lg
+      p-4
       flex gap-3 md:gap-2
-      min-h-88px shadow-sm
+      min-h-88px
+      shadow-sm
       transition-all duration-300 ease-out
       hover:-translate-y-1
       hover:shadow-lg
-      hover:shadow-cyan-300/10">
+      hover:shadow-cyan-300/10"
+    >
 
       <div
-        class="w-12 h-12 shrink-0
-        bg-blue-100 text-blue-700
-        flex items-center justify-center
-        p-5 shadow rounded-lg">
+        class="w-12 h-12
+        shrink-0
+        bg-blue-100
+        text-blue-700
+        flex items-center
+        justify-center
+        p-5
+        shadow
+        rounded-lg"
+      >
 
         <i class="fa-solid fa-file text-lg"></i>
+
       </div>
 
 
@@ -910,15 +1260,17 @@
           class="text-blue-700
           hover:underline
           text-[14px]
-          inline-block mt-1
+          inline-block
+          mt-1
           font-medium
           transition-all duration-300
-          hover:-translate-y-0.5">
-
+          hover:-translate-y-0.5"
+        >
           Download PDF (2.4 MB)
         </a>
 
       </div>
+
     </div>
 
   </section>
@@ -927,34 +1279,35 @@
   <!-- =========================================================
        FOOTER
   ========================================================== -->
-  <footer
-    class="reveal-section mt-10
-    bg-slate-950 text-white">
-
-    <div
-      class="mx-auto max-w-7xl
-      px-5 py-4
-      sm:px-8 lg:px-10">
+  <footer class="reveal-section mt-10 bg-slate-950 text-white">
+    <div class="mx-auto max-w-8xl px-5 py-4 sm:px-8 lg:px-10">
 
       <div
         class="flex flex-col gap-3
-        md:flex-row md:items-center
-        md:justify-between">
+        md:flex-row
+        md:items-center
+        md:justify-between"
+      >
 
+        <!-- BRAND -->
         <div>
 
           <div
             class="flex items-center gap-2
-            md:justify-start">
+            md:justify-start"
+          >
 
             <span
               class="h-2 w-2
               rounded-full
-              bg-blue-500">
-            </span>
+              bg-blue-500"
+            ></span>
 
             <p
-              class="text-sm font-semibold tracking-wide">
+              class="text-sm
+              font-semibold
+              tracking-wide"
+            >
               Arindra
             </p>
 
@@ -962,53 +1315,72 @@
 
         </div>
 
-
+        <!-- FOOTER LINKS -->
         <div
           class="flex items-center
-          justify-between gap-4">
+          justify-between
+          gap-4"
+        >
 
           <div
-            class="flex items-center gap-4
-            text-[10px]
-            sm:gap-6 sm:text-xs
+            class="flex items-center
+            gap-4
+            text-xs
+            sm:gap-6
+            sm:text-sm
             font-medium
-            text-slate-400">
+            text-slate-400"
+          >
 
             <a
-              href="#"
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white">
+              hover:text-white"
+            >
               GitHub
             </a>
 
+
             <a
-              href="#"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white">
+              hover:text-white"
+            >
               LinkedIn
             </a>
 
-            <a
-              href="#"
-              class="whitespace-nowrap
-              transition duration-300
-              hover:text-white">
-              Figma
-            </a>
 
             <a
               href="#"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white">
+              hover:text-white"
+            >
+              Figma
+            </a>
+
+
+            <a
+              href="https://telegram.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="whitespace-nowrap
+              transition duration-300
+              hover:text-white"
+            >
               Telegram
             </a>
 
           </div>
 
 
+          <!-- GET IN TOUCH -->
           <button
             type="button"
             data-contact-open
@@ -1027,17 +1399,87 @@
             shadow-blue-900/20
             transition-all duration-300
             hover:-translate-y-1
-            hover:bg-blue-500">
-
+            hover:bg-blue-500"
+          >
             Get in Touch
             <span class="ml-1">↗</span>
-
           </button>
 
         </div>
+
       </div>
+
     </div>
+
   </footer>
+
+
+  <!-- =========================================================
+       PROFILE MODAL
+  ========================================================== -->
+  <div
+    id="profile-modal"
+    class="fixed
+    inset-0
+    z-50
+    hidden
+    items-center
+    justify-center
+    bg-black/70
+    backdrop-blur-sm
+    px-4"
+    onclick="closeProfile(event)"
+  >
+
+    <div
+      id="profile-modal-box"
+      class="relative
+      scale-95
+      opacity-0
+      transition-all duration-300"
+      onclick="event.stopPropagation()"
+    >
+
+      <!-- CLOSE -->
+      <button
+        type="button"
+        onclick="closeProfile()"
+        class="absolute
+        -top-3
+        -right-3
+        z-10
+        w-9 h-9
+        rounded-full
+        bg-white
+        text-gray-700
+        text-xl
+        shadow-lg
+        flex items-center
+        justify-center
+        hover:bg-gray-100
+        transition"
+      >
+        &times;
+      </button>
+
+
+      <!-- IMAGE -->
+      <img
+        src="./image/profile.png"
+        alt="Profile"
+        class="w-64 h-64
+        sm:w-80 sm:h-80
+        md:w-96 md:h-96
+        rounded-2xl
+        object-cover
+        ring-4
+        ring-blue-600
+        shadow-2xl"
+      />
+
+    </div>
+
+  </div>
 
 
   <!-- =========================================================
@@ -1045,58 +1487,82 @@
   ========================================================== -->
   <div
     id="contact-modal"
-    class="fixed inset-0
-    z-[105p]
-    hidden items-center justify-center
+    class="fixed
+    inset-0
+    z-[105]
+    hidden
+    items-center
+    justify-center
     bg-slate-950/60
-    p-4 backdrop-blur-sm">
+    p-4
+    backdrop-blur-sm"
+  >
 
     <div
       id="contact-modal-box"
-      class="w-full max-w-md
-      rounded-2xl bg-white
-      p-6 shadow-2xl
+      class="w-full
+      max-w-md
+      rounded-2xl
+      bg-white
+      p-6
+      shadow-2xl
       sm:p-7
-      scale-95 opacity-0
-      transition-all duration-300">
+      scale-95
+      opacity-0
+      transition-all duration-300"
+    >
 
+      <!-- HEADER -->
       <div
         class="flex items-start
-        justify-between gap-4">
+        justify-between
+        gap-4"
+      >
 
         <div>
 
           <p
-            class="text-xs font-semibold
-            uppercase tracking-wider
-            text-blue-700">
-            Let’s connect
+            class="text-xs
+            font-semibold
+            uppercase
+            tracking-wider
+            text-blue-700"
+          >
+            Let's connect
           </p>
 
           <h3
             class="mt-1
-            text-2xl font-semibold
-            text-slate-900">
+            text-2xl
+            font-semibold
+            text-slate-900"
+          >
             Contact Me
           </h3>
 
           <p
-            class="mt-2 text-sm
-            leading-6 text-gray-500">
+            class="mt-2
+            text-sm
+            leading-6
+            text-gray-500"
+          >
             Choose a contact method and continue your conversation.
           </p>
 
         </div>
 
 
+        <!-- CLOSE -->
         <button
           type="button"
           id="contact-modal-close"
-          class="h-9 w-9 rounded-full
+          class="h-9 w-9
+          rounded-full
           text-gray-400
           hover:bg-gray-100
           hover:text-gray-700
-          transition">
+          transition"
+        >
 
           <i class="fa-solid fa-xmark"></i>
 
@@ -1105,89 +1571,111 @@
       </div>
 
 
+      <!-- OPTIONS -->
       <div class="mt-6 grid gap-3">
 
-        <!-- Email -->
+        <!-- EMAIL -->
         <a
           href="https://mail.google.com/mail/?view=cm&fs=1&to=Dara.portfolio.cs@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-3
+          class="flex
+          items-center
+          gap-3
           rounded-xl
-          border border-gray-200
+          border
+          border-gray-200
           p-4
           transition
           hover:-translate-y-0.5
           hover:border-blue-300
-          hover:bg-blue-50">
+          hover:bg-blue-50"
+        >
 
           <i
             class="fa-solid fa-envelope
-            w-5 text-center
-            text-blue-700">
-          </i>
+            w-5
+            text-center
+            text-blue-700"
+          ></i>
 
           <span
             class="text-sm
-            font-medium text-gray-700">
+            font-medium
+            text-gray-700"
+          >
             Email
           </span>
 
         </a>
 
 
-        <!-- Github -->
+        <!-- GITHUB -->
         <a
           href="https://github.com/semdavdev-del"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-3
+          class="flex
+          items-center
+          gap-3
           rounded-xl
-          border border-gray-200
+          border
+          border-gray-200
           p-4
           transition
           hover:-translate-y-0.5
           hover:border-blue-300
-          hover:bg-blue-50">
+          hover:bg-blue-50"
+        >
 
           <i
             class="fa-brands fa-github
-            w-5 text-center
-            text-slate-800">
-          </i>
+            w-5
+            text-center
+            text-slate-800"
+          ></i>
 
           <span
             class="text-sm
-            font-medium text-gray-700">
+            font-medium
+            text-gray-700"
+          >
             GitHub
           </span>
 
         </a>
 
 
-        <!-- LinkedIn -->
+        <!-- LINKEDIN -->
         <a
           href="https://www.linkedin.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-3
+          class="flex
+          items-center
+          gap-3
           rounded-xl
-          border border-gray-200
+          border
+          border-gray-200
           p-4
           transition
           hover:-translate-y-0.5
           hover:border-blue-300
-          hover:bg-blue-50">
+          hover:bg-blue-50"
+        >
 
           <i
             class="fa-brands fa-linkedin
-            w-5 text-center
-            text-blue-700">
-          </i>
+            w-5
+            text-center
+            text-blue-700"
+          ></i>
 
           <span
             class="text-sm
-            font-medium text-gray-700">
+            font-medium
+            text-gray-700"
+          >
             LinkedIn
           </span>
 
@@ -1196,6 +1684,7 @@
       </div>
 
     </div>
+
   </div>
 
 
@@ -1205,8 +1694,9 @@
   <div
     id="feature-toast"
     class="fixed
-    bottom-5 left-1/2
-    z-[120p]
+    bottom-5
+    left-1/2
+    z-[120]
     -translate-x-1/2
     translate-y-2
     opacity-0
@@ -1214,11 +1704,12 @@
     rounded-full
     bg-slate-950
     px-4 py-2.5
-    text-xs font-medium
+    text-xs
+    font-medium
     text-white
     shadow-xl
-    transition-all duration-300">
-  </div>
+    transition-all duration-300"
+  ></div>
 
 
   <!-- =========================================================
@@ -1229,11 +1720,13 @@
     type="button"
     aria-label="Back to top"
     class="fixed
-    bottom-5 right-5
-    z-[90p]
+    bottom-5
+    right-5
+    z-[90]
     hidden
     h-11 w-11
-    items-center justify-center
+    items-center
+    justify-center
     rounded-full
     bg-blue-800
     text-white
@@ -1243,9 +1736,11 @@
     hover:bg-blue-900
     focus:outline-none
     focus:ring-4
-    focus:ring-blue-200">
+    focus:ring-blue-200"
+  >
 
     <i class="fa-solid fa-arrow-up"></i>
+
   </button>
 
 
@@ -1255,13 +1750,14 @@
   <div
     id="scroll-progress"
     class="fixed
-    left-0 top-0
-    z-[120p]
+    left-0
+    top-0
+    z-[120]
     h-1
     w-0
     bg-blue-700
-    transition-all duration-150">
-  </div>
+    transition-all duration-150"
+  ></div>
 
 
   <!-- =========================================================
@@ -1279,117 +1775,223 @@
       /* =====================================================
          2. MOBILE MENU
       ====================================================== */
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
 
-      const bar1 = document.getElementById("bar1");
-      const bar2 = document.getElementById("bar2");
-      const bar3 = document.getElementById("bar3");
+      const menuBtn =
+        document.getElementById("menu-btn");
+
+      const mobileMenu =
+        document.getElementById("mobile-menu");
+
+      const bar1 =
+        document.getElementById("bar1");
+
+      const bar2 =
+        document.getElementById("bar2");
+
+      const bar3 =
+        document.getElementById("bar3");
+
+
+      function closeMobileMenu() {
+
+        if (!mobileMenu || !menuBtn) {
+          return;
+        }
+
+
+        mobileMenu.classList.add("hidden");
+
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+
+        menuBtn.setAttribute(
+          "aria-label",
+          "Open menu"
+        );
+
+
+        bar1?.classList.remove(
+          "rotate-45",
+          "translate-y-1.5"
+        );
+
+
+        bar2?.classList.remove(
+          "opacity-0"
+        );
+
+
+        bar3?.classList.remove(
+          "-rotate-45",
+          "-translate-y-1.5"
+        );
+
+      }
+
 
       if (menuBtn && mobileMenu) {
 
-        menuBtn.addEventListener("click", () => {
+        menuBtn.addEventListener(
+          "click",
+          () => {
 
-          mobileMenu.classList.toggle("hidden");
-
-          const isOpen =
-            !mobileMenu.classList.contains("hidden");
-
-          menuBtn.setAttribute(
-            "aria-expanded",
-            isOpen
-          );
-
-          menuBtn.setAttribute(
-            "aria-label",
-            isOpen
-              ? "Close menu"
-              : "Open menu"
-          );
-
-
-          if (isOpen) {
-
-            bar1.classList.add(
-              "rotate-45",
-              "translate-y-1.5"
+            mobileMenu.classList.toggle(
+              "hidden"
             );
 
-            bar2.classList.add(
-              "opacity-0"
-            );
 
-            bar3.classList.add(
-              "-rotate-45",
-              "-translate-y-1.5"
-            );
-
-          } else {
-
-            bar1.classList.remove(
-              "rotate-45",
-              "translate-y-1.5"
-            );
-
-            bar2.classList.remove(
-              "opacity-0"
-            );
-
-            bar3.classList.remove(
-              "-rotate-45",
-              "-translate-y-1.5"
-            );
-          }
-        });
-
-
-        /* Close mobile menu after clicking links */
-        document
-          .querySelectorAll("#mobile-menu a")
-          .forEach(link => {
-
-            link.addEventListener("click", () => {
-
-              mobileMenu.classList.add("hidden");
-
-              menuBtn.setAttribute(
-                "aria-expanded",
-                "false"
+            const isOpen =
+              !mobileMenu.classList.contains(
+                "hidden"
               );
 
-              menuBtn.setAttribute(
-                "aria-label",
-                "Open menu"
-              );
 
-              bar1.classList.remove(
+            menuBtn.setAttribute(
+              "aria-expanded",
+              isOpen
+            );
+
+
+            menuBtn.setAttribute(
+              "aria-label",
+              isOpen
+                ? "Close menu"
+                : "Open menu"
+            );
+
+
+            if (isOpen) {
+
+              bar1?.classList.add(
                 "rotate-45",
                 "translate-y-1.5"
               );
 
-              bar2.classList.remove(
+
+              bar2?.classList.add(
                 "opacity-0"
               );
 
-              bar3.classList.remove(
+
+              bar3?.classList.add(
                 "-rotate-45",
                 "-translate-y-1.5"
               );
 
-            });
+            } else {
+
+              closeMobileMenu();
+
+            }
+
+          }
+        );
+
+
+        /* Close after clicking a mobile link */
+        document
+          .querySelectorAll(
+            "#mobile-menu a"
+          )
+          .forEach(link => {
+
+            link.addEventListener(
+              "click",
+              () => {
+
+                closeMobileMenu();
+
+              }
+            );
 
           });
+
       }
 
 
       /* =====================================================
-         3. REVEAL ANIMATION
+         3. PAGE LINK TRANSITION
+      ====================================================== */
+
+      const pageLinks =
+        document.querySelectorAll(
+          'a.page-link[href]:not([target="_blank"])'
+        );
+
+
+      pageLinks.forEach(link => {
+
+        link.addEventListener(
+          "click",
+          event => {
+
+            const href =
+              link.getAttribute("href");
+
+
+            if (
+              !href ||
+              href.startsWith("#") ||
+              href.startsWith("http") ||
+              href.startsWith("mailto:") ||
+              href.startsWith("tel:")
+            ) {
+              return;
+            }
+
+
+            /* Allow Ctrl / Cmd / Shift click */
+            if (
+              event.ctrlKey ||
+              event.metaKey ||
+              event.shiftKey ||
+              event.altKey ||
+              event.button !== 0
+            ) {
+              return;
+            }
+
+
+            event.preventDefault();
+
+
+            closeMobileMenu();
+
+
+            document.body.classList.add(
+              "page-leaving"
+            );
+
+
+            setTimeout(
+              () => {
+
+                window.location.href =
+                  href;
+
+              },
+              280
+            );
+
+          }
+        );
+
+      });
+
+
+      /* =====================================================
+         4. REVEAL ANIMATION
       ====================================================== */
 
       const revealTargets =
         document.querySelectorAll(
           ".reveal-section"
         );
+
 
       revealTargets.forEach(
         (element, index) => {
@@ -1402,53 +2004,86 @@
             "ease-out"
           );
 
+
           element.style.transitionDelay =
             `${Math.min(index * 100, 500)}ms`;
+
         }
       );
 
 
-      const revealObserver =
-        new IntersectionObserver(
-          (entries, observer) => {
+      if ("IntersectionObserver" in window) {
 
-            entries.forEach(entry => {
+        const revealObserver =
+          new IntersectionObserver(
+            (entries, observer) => {
 
-              if (!entry.isIntersecting) {
-                return;
-              }
+              entries.forEach(
+                entry => {
 
-              entry.target.classList.remove(
-                "opacity-0",
-                "translate-y-8"
+                  if (
+                    !entry.isIntersecting
+                  ) {
+                    return;
+                  }
+
+
+                  entry.target.classList.remove(
+                    "opacity-0",
+                    "translate-y-8"
+                  );
+
+
+                  entry.target.classList.add(
+                    "opacity-100",
+                    "translate-y-0"
+                  );
+
+
+                  observer.unobserve(
+                    entry.target
+                  );
+
+                }
               );
 
-              entry.target.classList.add(
-                "opacity-100",
-                "translate-y-0"
-              );
+            },
+            {
+              threshold: 0.08
+            }
+          );
 
-              observer.unobserve(
-                entry.target
-              );
 
-            });
+        revealTargets.forEach(
+          element =>
+            revealObserver.observe(
+              element
+            )
+        );
 
-          },
-          {
-            threshold: 0.08
+      } else {
+
+        revealTargets.forEach(
+          element => {
+
+            element.classList.remove(
+              "opacity-0",
+              "translate-y-8"
+            );
+
+            element.classList.add(
+              "opacity-100",
+              "translate-y-0"
+            );
+
           }
         );
 
-
-      revealTargets.forEach(
-        element =>
-          revealObserver.observe(element)
-      );
+      }
 
 
       /* =====================================================
-         4. CARD POINTER TILT
+         5. CARD POINTER TILT
       ====================================================== */
 
       const cards =
@@ -1456,32 +2091,45 @@
           ".interactive-card"
         );
 
+
       cards.forEach(card => {
 
         card.addEventListener(
           "pointermove",
           event => {
 
-            if (window.innerWidth < 768) {
+            if (
+              window.innerWidth < 768
+            ) {
               return;
             }
+
 
             const rect =
               card.getBoundingClientRect();
 
+
             const x =
-              (event.clientX - rect.left) /
-              rect.width - 0.5;
+              (event.clientX -
+                rect.left) /
+                rect.width -
+              0.5;
+
 
             const y =
-              (event.clientY - rect.top) /
-              rect.height - 0.5;
+              (event.clientY -
+                rect.top) /
+                rect.height -
+              0.5;
+
 
             const rotateX =
               (-y * 2).toFixed(2);
 
+
             const rotateY =
               (x * 2).toFixed(2);
+
 
             card.style.transform =
               `perspective(900px)
@@ -1506,57 +2154,81 @@
 
 
       /* =====================================================
-         5. COPY EMAIL
+         6. COPY EMAIL
       ====================================================== */
 
       const copyEmail =
-        document.getElementById("copy-email");
+        document.getElementById(
+          "copy-email"
+        );
+
 
       const emailText =
-        document.getElementById("email-text");
+        document.getElementById(
+          "email-text"
+        );
+
 
       const toast =
-        document.getElementById("feature-toast");
+        document.getElementById(
+          "feature-toast"
+        );
 
 
       function showToast(message) {
 
-        if (!toast) return;
+        if (!toast) {
+          return;
+        }
 
-        toast.textContent = message;
+
+        toast.textContent =
+          message;
+
 
         toast.classList.remove(
           "opacity-0",
           "translate-y-2"
         );
 
+
         toast.classList.add(
           "opacity-100",
           "-translate-y-0"
         );
 
+
         clearTimeout(
           toast._timer
         );
 
+
         toast._timer =
-          setTimeout(() => {
+          setTimeout(
+            () => {
 
-            toast.classList.add(
-              "opacity-0",
-              "translate-y-2"
-            );
+              toast.classList.add(
+                "opacity-0",
+                "translate-y-2"
+              );
 
-            toast.classList.remove(
-              "opacity-100",
-              "-translate-y-0"
-            );
 
-          }, 1800);
+              toast.classList.remove(
+                "opacity-100",
+                "-translate-y-0"
+              );
+
+            },
+            1800
+          );
+
       }
 
 
-      if (copyEmail && emailText) {
+      if (
+        copyEmail &&
+        emailText
+      ) {
 
         copyEmail.addEventListener(
           "click",
@@ -1565,46 +2237,57 @@
             const text =
               emailText.textContent.trim();
 
+
             try {
 
               await navigator.clipboard.writeText(
                 text
               );
 
+
               copyEmail.textContent =
                 "Copied!";
+
 
               copyEmail.classList.remove(
                 "bg-blue-100",
                 "text-blue-800"
               );
 
+
               copyEmail.classList.add(
                 "bg-green-500",
                 "text-white"
               );
+
 
               showToast(
                 `Copied: ${text}`
               );
 
 
-              setTimeout(() => {
+              setTimeout(
+                () => {
 
-                copyEmail.textContent =
-                  "Copy";
+                  copyEmail.textContent =
+                    "Copy";
 
-                copyEmail.classList.remove(
-                  "bg-green-500",
-                  "text-white"
-                );
 
-                copyEmail.classList.add(
-                  "bg-blue-100",
-                  "text-blue-800"
-                );
+                  copyEmail.classList.remove(
+                    "bg-green-500",
+                    "text-white"
+                  );
 
-              }, 1500);
+
+                  copyEmail.classList.add(
+                    "bg-blue-100",
+                    "text-blue-800"
+                  );
+
+                },
+                1500
+              );
+
 
             } catch (error) {
 
@@ -1621,7 +2304,7 @@
 
 
       /* =====================================================
-         6. PROFILE MODAL
+         7. PROFILE MODAL
       ====================================================== */
 
       const profileModal =
@@ -1629,84 +2312,118 @@
           "profile-modal"
         );
 
+
       const profileModalBox =
         document.getElementById(
           "profile-modal-box"
         );
 
 
-      window.openProfile = function () {
+      window.openProfile =
+        function () {
 
-        profileModal.classList.remove(
-          "hidden"
-        );
+          if (
+            !profileModal ||
+            !profileModalBox
+          ) {
+            return;
+          }
 
-        profileModal.classList.add(
-          "flex"
-        );
 
-        document.body.classList.add(
-          "overflow-hidden"
-        );
-
-        setTimeout(() => {
-
-          profileModalBox.classList.remove(
-            "scale-95",
-            "opacity-0"
+          profileModal.classList.remove(
+            "hidden"
           );
 
-          profileModalBox.classList.add(
+
+          profileModal.classList.add(
+            "flex"
+          );
+
+
+          document.body.classList.add(
+            "overflow-hidden"
+          );
+
+
+          setTimeout(
+            () => {
+
+              profileModalBox.classList.remove(
+                "scale-95",
+                "opacity-0"
+              );
+
+
+              profileModalBox.classList.add(
+                "scale-100",
+                "opacity-100"
+              );
+
+            },
+            20
+          );
+
+        };
+
+
+      window.closeProfile =
+        function (event) {
+
+          if (
+            event &&
+            event.target.id !==
+            "profile-modal"
+          ) {
+            return;
+          }
+
+
+          if (
+            !profileModal ||
+            !profileModalBox
+          ) {
+            return;
+          }
+
+
+          profileModalBox.classList.remove(
             "scale-100",
             "opacity-100"
           );
 
-        }, 20);
 
-      };
-
-
-      window.closeProfile = function (event) {
-
-        if (
-          event &&
-          event.target.id !==
-          "profile-modal"
-        ) {
-          return;
-        }
-
-        profileModalBox.classList.remove(
-          "scale-100",
-          "opacity-100"
-        );
-
-        profileModalBox.classList.add(
-          "scale-95",
-          "opacity-0"
-        );
-
-        setTimeout(() => {
-
-          profileModal.classList.add(
-            "hidden"
+          profileModalBox.classList.add(
+            "scale-95",
+            "opacity-0"
           );
 
-          profileModal.classList.remove(
-            "flex"
+
+          setTimeout(
+            () => {
+
+              profileModal.classList.add(
+                "hidden"
+              );
+
+
+              profileModal.classList.remove(
+                "flex"
+              );
+
+
+              document.body.classList.remove(
+                "overflow-hidden"
+              );
+
+            },
+            250
           );
 
-          document.body.classList.remove(
-            "overflow-hidden"
-          );
-
-        }, 250);
-
-      };
+        };
 
 
       /* =====================================================
-         7. CONTACT MODAL
+         8. CONTACT MODAL
       ====================================================== */
 
       const contactModal =
@@ -1714,15 +2431,18 @@
           "contact-modal"
         );
 
+
       const contactModalBox =
         document.getElementById(
           "contact-modal-box"
         );
 
+
       const contactButtons =
         document.querySelectorAll(
           "[data-contact-open]"
         );
+
 
       const contactClose =
         document.getElementById(
@@ -1730,68 +2450,101 @@
         );
 
 
-      function openContactModal(event) {
+      function openContactModal(
+        event
+      ) {
 
         if (event) {
           event.preventDefault();
         }
 
+
+        if (
+          !contactModal ||
+          !contactModalBox
+        ) {
+          return;
+        }
+
+
         contactModal.classList.remove(
           "hidden"
         );
+
 
         contactModal.classList.add(
           "flex"
         );
 
+
         document.body.classList.add(
           "overflow-hidden"
         );
 
-        setTimeout(() => {
 
-          contactModalBox.classList.remove(
-            "scale-95",
-            "opacity-0"
-          );
+        setTimeout(
+          () => {
 
-          contactModalBox.classList.add(
-            "scale-100",
-            "opacity-100"
-          );
+            contactModalBox.classList.remove(
+              "scale-95",
+              "opacity-0"
+            );
 
-        }, 20);
+
+            contactModalBox.classList.add(
+              "scale-100",
+              "opacity-100"
+            );
+
+          },
+          20
+        );
 
       }
 
 
       function closeContactModal() {
 
+        if (
+          !contactModal ||
+          !contactModalBox
+        ) {
+          return;
+        }
+
+
         contactModalBox.classList.remove(
           "scale-100",
           "opacity-100"
         );
+
 
         contactModalBox.classList.add(
           "scale-95",
           "opacity-0"
         );
 
-        setTimeout(() => {
 
-          contactModal.classList.add(
-            "hidden"
-          );
+        setTimeout(
+          () => {
 
-          contactModal.classList.remove(
-            "flex"
-          );
+            contactModal.classList.add(
+              "hidden"
+            );
 
-          document.body.classList.remove(
-            "overflow-hidden"
-          );
 
-        }, 250);
+            contactModal.classList.remove(
+              "flex"
+            );
+
+
+            document.body.classList.remove(
+              "overflow-hidden"
+            );
+
+          },
+          250
+        );
 
       }
 
@@ -1818,22 +2571,29 @@
       }
 
 
-      contactModal.addEventListener(
-        "click",
-        event => {
+      if (contactModal) {
 
-          if (
-            event.target === contactModal
-          ) {
-            closeContactModal();
+        contactModal.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target ===
+              contactModal
+            ) {
+
+              closeContactModal();
+
+            }
+
           }
+        );
 
-        }
-      );
+      }
 
 
       /* =====================================================
-         8. CONTACT FORM
+         9. CONTACT FORM
       ====================================================== */
 
       const contactForm =
@@ -1850,60 +2610,84 @@
 
             event.preventDefault();
 
+
             const submitButton =
               contactForm.querySelector(
                 'button[type="submit"]'
               );
 
+
+            if (!submitButton) {
+              return;
+            }
+
+
             const originalText =
               submitButton.textContent.trim();
 
-            submitButton.disabled = true;
+
+            submitButton.disabled =
+              true;
+
 
             submitButton.innerHTML =
               `<i class="fa-solid fa-spinner fa-spin mr-2"></i>
                Sending...`;
 
 
-            setTimeout(() => {
-
-              submitButton.innerHTML =
-                `<i class="fa-solid fa-check mr-2"></i>
-                 Message Sent`;
-
-              submitButton.classList.remove(
-                "bg-blue-800"
-              );
-
-              submitButton.classList.add(
-                "bg-green-600"
-              );
-
-              showToast(
-                "Your message has been submitted."
-              );
-
-
-              setTimeout(() => {
-
-                contactForm.reset();
-
-                submitButton.disabled = false;
+            setTimeout(
+              () => {
 
                 submitButton.innerHTML =
-                  originalText;
+                  `<i class="fa-solid fa-check mr-2"></i>
+                   Message Sent`;
+
 
                 submitButton.classList.remove(
-                  "bg-green-600"
-                );
-
-                submitButton.classList.add(
                   "bg-blue-800"
                 );
 
-              }, 1800);
 
-            }, 900);
+                submitButton.classList.add(
+                  "bg-green-600"
+                );
+
+
+                showToast(
+                  "Your message has been submitted."
+                );
+
+
+                setTimeout(
+                  () => {
+
+                    contactForm.reset();
+
+
+                    submitButton.disabled =
+                      false;
+
+
+                    submitButton.innerHTML =
+                      originalText;
+
+
+                    submitButton.classList.remove(
+                      "bg-green-600"
+                    );
+
+
+                    submitButton.classList.add(
+                      "bg-blue-800"
+                    );
+
+                  },
+                  1800
+                );
+
+              },
+              900
+            );
 
           }
         );
@@ -1912,7 +2696,7 @@
 
 
       /* =====================================================
-         9. ACTIVE NAV FEEDBACK
+         10. ACTIVE NAV FEEDBACK
       ====================================================== */
 
       const navItems =
@@ -1921,37 +2705,39 @@
         );
 
 
-      navItems.forEach(item => {
+      navItems.forEach(
+        item => {
 
-        item.addEventListener(
-          "click",
-          () => {
+          item.addEventListener(
+            "click",
+            () => {
 
-            navItems.forEach(
-              link => {
+              navItems.forEach(
+                link => {
 
-                link.classList.remove(
-                  "ring-2",
-                  "ring-blue-200"
-                );
+                  link.classList.remove(
+                    "ring-2",
+                    "ring-blue-200"
+                  );
 
-              }
-            );
+                }
+              );
 
 
-            item.classList.add(
-              "ring-2",
-              "ring-blue-200"
-            );
+              item.classList.add(
+                "ring-2",
+                "ring-blue-200"
+              );
 
-          }
-        );
+            }
+          );
 
-      });
+        }
+      );
 
 
       /* =====================================================
-         10. BACK TO TOP
+         11. BACK TO TOP
       ====================================================== */
 
       const topBtn =
@@ -1962,11 +2748,18 @@
 
       function toggleTopButton() {
 
-        if (window.scrollY > 500) {
+        if (!topBtn) {
+          return;
+        }
+
+
+        /* Show after 250px */
+        if (window.scrollY > 250) {
 
           topBtn.classList.remove(
             "hidden"
           );
+
 
           topBtn.classList.add(
             "flex"
@@ -1977,6 +2770,7 @@
           topBtn.classList.add(
             "hidden"
           );
+
 
           topBtn.classList.remove(
             "flex"
@@ -1990,28 +2784,34 @@
       window.addEventListener(
         "scroll",
         toggleTopButton,
-        { passive: true }
+        {
+          passive: true
+        }
       );
 
 
       toggleTopButton();
 
 
-      topBtn.addEventListener(
-        "click",
-        () => {
+      if (topBtn) {
 
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
+        topBtn.addEventListener(
+          "click",
+          () => {
 
-        }
-      );
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+
+          }
+        );
+
+      }
 
 
       /* =====================================================
-         11. SCROLL PROGRESS
+         12. SCROLL PROGRESS
       ====================================================== */
 
       const progress =
@@ -2022,17 +2822,28 @@
 
       function updateProgress() {
 
+        if (!progress) {
+          return;
+        }
+
+
         const doc =
           document.documentElement;
+
 
         const max =
           doc.scrollHeight -
           doc.clientHeight;
 
+
         const value =
           max > 0
-            ? (doc.scrollTop / max) * 100
+            ? (
+              doc.scrollTop /
+              max
+            ) * 100
             : 0;
+
 
         progress.style.width =
           `${value}%`;
@@ -2043,7 +2854,9 @@
       document.addEventListener(
         "scroll",
         updateProgress,
-        { passive: true }
+        {
+          passive: true
+        }
       );
 
 
@@ -2051,32 +2864,41 @@
 
 
       /* =====================================================
-         12. ESC KEY CLOSE MODALS
+         13. ESC KEY CLOSE MODALS
       ====================================================== */
 
       document.addEventListener(
         "keydown",
         event => {
 
-          if (event.key === "Escape") {
+          if (
+            event.key !==
+            "Escape"
+          ) {
+            return;
+          }
 
-            if (
-              profileModal &&
-              !profileModal.classList.contains(
-                "hidden"
-              )
-            ) {
-              closeProfile();
-            }
 
-            if (
-              contactModal &&
-              !contactModal.classList.contains(
-                "hidden"
-              )
-            ) {
-              closeContactModal();
-            }
+          if (
+            profileModal &&
+            !profileModal.classList.contains(
+              "hidden"
+            )
+          ) {
+
+            closeProfile();
+
+          }
+
+
+          if (
+            contactModal &&
+            !contactModal.classList.contains(
+              "hidden"
+            )
+          ) {
+
+            closeContactModal();
 
           }
 
@@ -2085,7 +2907,7 @@
 
 
       /* =====================================================
-         13. INITIAL PAGE ANIMATION
+         14. INITIAL PAGE ANIMATION
       ====================================================== */
 
       window.addEventListener(
@@ -2103,4 +2925,5 @@
   </script>
 
 </body>
+
 </html>

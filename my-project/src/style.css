@@ -10,5 +10,46 @@ html, body {
 }
 
 body {
+  opacity: 0;
+  animation: pageEnter 0.45s ease-out forwards;
   font-family: "Inter", sans-serif;
 }
+@keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        body.page-leaving {
+            animation: pageLeave 0.28s ease-in forwards;
+        }
+        @keyframes pageLeave {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body,
+            body.page-leaving {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+        /* Keeps navbar links feeling smooth without changing their existing colors/layout */
+        nav a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        nav a.page-link {
+            will-change: transform, opacity;
+        }

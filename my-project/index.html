@@ -18,16 +18,85 @@
 
   <!-- Your existing stylesheet -->
   <link href="/src/style.css" rel="stylesheet" />
+<style>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+        /* ===== Smooth page transition - added without changing the original design ===== */
+        body {
+            opacity: 0;
+            animation: pageEnter 0.45s ease-out forwards;
+        }
 
-    .cursor-zoom-in {
-      cursor: zoom-in;
-    }
-  </style>
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.page-leaving {
+            animation: pageLeave 0.28s ease-in forwards;
+        }
+
+        @keyframes pageLeave {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body,
+            body.page-leaving {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Keeps navbar links feeling smooth without changing their existing colors/layout */
+        nav a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        nav a.page-link {
+            will-change: transform, opacity;
+        }
+
+
+        /* ===== Modal / Lightbox visibility fixes ===== */
+        #profile-modal,
+        #project-modal,
+        #image-lightbox,
+        #contact-modal {
+            z-index: 9999 !important;
+        }
+
+        #image-lightbox img {
+            max-height: 90vh;
+            max-width: min(92vw, 1200px);
+        }
+
+        #hero-profile-image,
+        #project-image {
+            cursor: zoom-in;
+        }
+
+        /* Keep fixed overlays independent from the page-enter animation */
+        body:has(#image-lightbox.opacity-100),
+        body:has(#project-modal.opacity-100),
+        body:has(#profile-modal.flex),
+        body:has(#contact-modal.flex) {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body class="bg-blue-50 m-0 p-0">
@@ -35,7 +104,7 @@
   <!-- =========================================================
        NAVBAR
        ========================================================= -->
-  <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
+  <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4 relative z-[200]">
     <div class="flex items-center justify-between gap-4">
 
       <!-- Logo -->
@@ -45,7 +114,10 @@
           <span class="text-blue-800 font-bold">.DEV</span>
         </h3>
 
-        <div class="bg-white shadow-sm rounded-full px-3 py-1 text-xs font-medium flex items-center gap-2 whitespace-nowrap">
+        <div class="bg-transparent shadow-none p-0
+                    sm:bg-white sm:shadow-sm sm:rounded-full
+                    sm:px-3 sm:py-1
+                    text-xs font-medium flex items-center gap-2 whitespace-nowrap">
           <div class="w-2 h-2 bg-green-500 rounded-full shrink-0"></div>
           <span class="hidden sm:block">
             Available for internships
@@ -53,51 +125,49 @@
         </div>
       </div>
 
-      <!-- Navigation -->
-      <div class="flex items-center gap-2 sm:gap-3 text-xs font-medium text-gray-600">
+      <!-- Right side -->
+      <div class="flex items-center gap-2 sm:gap-3 text-gray-600 text-sm">
 
-        <a
-          href="home.html"
-          class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer"
-        >
-          HOME
-        </a>
+        <!-- Desktop navigation -->
+        <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
+          <a href="./index.html"
+             class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    hover:-translate-y-0.5 bg-blue-800 text-white">
+            HOME
+          </a>
 
-        <a
-          href="#about"
-          class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer"
-        >
-          ABOUT ME
-        </a>
+          <a href="./about.html"
+             class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+            ABOUT ME
+          </a>
 
-        <a
-          href="#projects"
-          class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer"
-        >
-          PROJECTS
-        </a>
+          <a href="./project.html"
+             class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+            PROJECTS
+          </a>
 
-        <a
-          href="#achievements"
-          class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer"
-        >
-          ACHIEVEMENTS
-        </a>
+          <a href="./achievements.html"
+             class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+            ACHIEVEMENTS
+          </a>
 
-        <a
-          href="contact.html"
-          class="transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white py-1.5 px-3 rounded-md cursor-pointer"
-        >
-          CONTACT
-        </a>
+          <a href="./contact.html"
+             class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+            CONTACT
+          </a>
 
-        <a
-          href="./contact me.html"
-          class="contact-trigger bg-blue-800 py-1.5 px-3 text-white rounded-md transition-transform duration-300 hover:-translate-y-0.5 hover:bg-blue-900"
-        >
-          CONTACT ME
-        </a>
+          <a href="./contact.html"
+             class="page-link contact-trigger bg-blue-800 py-2 px-3 text-white rounded-md
+                    transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-900">
+            CONTACT ME
+          </a>
+        </div>
 
+        <!-- Profile -->
         <button
           id="profile-button"
           type="button"
@@ -107,17 +177,71 @@
           <img
             src="./image/profile.png"
             alt="ARINDRA"
-            class="w-9 h-9 rounded-full object-cover border border-slate-300 ring-2 ring-transparent hover:ring-blue-600 transition-all duration-300"
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover
+                   border border-slate-300 ring-2 ring-blue-600 ring-offset-1
+                   ring-offset-white hover:scale-110 transition-all duration-300"
           >
         </button>
+
+        <!-- Mobile / Tablet menu -->
+        <button
+          id="menu-btn"
+          type="button"
+          class="lg:hidden w-9 h-9 p-2 rounded-md
+                 hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+          <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+          <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile / Tablet navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-gray-100 pt-3">
+      <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
+
+        <a href="./index.html"
+           class="page-link px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+          HOME
+        </a>
+
+        <a href="./about.html"
+           class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
+                  hover:bg-blue-800 hover:text-white active:bg-blue-900">
+          ABOUT ME
+        </a>
+
+        <a href="./project.html"
+           class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
+                  hover:bg-blue-800 hover:text-white active:bg-blue-900">
+          PROJECTS
+        </a>
+
+        <a href="./achievements.html"
+           class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
+                  hover:bg-blue-800 hover:text-white active:bg-blue-900">
+          ACHIEVEMENTS
+        </a>
+
+        <a href="./contact.html"
+           class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
+                  hover:bg-blue-800 hover:text-white active:bg-blue-900">
+          CONTACT
+        </a>
+
+        <a href="./contact.html"
+           class="page-link contact-trigger mt-1 w-full bg-blue-800 px-4 py-2.5
+                  text-center text-white rounded-lg transition-all duration-200
+                  hover:bg-blue-900 hover:-translate-y-0.5">
+          CONTACT ME
+        </a>
       </div>
     </div>
   </nav>
 
-
-  <!-- =========================================================
-       MAIN
-       ========================================================= -->
   <main class="px-4 sm:px-6 lg:px-10">
 
     <!-- =======================================================
@@ -151,7 +275,7 @@
         <div class="flex flex-wrap items-center gap-4 pt-2">
 
           <a
-            href="#projects"
+            href="./project.html"
             class="w-full sm:w-auto bg-blue-800 text-white font-medium py-2.5 px-4 rounded-md shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-900"
           >
             View My Projects
@@ -187,7 +311,7 @@
             <a
               href="#"
               aria-label="LinkedIn"
-              class="social-placeholder w-10 h-10 bg-highlight text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
+              class="social-placeholder w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
             >
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
@@ -195,7 +319,7 @@
             <a
               href="#"
               aria-label="GitHub"
-              class="social-placeholder w-10 h-10 bg-highlight text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
+              class="social-placeholder w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
             >
               <i class="fa-brands fa-github"></i>
             </a>
@@ -203,7 +327,7 @@
             <a
               href="#"
               aria-label="Telegram"
-              class="social-placeholder w-10 h-10 bg-highlight text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
+              class="social-placeholder w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
             >
               <i class="fa-brands fa-telegram"></i>
             </a>
@@ -211,7 +335,7 @@
             <a
               href="#"
               aria-label="Facebook"
-              class="social-placeholder w-10 h-10 bg-highlight text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
+              class="social-placeholder w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center text-lg hover:opacity-90 transition"
             >
               <i class="fa-brands fa-facebook-f"></i>
             </a>
@@ -230,6 +354,7 @@
         >
           <img
             id="hero-profile-image"
+            data-zoomable="true"
             src="./image/profile.png"
             alt="Arindra portrait"
             class="rounded-xl object-cover w-full h-auto cursor-pointer"
@@ -248,7 +373,7 @@
 
       <div>
 
-        <span class="text-xs font-bold text-success uppercase tracking-wider hover:underline">
+        <span class="text-sm font-semibold text-success uppercase tracking-wider hover:underline">
           Core Toolkit & Competencies
         </span>
 
@@ -259,14 +384,14 @@
               My Skills & Technologies
             </h2>
 
-            <p class="text-secondaryText mt-1 text-sm">
+            <p class=" mt-1 text-sm">
               Technologies and tools I'm currently learning and using as a web developer student.
             </p>
           </div>
 
           <a
             href="#"
-            class="skills-placeholder text-xs font-semibold text-primary hover:underline self-start sm:self-auto"
+            class="skills-placeholder text-sm text-blue-500 font-semibold text-primary hover:underline self-start sm:self-auto"
           >
             View All Skills
           </a>
@@ -277,22 +402,18 @@
 
       <!-- Skill Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 pt-2">
-
         <!-- HTML -->
         <div
-          class="skill-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition"
-        >
+          class="skill-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
             alt="HTML"
-            class="w-12 h-12 mb-1"
-          >
-
-          <span class="font-bold text-base text-darkText">
+            class="w-12 h-12 mb-1">
+          <span class="font-bold text-lg text-darkText">
             HTML
           </span>
 
-          <span class="text-xs text-slate-400">
+          <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
@@ -308,11 +429,11 @@
             class="w-12 h-12 mb-1"
           >
 
-          <span class="font-bold text-base text-darkText">
+          <span class="font-bold text-lg text-darkText">
             CSS
           </span>
 
-          <span class="text-xs text-slate-400">
+          <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
@@ -328,11 +449,11 @@
             class="w-12 h-12 mb-1 rounded-md"
           >
 
-          <span class="font-bold text-base text-darkText">
+          <span class="font-bold text-lg text-darkText">
             JavaScript
           </span>
 
-          <span class="text-xs text-slate-400">
+          <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
@@ -348,11 +469,11 @@
             class="w-12 h-12 mb-1"
           >
 
-          <span class="font-bold text-base text-darkText">
+          <span class="font-bold text-lg text-darkText">
             Python
           </span>
 
-          <span class="text-xs text-slate-400">
+          <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
@@ -368,11 +489,11 @@
             class="w-12 h-12 mb-1"
           >
 
-          <span class="font-bold text-base text-darkText">
+          <span class="font-bold text-lg text-darkText">
             Java
           </span>
 
-          <span class="text-xs text-slate-400">
+          <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
@@ -385,14 +506,13 @@
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
             alt="Git & GitHub"
-            class="w-12 h-12 mb-1"
-          >
+            class="w-12 h-12 mb-1">
 
-          <span class="font-bold text-base text-darkText">
+          <span class="font-bold text-lg text-darkText">
             Git & GitHub
           </span>
 
-          <span class="text-xs text-slate-400">
+          <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
@@ -544,6 +664,7 @@
 
           <img
             id="project-image"
+            data-zoomable="true"
             src="./image/photo-1551288049-bebda4e38f71.avif"
             alt="Unipay Project Showcase"
             class="rounded-xl shadow-sm w-full h-auto max-h-80 object-cover cursor-zoom-in transition-transform duration-300 hover:scale-[1.01]"
@@ -2547,6 +2668,61 @@
 
 
       // =========================================================
+      // EXTRA IMAGE / CARD ZOOM FALLBACK
+      // =========================================================
+
+      function openUniversalLightbox(src, alt = "Image") {
+        if (!src) return;
+
+        const lightbox = createLightbox();
+        const image = $("#lightbox-image", lightbox);
+
+        image.src = src;
+        image.alt = alt;
+
+        lightbox.classList.remove(
+          "opacity-0",
+          "pointer-events-none"
+        );
+
+        document.body.classList.add("overflow-hidden");
+      }
+
+      // Hero/profile image
+      $("#hero-profile-image")?.addEventListener("click", (event) => {
+        event.preventDefault();
+        openUniversalLightbox(
+          event.currentTarget.currentSrc || event.currentTarget.src,
+          event.currentTarget.alt
+        );
+      });
+
+      // Featured project image
+      $("#project-image")?.addEventListener("click", (event) => {
+        event.preventDefault();
+        openUniversalLightbox(
+          event.currentTarget.currentSrc || event.currentTarget.src,
+          event.currentTarget.alt
+        );
+      });
+
+      // Make the featured project card itself clickable.
+      // Buttons/links inside the card keep their own behavior.
+      $("#project-card")?.addEventListener("click", (event) => {
+        if (event.target.closest("a, button, input, textarea, select")) {
+          return;
+        }
+
+        const image = $("#project-image");
+        if (image) {
+          openUniversalLightbox(
+            image.currentSrc || image.src,
+            image.alt
+          );
+        }
+      });
+
+      // =========================================================
       // LOG
       // =========================================================
 
@@ -2556,6 +2732,47 @@
 
     })();
   </script>
+
+
+    <script>
+        // Smooth transition when moving between pages.
+        // Existing design and page functionality are kept unchanged.
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll(
+                'a.page-link[href]:not([href^="#"]):not([target="_blank"])'
+            );
+
+            links.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    const href = link.getAttribute("href");
+
+                    if (!href || href.startsWith("http") || href.startsWith("mailto:")) {
+                        return;
+                    }
+
+                    // Do not animate when the user uses Ctrl/Cmd-click,
+                    // Shift-click, middle-click, or another new-window action.
+                    if (
+                        event.ctrlKey ||
+                        event.metaKey ||
+                        event.shiftKey ||
+                        event.altKey ||
+                        event.button !== 0
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    document.body.classList.add("page-leaving");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 280);
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>

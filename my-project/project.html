@@ -8,6 +8,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+
+        /* ===== Smooth page transition - added without changing the original design ===== */
+        body {
+            opacity: 0;
+            animation: pageEnter 0.45s ease-out forwards;
+        }
+
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.page-leaving {
+            animation: pageLeave 0.28s ease-in forwards;
+        }
+
+        @keyframes pageLeave {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body,
+            body.page-leaving {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Keeps navbar links feeling smooth without changing their existing colors/layout */
+        nav a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        nav a.page-link {
+            will-change: transform, opacity;
+        }
+
+    </style>
 </head>
 
 <body class="bg-blue-50 m-0 p-0">
@@ -15,15 +68,18 @@
     <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
         <div class="flex items-center justify-between">
 
-            <!-- Logo + Status -->
-            <div class="flex gap-3 items-center">
-                <h3 class="font-bold text-sm sm:text-2xl">
+            <!-- Logo -->
+            <div class="flex gap-3 items-center min-w-0">
+                <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
                     ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
                 </h3>
 
-                <div
-                    class="bg-transparent shadow-none p-0 sm:bg-white sm:shadow-sm sm:rounded-full sm:px-4 sm:py-0.5 text-xs font-medium flex items-center gap-2">
-                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                <div class="bg-transparent shadow-none p-0
+                       sm:bg-white sm:shadow-sm sm:rounded-full
+                       sm:px-3 sm:py-1
+                       text-xs font-medium flex items-center gap-2 whitespace-nowrap">
+                    <div class="w-2 h-2 bg-green-500 rounded-full shrink-0"></div>
+
                     <h4 class="hidden sm:block">
                         Available for internships
                     </h4>
@@ -31,85 +87,165 @@
             </div>
 
             <!-- Right Side -->
-            <div class="flex items-center gap-3 text-gray-600 text-sm">
+            <div class="flex items-center gap-3 sm:gap-3 text-gray-600 text-sm">
 
-                <!-- Desktop Menu -->
-                <div id="desktop-menu" class="hidden md:flex items-center gap-2">
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                <!-- Desktop / Tablet Menu -->
+                <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <a href="./index.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
                         HOME
                     </a>
 
-                    <a href="#"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                    <a href="./about.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
                         ABOUT ME
                     </a>
 
-                    <a href="./project.html"
-                        class="px-3 py-2 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
+                    <a href="./project.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 bg-blue-800 text-white">
                         PROJECT
                     </a>
 
-                    <a href="#" class="px-3 py-2 rounded-md transition-all duration-300 bg-blue-800 text-white">
-                        ACHUEVEMENTS
+                    <a href="./achievements.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:bg-blue-800 hover:text-white">
+                        ACHIEVEMENTS
                     </a>
 
-                    <button type="button"
-                        class="bg-blue-800 px-4 py-2 text-white rounded-md transition-all duration-300 hover:-translate-y-0.5">
-                        CONTACT ME
-                    </button>
+                    <a href="./contact.html" px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:bg-blue-800 hover:text-white>CONTACT ME</a>
                 </div>
 
                 <!-- Profile -->
-                <img class="w-9 h-9 rounded-full object-cover border border-blue-100" src="./image/profile.png"
-                    alt="Profile">
+                
+                <!-- Profile Image -->
+                <button type="button" onclick="openProfile()" class="shrink-0 focus:outline-none">
+                    <img class="w-8 h-8 sm:w-8 sm:h-8
+               rounded-full
+               object-cover
+               shrink-0
+               ring-2 ring-blue-600
+               ring-offset-1 ring-offset-white
+               cursor-pointer
+               transition-all duration-300
+               hover:scale-110" src="./image/profile.png" alt="Profile" />
+                </button>
 
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn"
-                    class="md:hidden w-9 h-9 p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-all duration-200"
-                    type="button" aria-label="Open menu" aria-expanded="false">
-                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
 
-                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1 transition-all duration-300"></span>
+                <!-- Profile Preview -->
+                <div id="profile-modal" class="fixed inset-0  z-50
+                    hidden items-center justify-center
+                    bg-black/70 backdrop-blur-sm
+                    px-4" onclick="closeProfile(event)">
+                    <div class="relative" onclick="event.stopPropagation()">
 
-                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"></span>
+                        <!-- Close Button -->
+                        <button type="button" onclick="closeProfile()" class="absolute -top-3 -right-3
+                   w-9 h-9
+                   rounded-full
+                   bg-white
+                   text-gray-700
+                   text-xl
+                   shadow-lg
+                   flex items-center justify-center
+                   hover:bg-gray-100
+                   transition">
+                            &times;
+                        </button>
+
+                        <!-- Large Image -->
+                        <img src="./image/profile.png" alt="Profile" class="w-64 h-64
+                   sm:w-80 sm:h-80
+                   md:w-96 md:h-96
+                   rounded-2xl
+                   object-cover
+                   ring-4 ring-blue-600
+                   shadow-2xl">
+                    </div>
+                </div>
+
+
+                <script>
+                    function openProfile() {
+                        const modal = document.getElementById("profile-modal");
+
+                        modal.classList.remove("hidden");
+                        modal.classList.add("flex");
+
+                        document.body.classList.add("overflow-hidden");
+                    }
+
+                    function closeProfile(event) {
+                        if (event && event.target.id !== "profile-modal") {
+                            return;
+                        }
+
+                        const modal = document.getElementById("profile-modal");
+
+                        modal.classList.add("hidden");
+                        modal.classList.remove("flex");
+
+                        document.body.classList.remove("overflow-hidden");
+                    }
+                </script>
+              
+
+                <!-- Mobile / Tablet Menu Button -->
+                <button id="menu-btn" type="button" class="lg:hidden w-9 h-9 p-2 rounded-md
+                       hover:bg-gray-100 active:bg-gray-200
+                       transition-all duration-200" aria-label="Open menu" aria-expanded="false">
+                    <span id="bar1" class="block w-5 h-0.5 bg-gray-600 mb-1
+                           transition-all duration-300">
+                    </span>
+
+                    <span id="bar2" class="block w-5 h-0.5 bg-gray-600 mb-1
+                           transition-all duration-300">
+                    </span>
+
+                    <span id="bar3" class="block w-5 h-0.5 bg-gray-600
+                           transition-all duration-300">
+                    </span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-gray-100 pt-3">
-            <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
-
-                <a href="./index.html"
-                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+        <!-- Mobile / Tablet Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-gray-100 pt-3">
+            <div class="flex flex-col gap-1
+                   bg-gray-50/70 rounded-xl p-2
+                   border border-gray-100">
+                <a href="#" class="px-3 py-2.5 rounded-lg transition-all duration-200
+                       hover:bg-blue-800 hover:text-white
+                       active:bg-blue-900">
                     HOME
                 </a>
 
-                <a href="./about.html"
-                    class="px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                <a href="#" class="px-3 py-2.5 rounded-lg transition-all duration-200
+                       hover:bg-blue-800 hover:text-white
+                       active:bg-blue-900">
                     ABOUT ME
                 </a>
 
-                <a href="./project.html" class="px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
+                <a href="./project.html" class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
+                       hover:bg-blue-800 hover:text-white
+                       active:bg-blue-900">
                     PROJECTS
                 </a>
 
-                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg transition-all duration-200
-                    hover:bg-blue-800 hover:text-white active:bg-blue-900">
+                <a href="./achievements.html" class="page-link px-3 py-2.5 rounded-lg
+                       bg-blue-800 text-white shadow-sm">
                     ACHIEVEMENTS
                 </a>
 
-                <button type="button"
-                    class="bg-blue-800 px-4 py-2.5 text-white rounded-lg transition-all duration-200 hover:bg-blue-900 hover:-translate-y-0.5 active:translate-y-0 mt-1 w-full">
+                <button type="button" class="bg-blue-800 px-4 py-2.5 text-white rounded-lg
+                       transition-all duration-200
+                       hover:bg-blue-900 hover:-translate-y-0.5
+                       active:translate-y-0 mt-1 w-full">
                     CONTACT ME
                 </button>
-
             </div>
         </div>
     </nav>
 
-    <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById("menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -129,7 +265,6 @@
                 isOpen ? "Close menu" : "Open menu"
             );
 
-            // Hamburger animation
             if (isOpen) {
                 bar1.classList.add("rotate-45", "translate-y-1.5");
                 bar2.classList.add("opacity-0");
@@ -141,6 +276,7 @@
             }
         });
     </script>
+
 
     <main class="py-10 px-4 flex flex-col justify-center items-center sm:px-8 sm:py-16">
         <div class="flex flex-col justify-center items-center gap-3">
@@ -662,25 +798,8 @@
                         Explore All Repositories
                     </p>
                 </div>
-
-                <div class="mt-70">
-                    <p class="bg-blue-50 font-medium py-3 text-blue-800 rounded-lg text-center">Explore All Repositories </p>
-                </div>
             </div>
     </section>
-
-    <section class="px-10 my-10 transition-all duration-300 ease-out hover:-translate-y-2 hover:rounded-lg hover:border-blue-900 hover:shadow-2xl hover:shadow-cyan-500/10">
-        <div class="bg-white p-8 rounded-lg shadow border-l-4 border-blue-800">
-            <h3 class="font-semibold text-5xl ">Have a project or internship opportunity in mind?</h3>
-            <p class="text-lg font-normal text-gray-500 py-4">Looking fr custom UI/UX design or frontend development? Let's discuss your idea and translate complex requirements into fluid user experiences.</p>
-            <div class="flex gap-2 justify-end">
-                <button class=" bg-blue-800 text-white font-medium py-2 px-3 text-sm rounded-md hover:bg-blue-900 transition-all duration-300 hover:-translate-y-0.5 shadow">Let's Discuss Your Idea</button>
-                <button class="bg-blue-100 text-black font-medium py-2 px-3 text-sm rounded-md hover:bg-blue-200 transition-all duration-300 hover:-translate-y-0.5 shadow ">About My Process</button>
-            </div>
-
-        </div>
-    </section>
-
 
 
     <section class="px-4 sm:px-6 lg:px-10 my-6 sm:my-8 lg:my-10
@@ -737,7 +856,7 @@
 
 
     <footer class="mt-10 bg-slate-950 text-white">
-        <div class="mx-auto max-w-7xl px-5 py-4 sm:px-8 lg:px-10">
+        <div class="mx-auto max-w-8xl px-5 py-4 sm:px-8 lg:px-10">
             <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
                     <div class="flex items-center  gap-2 md:justify-start">
@@ -746,7 +865,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-between gap-4">
-                    <div class="flex items-center gap-4 text-[10px] sm:gap-6 sm:text-xs font-medium text-slate-400">
+                    <div class="flex items-center gap-4 text-[10px] lg:text-sm sm:gap-6 sm:text-xs font-medium text-slate-400">
                         <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">GitHub</a>
                         <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">LinkedIn</a>
                         <a href="#" class="whitespace-nowrap transition duration-300 hover:text-white">Figma</a>
@@ -762,7 +881,6 @@
             </div>
         </div>
     </footer>
-
 
 <!-- =========================================================
      ADDED FUNCTIONALITY ONLY — existing code kept unchanged
@@ -903,10 +1021,8 @@
         helper.remove();
     }
 
-    // ---------- Smooth scrolling ----------
     document.documentElement.style.scrollBehavior = "smooth";
 
-    // ---------- Scroll progress + back-to-top ----------
     const progress = $("#scroll-progress");
     const backToTop = $("#back-to-top");
 
@@ -1301,6 +1417,47 @@
 
 })();
 </script>
+
+
+    <script>
+        // Smooth transition when moving between pages.
+        // Existing design and page functionality are kept unchanged.
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll(
+                'a.page-link[href]:not([href^="#"]):not([target="_blank"])'
+            );
+
+            links.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    const href = link.getAttribute("href");
+
+                    if (!href || href.startsWith("http") || href.startsWith("mailto:")) {
+                        return;
+                    }
+
+                    // Do not animate when the user uses Ctrl/Cmd-click,
+                    // Shift-click, middle-click, or another new-window action.
+                    if (
+                        event.ctrlKey ||
+                        event.metaKey ||
+                        event.shiftKey ||
+                        event.altKey ||
+                        event.button !== 0
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    document.body.classList.add("page-leaving");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 280);
+                });
+            });
+        });
+    </script>
 
 </body>
 

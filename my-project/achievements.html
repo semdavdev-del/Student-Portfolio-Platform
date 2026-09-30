@@ -6,15 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/src/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+
+        /* ===== Smooth page transition - added without changing the original design ===== */
+        body {
+            opacity: 0;
+            animation: pageEnter 0.45s ease-out forwards;
+        }
+
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.page-leaving {
+            animation: pageLeave 0.28s ease-in forwards;
+        }
+
+        @keyframes pageLeave {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body,
+            body.page-leaving {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Keeps navbar links feeling smooth without changing their existing colors/layout */
+        nav a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        nav a.page-link {
+            will-change: transform, opacity;
+        }
+
+    </style>
 </head>
 
 <body class="bg-blue-50 m-0 p-0">
 
-    <!-- nav -->
     <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
         <div class="flex items-center justify-between">
 
-            <!-- Logo -->
             <div class="flex gap-3 items-center min-w-0">
                 <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
                     ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
@@ -37,36 +88,31 @@
 
                 <!-- Desktop / Tablet Menu -->
                 <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
-                    <a href="#" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    <a href="./index.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
                            hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
                         HOME
                     </a>
 
-                    <a href="#" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    <a href="./about.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
                            hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
                         ABOUT ME
                     </a>
 
-                    <a href="./project.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                    <a href="./project.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
                            hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
                         PROJECT
                     </a>
 
-                    <a href="./achievements.html" class="px-2 xl:px-3 py-2 rounded-md transition-all duration-300
-                           bg-blue-800 text-white">
+                    <a href="./achievements.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 bg-blue-800 text-white">
                         ACHIEVEMENTS
                     </a>
 
-                    <button type="button" class="bg-blue-800 px-3 xl:px-4 py-2 text-white rounded-md
-                           transition-all duration-300
-                           hover:-translate-y-0.5 hover:bg-blue-900">
-                        CONTACT ME
-                    </button>
+                    <a href="./contact.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
+                           hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">CONTACT ME</a>
                 </div>
 
-                <!-- Profile -->
-                
-                <!-- Profile Image -->
+
                 <button type="button" onclick="openProfile()" class="shrink-0 focus:outline-none">
                     <img class="w-8 h-8 sm:w-8 sm:h-8
                rounded-full
@@ -174,13 +220,13 @@
                     ABOUT ME
                 </a>
 
-                <a href="./project.html" class="px-3 py-2.5 rounded-lg transition-all duration-200
+                <a href="./project.html" class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
                        hover:bg-blue-800 hover:text-white
                        active:bg-blue-900">
                     PROJECTS
                 </a>
 
-                <a href="./achievements.html" class="px-3 py-2.5 rounded-lg
+                <a href="./achievements.html" class="page-link px-3 py-2.5 rounded-lg
                        bg-blue-800 text-white shadow-sm">
                     ACHIEVEMENTS
                 </a>
@@ -1022,6 +1068,47 @@
             };
             document.addEventListener('scroll', updateProgress, { passive: true });
             updateProgress();
+        });
+    </script>
+
+
+    <script>
+        // Smooth transition when moving between pages.
+        // Existing design and page functionality are kept unchanged.
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll(
+                'a.page-link[href]:not([href^="#"]):not([target="_blank"])'
+            );
+
+            links.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    const href = link.getAttribute("href");
+
+                    if (!href || href.startsWith("http") || href.startsWith("mailto:")) {
+                        return;
+                    }
+
+                    // Do not animate when the user uses Ctrl/Cmd-click,
+                    // Shift-click, middle-click, or another new-window action.
+                    if (
+                        event.ctrlKey ||
+                        event.metaKey ||
+                        event.shiftKey ||
+                        event.altKey ||
+                        event.button !== 0
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    document.body.classList.add("page-leaving");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 280);
+                });
+            });
         });
     </script>
 
