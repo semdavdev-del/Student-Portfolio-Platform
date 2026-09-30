@@ -17,11 +17,9 @@
         @keyframes pageEnter {
             from {
                 opacity: 0;
-                transform: translateY(8px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -32,11 +30,9 @@
         @keyframes pageLeave {
             from {
                 opacity: 1;
-                transform: translateY(0);
             }
             to {
                 opacity: 0;
-                transform: translateY(-6px);
             }
         }
 
@@ -127,7 +123,7 @@
 
 
                 <!-- Profile Preview -->
-                <div id="profile-modal" class="fixed inset-0  z-50
+                <div id="profile-modal" class="fixed inset-0 z-130
            hidden items-center justify-center
            bg-black/70 backdrop-blur-sm
            px-4" onclick="closeProfile(event)">
@@ -1002,6 +998,7 @@
             });
 
             const contactModal = document.createElement('div');
+            contactModal.id = 'contact-modal';
             contactModal.className = 'fixed inset-0 z-[105] hidden items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm';
             contactModal.innerHTML = `
                 <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-7">
@@ -1112,5 +1109,6 @@
         });
     </script>
 
+    <script src="/image-lightbox.js"></script>
 </body>
 </html>

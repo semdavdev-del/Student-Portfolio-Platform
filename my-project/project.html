@@ -19,11 +19,9 @@
         @keyframes pageEnter {
             from {
                 opacity: 0;
-                transform: translateY(8px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -34,11 +32,9 @@
         @keyframes pageLeave {
             from {
                 opacity: 1;
-                transform: translateY(0);
             }
             to {
                 opacity: 0;
-                transform: translateY(-6px);
             }
         }
 
@@ -132,7 +128,7 @@
 
 
                 <!-- Profile Preview -->
-                <div id="profile-modal" class="fixed inset-0  z-50
+                <div id="profile-modal" class="fixed inset-0 z-130
                     hidden items-center justify-center
                     bg-black/70 backdrop-blur-sm
                     px-4" onclick="closeProfile(event)">
@@ -900,7 +896,7 @@
 
 <!-- Project Quick View Modal -->
 <div id="project-modal"
-    class="fixed inset-0 z-[90p] flex items-center justify-center bg-slate-950/60 p-4 opacity-0 pointer-events-none transition-all duration-300">
+    class="fixed inset-0 z-90 flex items-center justify-center bg-slate-950/60 p-4 opacity-0 pointer-events-none transition-all duration-300">
     <div id="project-modal-panel"
         class="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl scale-95 transition-all duration-300 sm:p-7">
 
@@ -949,7 +945,7 @@
 
 <!-- Image Lightbox -->
 <div id="image-lightbox"
-    class="fixed inset-0 z-[95p] flex items-center justify-center bg-slate-950/80 p-4 opacity-0 pointer-events-none transition-all duration-300">
+    class="fixed inset-0 z-120 flex items-center justify-center bg-slate-950/80 p-4 opacity-0 pointer-events-none transition-all duration-300">
     <button id="lightbox-close" type="button" aria-label="Close image"
         class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur
         transition-all duration-200 hover:bg-white/20 hover:rotate-90">
@@ -963,7 +959,7 @@
 
 <!-- Toast -->
 <div id="project-toast"
-    class="fixed bottom-5 left-1/2 z-[110p] -translate-x-1/2 translate-y-5 pointer-events-none opacity-0
+    class="fixed bottom-5 left-1/2 z-110 -translate-x-1/2 translate-y-5 pointer-events-none opacity-0
     rounded-full bg-slate-900 px-4 py-2.5 text-xs font-medium text-white shadow-xl transition-all duration-300">
     Copied
 </div>
@@ -1357,7 +1353,8 @@
 
         image.classList.add("cursor-zoom-in", "transition-transform", "duration-300");
 
-        image.addEventListener("click", () => {
+        image.addEventListener("click", (event) => {
+            event.stopPropagation();
             openLightbox(info.imageSrc, info.imageAlt);
         });
     });
@@ -1460,6 +1457,8 @@
     </script>
 
 </body>
+
+<script src="/image-lightbox.js"></script>
 
 </body>
 </html>

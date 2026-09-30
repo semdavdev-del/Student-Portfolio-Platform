@@ -63,7 +63,7 @@
                         transition-all duration-300 hover:scale-110" src="./image/profile.png" alt="Profile" />
                 </button>
 
-                <div id="profile-modal" class="fixed inset-0  z-50
+                <div id="profile-modal" class="fixed inset-0 z-[130]
                     hidden items-center justify-center
                     bg-black/70 backdrop-blur-sm
                     px-4" onclick="closeProfile(event)">
@@ -785,7 +785,7 @@
                             "translate-y-0"
                         );
 
-                Z   }, 1800);
+                    }, 1800);
             }
 
             // =====================================================
@@ -829,10 +829,20 @@
             // =====================================================
 
             function createProfileModal() {
-                if (
-                    $("#profile-modal")
-                ) {
-                    return $("#profile-modal");
+                const existingModal = $("#profile-modal");
+                if (existingModal) {
+                    return {
+                        open() {
+                            existingModal.classList.remove("hidden");
+                            existingModal.classList.add("flex");
+                            document.body.classList.add("overflow-hidden");
+                        },
+                        close() {
+                            existingModal.classList.add("hidden");
+                            existingModal.classList.remove("flex");
+                            document.body.classList.remove("overflow-hidden");
+                        }
+                    };
                 }
 
                 const modal =
@@ -1516,5 +1526,6 @@
         });
     </script>
 
+    <script src="/image-lightbox.js"></script>
 </body>
 </html>
