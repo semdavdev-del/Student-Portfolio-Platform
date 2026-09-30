@@ -238,6 +238,41 @@
     </div>
   </nav>
 
+  <script>
+    (() => {
+      const menuButton = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const bars = [
+        document.getElementById("bar1"),
+        document.getElementById("bar2"),
+        document.getElementById("bar3")
+      ];
+
+      const setMenuOpen = (isOpen) => {
+        mobileMenu?.classList.toggle("hidden", !isOpen);
+        menuButton?.setAttribute("aria-expanded", String(isOpen));
+        menuButton?.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+        bars[0]?.classList.toggle("rotate-45", isOpen);
+        bars[0]?.classList.toggle("translate-y-1.5", isOpen);
+        bars[1]?.classList.toggle("opacity-0", isOpen);
+        bars[2]?.classList.toggle("-rotate-45", isOpen);
+        bars[2]?.classList.toggle("-translate-y-1.5", isOpen);
+      };
+
+      menuButton?.addEventListener("click", () => {
+        setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
+      });
+
+      mobileMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenuOpen(false));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setMenuOpen(false);
+      });
+    })();
+  </script>
+
   <main class="px-4 sm:px-6 lg:px-10">
 
     <!-- =======================================================
