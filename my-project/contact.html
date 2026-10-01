@@ -7,21 +7,16 @@
 
   <title>Arindra-Portfolio</title>
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
   />
 
-  <!-- Custom CSS -->
   <link href="/src/style.css" rel="stylesheet" />
 
-  <!-- =========================================================
-       PAGE TRANSITION
-  ========================================================== -->
+
   <style>
     body {
       opacity: 0;
@@ -65,14 +60,11 @@
 
 <body class="bg-blue-50 m-0 p-0 text-darkText">
 
-  <!-- =========================================================
-       NAVBAR
-  ========================================================== -->
+ 
   <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
 
     <div class="flex items-center justify-between">
 
-      <!-- Logo -->
       <div class="flex gap-3 items-center min-w-0">
 
         <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
@@ -97,19 +89,11 @@
 
       </div>
 
-
-      <!-- Right Side -->
       <div class="flex items-center gap-2 sm:gap-3 text-gray-600 text-sm">
 
-        <!-- =====================================================
-             DESKTOP / TABLET MENU
-        ====================================================== -->
         <div
           id="desktop-menu"
-          class="hidden lg:flex items-center gap-1 xl:gap-2"
-        >
-
-          <!-- HOME -->
+          class="hidden lg:flex items-center gap-1 xl:gap-2"> 
           <a
             href="./index.html"
             class="page-link
@@ -122,9 +106,6 @@
           >
             HOME
           </a>
-
-
-          <!-- ABOUT ME -->
           <a
             href="./about.html"
             class="page-link
@@ -137,9 +118,6 @@
           >
             ABOUT ME
           </a>
-
-
-          <!-- PROJECT -->
           <a
             href="./project.html"
             class="page-link
@@ -152,9 +130,6 @@
           >
             PROJECT
           </a>
-
-
-          <!-- ACHIEVEMENTS -->
           <a
             href="./achievements.html"
             class="page-link
@@ -167,9 +142,6 @@
           >
             ACHIEVEMENTS
           </a>
-
-
-          <!-- CONTACT ME ACTIVE -->
           <a
             href="./contact.html"
             class="page-link
@@ -184,16 +156,10 @@
           </a>
 
         </div>
-
-
-        <!-- =====================================================
-             PROFILE BUTTON
-        ====================================================== -->
         <button
           type="button"
           onclick="openProfile()"
-          class="shrink-0 focus:outline-none"
-        >
+          class="shrink-0 focus:outline-none">
 
           <img
             src="./image/profile.png"
@@ -207,15 +173,8 @@
             ring-offset-1 ring-offset-white
             cursor-pointer
             transition-all duration-300
-            hover:scale-110"
-          />
-
+            hover:scale-110"/>
         </button>
-
-
-        <!-- =====================================================
-             MOBILE MENU BUTTON
-        ====================================================== -->
         <button
           id="menu-btn"
           type="button"
@@ -227,18 +186,15 @@
           active:bg-gray-200
           transition-all duration-200"
           aria-label="Open menu"
-          aria-expanded="false"
-        >
-
+          aria-expanded="false">
           <span
             id="bar1"
             class="block
             w-5 h-0.5
             bg-gray-600
             mb-1
-            transition-all duration-300"
-          ></span>
-
+            transition-all duration-300">
+        </span>
           <span
             id="bar2"
             class="block
@@ -255,17 +211,9 @@
             bg-gray-600
             transition-all duration-300"
           ></span>
-
         </button>
-
       </div>
-
     </div>
-
-
-    <!-- =========================================================
-         MOBILE / TABLET MENU
-    ========================================================== -->
     <div
       id="mobile-menu"
       class="hidden
@@ -273,18 +221,13 @@
       mt-4
       border-t
       border-gray-100
-      pt-3"
-    >
-
+      pt-3">
       <div
         class="flex flex-col gap-1
         bg-gray-50/70
         rounded-xl
         p-2
-        border border-gray-100"
-      >
-
-        <!-- HOME -->
+        border border-gray-100">
         <a
           href="./index.html"
           class="page-link
@@ -293,13 +236,9 @@
           transition-all duration-200
           hover:bg-blue-800
           hover:text-white
-          active:bg-blue-900"
-        >
+          active:bg-blue-900">
           HOME
         </a>
-
-
-        <!-- ABOUT ME -->
         <a
           href="./about.html"
           class="page-link
@@ -308,13 +247,9 @@
           transition-all duration-200
           hover:bg-blue-800
           hover:text-white
-          active:bg-blue-900"
-        >
+          active:bg-blue-900">
           ABOUT ME
         </a>
-
-
-        <!-- PROJECT -->
         <a
           href="./project.html"
           class="page-link
@@ -323,13 +258,9 @@
           transition-all duration-200
           hover:bg-blue-800
           hover:text-white
-          active:bg-blue-900"
-        >
+          active:bg-blue-900">
           PROJECT
         </a>
-
-
-        <!-- ACHIEVEMENTS -->
         <a
           href="./achievements.html"
           class="page-link
@@ -338,13 +269,9 @@
           transition-all duration-200
           hover:bg-blue-800
           hover:text-white
-          active:bg-blue-900"
-        >
+          active:bg-blue-900">
           ACHIEVEMENTS
         </a>
-
-
-        <!-- CONTACT ME ACTIVE -->
         <a
           href="./contact.html"
           class="page-link
@@ -362,17 +289,10 @@
     </div>
 
   </nav>
-
-
-  <!-- =========================================================
-       HERO / INTRO
-  ========================================================== -->
   <section
     class="reveal-section
     px-5 sm:px-6 md:px-8 lg:px-10
-    py-8 sm:py-10 lg:py-12"
-  >
-
+    py-8 sm:py-10 lg:py-12">
     <div
       class="flex gap-2
       text-blue-800
@@ -381,9 +301,7 @@
       px-2 py-1
       rounded-full
       mb-2
-      w-full lg:w-90"
-    >
-
+      w-full lg:w-90">
       <div
         class="w-full lg:w-86
         text-[10px] sm:text-xs
@@ -391,19 +309,13 @@
         font-medium
         text-blue-800
         py-0.5
-        rounded-full"
-      >
+        rounded-full">
         LET'S WORK TOGETHER INQUIRIES COLLABORATIONS
       </div>
-
     </div>
-
-
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-1">
       Get in Touch
     </h1>
-
-
     <p class="text-gray-600 text-base sm:text-lg mt-1">
       Have an internship opportunity, a project to build, or just want
       to chat about design systems and frontend architecture?
@@ -414,27 +326,14 @@
     </p>
 
   </section>
-
-
-  <!-- =========================================================
-       MAIN CONTACT AREA
-  ========================================================== -->
   <section
     class="reveal-section
     px-5
     grid grid-cols-1
     md:grid-cols-[37%_1fr]
     gap-10
-    sm:px-10"
-  >
-
-    <!-- =====================================================
-         LEFT SIDE
-    ====================================================== -->
+    sm:px-10">
     <div>
-
-
-      <!-- LIVE STATUS -->
       <div
         class="interactive-card
         bg-white
@@ -446,21 +345,16 @@
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10"
-      >
-
+        hover:shadow-cyan-500/10">
         <div
           class="text-green-500
           text-xs
           font-medium
           mb-1
           rounded-2xl
-          px-2"
-        >
+          px-2">
           ● LIVE STATUS
         </div>
-
-
         <p class="text-sm leading-5 text-gray-600">
           Currently available for
 
@@ -472,9 +366,6 @@
         </p>
 
       </div>
-
-
-      <!-- EMAIL -->
       <div
         class="interactive-card
         bg-white
@@ -489,8 +380,7 @@
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10"
-      >
+        hover:shadow-cyan-500/10">
 
         <div
           class="w-12 h-12
@@ -498,8 +388,7 @@
           bg-blue-100
           rounded
           flex items-center
-          justify-center"
-        >
+          justify-center">
 
           <i
             class="fa-solid fa-at
@@ -507,17 +396,13 @@
             text-orange-700
             bg-orange-100
             p-3.5
-            rounded-md"
-          ></i>
-
+            rounded-md">
+        </i>
         </div>
-
-
         <div
           class="flex-1
           min-w-0
-          flex flex-col"
-        >
+          flex flex-col">
 
           <small class="text-[14px] text-gray-600">
             EMAIL ADDRESS
@@ -525,8 +410,7 @@
 
           <strong
             id="email-text"
-            class="text-[12px] break-all"
-          >
+            class="text-[12px] break-all">
             Dara.portfolio.cs@gmail.com
           </strong>
 
@@ -546,15 +430,11 @@
           transition-all duration-300
           hover:bg-blue-800
           hover:text-white
-          hover:-translate-y-0.5"
-        >
+          hover:-translate-y-0.5">
           Copy
         </button>
 
       </div>
-
-
-      <!-- PHONE -->
       <div
         class="interactive-card
         bg-white
@@ -569,9 +449,7 @@
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10"
-      >
-
+        hover:shadow-cyan-500/10">
         <div
           class="w-12 h-12
           shrink-0
@@ -579,26 +457,21 @@
           text-blue-700
           rounded
           flex items-center
-          justify-center"
-        >
-
+          justify-center">
           <i
             class="fa-solid fa-mobile-screen
             text-[20px]
             text-blue-700
             bg-blue-100
             p-3.5
-            rounded-md"
-          ></i>
+            rounded-md">
+        </i>
 
         </div>
-
-
         <div
           class="flex-1
           min-w-0
-          flex flex-col"
-        >
+          flex flex-col">
 
           <small class="text-[14px] text-gray-600">
             PHONE & TELEGRAM
@@ -611,9 +484,6 @@
         </div>
 
       </div>
-
-
-      <!-- LOCATION -->
       <div
         class="interactive-card
         bg-white
@@ -628,16 +498,14 @@
         hover:-translate-y-1
         hover:border-blue-900
         hover:shadow-2xl
-        hover:shadow-cyan-500/10"
-      >
+        hover:shadow-cyan-500/10">
 
         <div
           class="w-12 h-12
           shrink-0
           rounded
           flex items-center
-          justify-center"
-        >
+          justify-center">
 
           <i
             class="fa-solid fa-location-dot
@@ -645,16 +513,13 @@
             text-green-700
             bg-green-100
             p-4
-            rounded-md"
-          ></i>
+            rounded-md">
+        </i>
 
         </div>
-
-
         <div
           class="min-w-0
-          flex flex-col"
-        >
+          flex flex-col">
 
           <small class="text-[14px] text-gray-600">
             PRIMARY LOCATION
@@ -668,16 +533,11 @@
 
       </div>
 
-
-      <!-- SOCIAL PROFILES -->
       <h3 class="mt-4 mb-2 font-semibold">
         DEVELOPER & DESIGN PROFILES
       </h3>
-
-
       <div class="grid grid-cols-2 gap-2">
 
-        <!-- GITHUB -->
         <a
           href="https://github.com/"
           target="_blank"
@@ -695,9 +555,7 @@
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10"
-        >
-
+          hover:shadow-cyan-300/10">
           <i
             class="fa-brands fa-github
             w-5 h-5
@@ -706,16 +564,12 @@
             rounded-full
             flex items-center
             justify-center
-            text-[20px]"
-          ></i>
-
-
+            text-[20px]" >
+        </i>
           <div class="flex flex-col">
-
             <small class="text-sm font-bold">
               GitHub
             </small>
-
             <span class="text-xs text-gray-500">
               @dara-dev
             </span>
@@ -723,9 +577,6 @@
           </div>
 
         </a>
-
-
-        <!-- LINKEDIN -->
         <a
           href="https://www.linkedin.com/"
           target="_blank"
@@ -743,9 +594,7 @@
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10"
-        >
-
+          hover:shadow-cyan-300/10">
           <i
             class="fa-brands fa-linkedin
             flex items-center
@@ -754,10 +603,8 @@
             rounded-full
             bg-blue-700
             text-white
-            text-sm"
-          ></i>
-
-
+            text-sm">
+        </i>
           <div class="flex flex-col">
 
             <small class="text-sm font-bold">
@@ -771,9 +618,6 @@
           </div>
 
         </a>
-
-
-        <!-- TELEGRAM -->
         <a
           href="https://telegram.org/"
           target="_blank"
@@ -791,8 +635,7 @@
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10"
-        >
+          hover:shadow-cyan-300/10">
 
           <i
             class="fa-brands fa-telegram
@@ -802,9 +645,8 @@
             rounded-full
             flex items-center
             justify-center
-            text-[20px]"
-          ></i>
-
+            text-[20px]">
+        </i>
 
           <div class="flex flex-col">
 
@@ -819,9 +661,6 @@
           </div>
 
         </a>
-
-
-        <!-- FACEBOOK -->
         <a
           href="https://facebook.com/"
           target="_blank"
@@ -839,8 +678,7 @@
           transition-all duration-300 ease-out
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-cyan-300/10"
-        >
+          hover:shadow-cyan-300/10">
 
           <i
             class="fa-brands fa-facebook
@@ -850,9 +688,8 @@
             rounded-full
             flex items-center
             justify-center
-            text-[20px]"
-          ></i>
-
+            text-[20px]">
+        </i>
 
           <div class="flex flex-col">
 
@@ -869,9 +706,6 @@
         </a>
 
       </div>
-
-
-      <!-- RESPONSE GUARANTEE -->
       <div
         class="interactive-card
         bg-blue-800
@@ -884,9 +718,7 @@
         rounded-lg
         transition-all duration-300
         hover:-translate-y-1
-        hover:shadow-xl"
-      >
-
+        hover:shadow-xl">
         <i class="fa-solid fa-bolt text-sm"></i>
 
         <span class="text-[16px] font-medium">
@@ -896,11 +728,6 @@
       </div>
 
     </div>
-
-
-    <!-- =====================================================
-         RIGHT FORM
-    ====================================================== -->
     <div
       class="interactive-card
       bg-white
@@ -910,29 +737,22 @@
       rounded-lg
       transition-all duration-300
       hover:shadow-2xl
-      hover:shadow-cyan-500/10"
-    >
+      hover:shadow-cyan-500/10">
 
       <h2 class="text-blue-700 text-2xl font-bold mb-1">
         Send a Message
       </h2>
-
-
       <p class="text-sm text-gray-600 mb-2">
         Fill out the form below and I will get back to you with
         architectural notes or project scheduling.
       </p>
-
-
       <form id="contact-form" class="mt-6">
 
-        <!-- NAME + EMAIL -->
         <div
           class="grid grid-cols-1 sm:grid-cols-2
           gap-4 sm:gap-6
           mb-4
-          py-2 sm:py-4"
-        >
+          py-2 sm:py-4">
 
           <div>
 
@@ -955,12 +775,9 @@
               focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md"
-            />
+              focus:shadow-md" />
 
           </div>
-
-
           <div>
 
             <label class="block text-sm mb-2 font-semibold">
@@ -982,20 +799,15 @@
               focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md"
-            />
+              focus:shadow-md"/>
 
           </div>
 
         </div>
-
-
-        <!-- PHONE + SUBJECT -->
         <div
           class="grid grid-cols-1 sm:grid-cols-2
           gap-4 sm:gap-6
-          mb-2"
-        >
+          mb-2">
 
           <div>
 
@@ -1017,12 +829,9 @@
               focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md"
-            />
+              focus:shadow-md"/>
 
           </div>
-
-
           <div>
 
             <label class="block text-[14px] mb-2 font-semibold">
@@ -1043,15 +852,11 @@
               focus:ring-blue-500
               shadow
               transition-all duration-300
-              focus:shadow-md"
-            />
+              focus:shadow-md"/>
 
           </div>
 
         </div>
-
-
-        <!-- MESSAGE -->
         <div class="mb-2 mt-6 sm:mt-8">
 
           <label class="block text-[14px] font-bold mb-2">
@@ -1077,9 +882,6 @@
           ></textarea>
 
         </div>
-
-
-        <!-- SUBMIT -->
         <button
           type="submit"
           class="w-full
@@ -1094,8 +896,7 @@
           rounded-md
           text-sm
           font-medium
-          transition-all duration-300"
-        >
+          transition-all duration-300">
           Send message
         </button>
 
@@ -1105,18 +906,12 @@
 
   </section>
 
-
-  <!-- =========================================================
-       INFO CARDS
-  ========================================================== -->
   <section
     class="reveal-section
     px-4 sm:px-6 md:px-9
     py-6 sm:py-8 md:py-9
-    grid grid-cols-1 md:grid-cols-2 gap-4"
-  >
+    grid grid-cols-1 md:grid-cols-3 gap-4">
 
-    <!-- CARD 1 -->
     <div
       class="interactive-card
       bg-white
@@ -1128,8 +923,7 @@
       transition-all duration-300 ease-out
       hover:-translate-y-1
       hover:shadow-lg
-      hover:shadow-cyan-300/10"
-    >
+      hover:shadow-cyan-300/10">
 
       <div
         class="w-12 h-12
@@ -1140,14 +934,11 @@
         justify-center
         p-5
         shadow
-        rounded-md"
-      >
+        rounded-md">
 
         <i class="fa-regular fa-clock text-lg"></i>
 
       </div>
-
-
       <div class="min-w-0">
 
         <h3 class="text-lg font-bold mb-1">
@@ -1162,9 +953,6 @@
       </div>
 
     </div>
-
-
-    <!-- CARD 2 -->
     <div
       class="interactive-card
       bg-white
@@ -1176,9 +964,7 @@
       transition-all duration-300 ease-out
       hover:-translate-y-1
       hover:shadow-lg
-      hover:shadow-cyan-300/10"
-    >
-
+      hover:shadow-cyan-300/10">
       <div
         class="w-12 h-12
         shrink-0
@@ -1188,8 +974,7 @@
         justify-center
         p-4
         shadow
-        rounded-lg"
-      >
+        rounded-lg">
 
         <i class="fa-solid fa-laptop text-lg"></i>
 
@@ -1211,14 +996,61 @@
       </div>
 
     </div>
+    <div
+      class="interactive-card
+      bg-white
+      rounded-lg
+      p-4
+      flex gap-3 md:gap-2
+      min-h-88px
+      shadow-sm
+      transition-all duration-300 ease-out
+      hover:-translate-y-1
+      hover:shadow-lg
+      hover:shadow-cyan-300/10">
+      <div
+        class="w-12 h-12
+        shrink-0
+        bg-blue-100
+        text-blue-700
+        flex items-center
+        justify-center
+        p-5
+        shadow
+        rounded-lg" >
 
+        <i class="fa-solid fa-file text-lg"></i>
+
+      </div>
+      <div class="min-w-0">
+
+        <h3 class="text-lg font-bold mb-1">
+          Resume & Dossier
+        </h3>
+
+        <p class="text-sm text-gray-500 leading-5">
+          Current 2025 technical resume and design system portfolio
+          available in print-ready PDF format.
+        </p>
+
+        <a
+          href="#"
+          class="text-blue-700
+          hover:underline
+          text-[14px]
+          inline-block
+          mt-1
+          font-medium
+          transition-all duration-300
+          hover:-translate-y-0.5" >
+          Download PDF (2.4 MB)
+        </a>
+
+      </div>
+
+    </div>
 
   </section>
-
-
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
   <footer class="reveal-section mt-10 bg-slate-950 text-white">
     <div class="mx-auto max-w-8xl px-5 py-4 sm:px-8 lg:px-10">
 
@@ -1226,28 +1058,23 @@
         class="flex flex-col gap-3
         md:flex-row
         md:items-center
-        md:justify-between"
-      >
-
-        <!-- BRAND -->
+        md:justify-between">
         <div>
 
           <div
             class="flex items-center gap-2
-            md:justify-start"
-          >
+            md:justify-start">
 
             <span
               class="h-2 w-2
               rounded-full
-              bg-blue-500"
-            ></span>
+              bg-blue-500">
+            </span>
 
             <p
               class="text-sm
               font-semibold
-              tracking-wide"
-            >
+              tracking-wide">
               Arindra
             </p>
 
@@ -1255,12 +1082,10 @@
 
         </div>
 
-        <!-- FOOTER LINKS -->
         <div
           class="flex items-center
           justify-between
-          gap-4"
-        >
+          gap-4">
 
           <div
             class="flex items-center
@@ -1269,8 +1094,7 @@
             sm:gap-6
             sm:text-sm
             font-medium
-            text-slate-400"
-          >
+            text-slate-400">
 
             <a
               href="https://github.com/"
@@ -1278,49 +1102,35 @@
               rel="noopener noreferrer"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white"
-            >
+              hover:text-white">
               GitHub
             </a>
-
-
             <a
               href="https://www.linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white"
-            >
+              hover:text-white">
               LinkedIn
             </a>
-
-
             <a
               href="#"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white"
-            >
+              hover:text-white">
               Figma
             </a>
-
-
             <a
               href="https://telegram.org/"
               target="_blank"
               rel="noopener noreferrer"
               class="whitespace-nowrap
               transition duration-300
-              hover:text-white"
-            >
+              hover:text-white">
               Telegram
             </a>
-
           </div>
-
-
-          <!-- GET IN TOUCH -->
           <button
             type="button"
             data-contact-open
@@ -1339,8 +1149,7 @@
             shadow-blue-900/20
             transition-all duration-300
             hover:-translate-y-1
-            hover:bg-blue-500"
-          >
+            hover:bg-blue-500">
             Get in Touch
             <span class="ml-1">↗</span>
           </button>
@@ -1352,11 +1161,6 @@
     </div>
 
   </footer>
-
-
-  <!-- =========================================================
-       PROFILE MODAL
-  ========================================================== -->
   <div
     id="profile-modal"
     class="fixed
@@ -1368,8 +1172,7 @@
     bg-black/70
     backdrop-blur-sm
     px-4"
-    onclick="closeProfile(event)"
-  >
+    onclick="closeProfile(event)">
 
     <div
       id="profile-modal-box"
@@ -1377,10 +1180,7 @@
       scale-95
       opacity-0
       transition-all duration-300"
-      onclick="event.stopPropagation()"
-    >
-
-      <!-- CLOSE -->
+      onclick="event.stopPropagation()">
       <button
         type="button"
         onclick="closeProfile()"
@@ -1397,13 +1197,9 @@
         flex items-center
         justify-center
         hover:bg-gray-100
-        transition"
-      >
+        transition">
         &times;
       </button>
-
-
-      <!-- IMAGE -->
       <img
         src="./image/profile.png"
         alt="Profile"
@@ -1414,17 +1210,10 @@
         object-cover
         ring-4
         ring-blue-600
-        shadow-2xl"
-      />
+        shadow-2xl"/>
 
     </div>
-
   </div>
-
-
-  <!-- =========================================================
-       CONTACT MODAL
-  ========================================================== -->
   <div
     id="contact-modal"
     class="fixed
@@ -1435,8 +1224,7 @@
     justify-center
     bg-slate-950/60
     p-4
-    backdrop-blur-sm"
-  >
+    backdrop-blur-sm">
 
     <div
       id="contact-modal-box"
@@ -1449,16 +1237,11 @@
       sm:p-7
       scale-95
       opacity-0
-      transition-all duration-300"
-    >
-
-      <!-- HEADER -->
+      transition-all duration-300">
       <div
         class="flex items-start
         justify-between
-        gap-4"
-      >
-
+        gap-4">
         <div>
 
           <p
@@ -1466,8 +1249,7 @@
             font-semibold
             uppercase
             tracking-wider
-            text-blue-700"
-          >
+            text-blue-700">
             Let's connect
           </p>
 
@@ -1475,8 +1257,7 @@
             class="mt-1
             text-2xl
             font-semibold
-            text-slate-900"
-          >
+            text-slate-900">
             Contact Me
           </h3>
 
@@ -1484,15 +1265,11 @@
             class="mt-2
             text-sm
             leading-6
-            text-gray-500"
-          >
+            text-gray-500">
             Choose a contact method and continue your conversation.
           </p>
 
         </div>
-
-
-        <!-- CLOSE -->
         <button
           type="button"
           id="contact-modal-close"
@@ -1501,20 +1278,14 @@
           text-gray-400
           hover:bg-gray-100
           hover:text-gray-700
-          transition"
-        >
+          transition">
 
           <i class="fa-solid fa-xmark"></i>
 
         </button>
 
       </div>
-
-
-      <!-- OPTIONS -->
       <div class="mt-6 grid gap-3">
-
-        <!-- EMAIL -->
         <a
           href="https://mail.google.com/mail/?view=cm&fs=1&to=Dara.portfolio.cs@gmail.com"
           target="_blank"
@@ -1529,28 +1300,23 @@
           transition
           hover:-translate-y-0.5
           hover:border-blue-300
-          hover:bg-blue-50"
-        >
+          hover:bg-blue-50">
 
           <i
             class="fa-solid fa-envelope
             w-5
             text-center
-            text-blue-700"
-          ></i>
+            text-blue-700">
+        </i>
 
           <span
             class="text-sm
             font-medium
-            text-gray-700"
-          >
+            text-gray-700">
             Email
           </span>
 
         </a>
-
-
-        <!-- GITHUB -->
         <a
           href="https://github.com/semdavdev-del"
           target="_blank"
@@ -1565,28 +1331,20 @@
           transition
           hover:-translate-y-0.5
           hover:border-blue-300
-          hover:bg-blue-50"
-        >
-
+          hover:bg-blue-50">
           <i
             class="fa-brands fa-github
             w-5
             text-center
-            text-slate-800"
-          ></i>
-
+            text-slate-800">
+        </i>
           <span
             class="text-sm
             font-medium
-            text-gray-700"
-          >
+            text-gray-700">
             GitHub
           </span>
-
         </a>
-
-
-        <!-- LINKEDIN -->
         <a
           href="https://www.linkedin.com/"
           target="_blank"
@@ -1601,21 +1359,19 @@
           transition
           hover:-translate-y-0.5
           hover:border-blue-300
-          hover:bg-blue-50"
-        >
+          hover:bg-blue-50">
 
           <i
             class="fa-brands fa-linkedin
             w-5
             text-center
-            text-blue-700"
-          ></i>
+            text-blue-700" >
+        </i>
 
           <span
             class="text-sm
             font-medium
-            text-gray-700"
-          >
+            text-gray-700">
             LinkedIn
           </span>
 
@@ -1626,11 +1382,6 @@
     </div>
 
   </div>
-
-
-  <!-- =========================================================
-       TOAST
-  ========================================================== -->
   <div
     id="feature-toast"
     class="fixed
@@ -1648,13 +1399,9 @@
     font-medium
     text-white
     shadow-xl
-    transition-all duration-300"
-  ></div>
+    transition-all duration-300">
+</div>
 
-
-  <!-- =========================================================
-       BACK TO TOP
-  ========================================================== -->
   <button
     id="top-btn"
     type="button"
@@ -1676,17 +1423,11 @@
     hover:bg-blue-900
     focus:outline-none
     focus:ring-4
-    focus:ring-blue-200"
-  >
+    focus:ring-blue-200">
 
     <i class="fa-solid fa-arrow-up"></i>
 
   </button>
-
-
-  <!-- =========================================================
-       PAGE PROGRESS
-  ========================================================== -->
   <div
     id="scroll-progress"
     class="fixed
@@ -1699,22 +1440,9 @@
     transition-all duration-150"
   ></div>
 
-
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-
-      /* =====================================================
-         1. SMOOTH SCROLL
-      ====================================================== */
       document.documentElement.style.scrollBehavior = "smooth";
-
-
-      /* =====================================================
-         2. MOBILE MENU
-      ====================================================== */
 
       const menuBtn =
         document.getElementById("menu-btn");
@@ -1830,9 +1558,6 @@
 
           }
         );
-
-
-        /* Close after clicking a mobile link */
         document
           .querySelectorAll(
             "#mobile-menu a"
@@ -1851,12 +1576,6 @@
           });
 
       }
-
-
-      /* =====================================================
-         3. PAGE LINK TRANSITION
-      ====================================================== */
-
       const pageLinks =
         document.querySelectorAll(
           'a.page-link[href]:not([target="_blank"])'
@@ -1882,9 +1601,6 @@
             ) {
               return;
             }
-
-
-            /* Allow Ctrl / Cmd / Shift click */
             if (
               event.ctrlKey ||
               event.metaKey ||
@@ -1921,12 +1637,6 @@
         );
 
       });
-
-
-      /* =====================================================
-         4. REVEAL ANIMATION
-      ====================================================== */
-
       const revealTargets =
         document.querySelectorAll(
           ".reveal-section"
@@ -2022,10 +1732,6 @@
       }
 
 
-      /* =====================================================
-         5. CARD POINTER TILT
-      ====================================================== */
-
       const cards =
         document.querySelectorAll(
           ".interactive-card"
@@ -2091,11 +1797,6 @@
         );
 
       });
-
-
-      /* =====================================================
-         6. COPY EMAIL
-      ====================================================== */
 
       const copyEmail =
         document.getElementById(
@@ -2242,11 +1943,6 @@
 
       }
 
-
-      /* =====================================================
-         7. PROFILE MODAL
-      ====================================================== */
-
       const profileModal =
         document.getElementById(
           "profile-modal"
@@ -2360,11 +2056,6 @@
           );
 
         };
-
-
-      /* =====================================================
-         8. CONTACT MODAL
-      ====================================================== */
 
       const contactModal =
         document.getElementById(
@@ -2531,11 +2222,6 @@
 
       }
 
-
-      /* =====================================================
-         9. CONTACT FORM
-      ====================================================== */
-
       const contactForm =
         document.getElementById(
           "contact-form"
@@ -2588,11 +2274,6 @@
 
       }
 
-
-      /* =====================================================
-         10. ACTIVE NAV FEEDBACK
-      ====================================================== */
-
       const navItems =
         document.querySelectorAll(
           "#desktop-menu a, #mobile-menu a"
@@ -2629,11 +2310,6 @@
         }
       );
 
-
-      /* =====================================================
-         11. BACK TO TOP
-      ====================================================== */
-
       const topBtn =
         document.getElementById(
           "top-btn"
@@ -2646,8 +2322,6 @@
           return;
         }
 
-
-        /* Show after 250px */
         if (window.scrollY > 250) {
 
           topBtn.classList.remove(
@@ -2703,11 +2377,6 @@
 
       }
 
-
-      /* =====================================================
-         12. SCROLL PROGRESS
-      ====================================================== */
-
       const progress =
         document.getElementById(
           "scroll-progress"
@@ -2756,11 +2425,6 @@
 
       updateProgress();
 
-
-      /* =====================================================
-         13. ESC KEY CLOSE MODALS
-      ====================================================== */
-
       document.addEventListener(
         "keydown",
         event => {
@@ -2798,11 +2462,6 @@
 
         }
       );
-
-
-      /* =====================================================
-         14. INITIAL PAGE ANIMATION
-      ====================================================== */
 
       window.addEventListener(
         "load",
