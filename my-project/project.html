@@ -10,7 +10,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 
-        /* ===== Smooth page transition - added without changing the original design ===== */
         body {
             opacity: 0;
             animation: pageEnter 0.45s ease-out forwards;
@@ -47,7 +46,6 @@
             }
         }
 
-        /* Keeps navbar links feeling smooth without changing their existing colors/layout */
         nav a {
             -webkit-tap-highlight-color: transparent;
         }
@@ -64,7 +62,6 @@
     <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4">
         <div class="flex items-center justify-between">
 
-            <!-- Logo -->
             <div class="flex gap-3 items-center min-w-0">
                 <h3 class="font-bold text-sm sm:text-xl lg:text-2xl whitespace-nowrap">
                     ARINDRA <span class="text-blue-800 font-bold">.DEV</span>
@@ -82,10 +79,8 @@
                 </div>
             </div>
 
-            <!-- Right Side -->
             <div class="flex items-center gap-3 sm:gap-3 text-gray-600 text-sm">
 
-                <!-- Desktop / Tablet Menu -->
                 <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
                     <a href="./index.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
                            hover:-translate-y-0.5 hover:bg-blue-800 hover:text-white">
@@ -110,10 +105,6 @@
                           <a href="./contact.html" class="page-link px-2 xl:px-3 py-2 rounded-md transition-all duration-300
                               hover:bg-blue-800 hover:text-white">CONTACT ME</a>
                 </div>
-
-                <!-- Profile -->
-                
-                <!-- Profile Image -->
                 <button type="button" onclick="openProfile()" class="shrink-0 focus:outline-none">
                     <img class="w-8 h-8 sm:w-8 sm:h-8
                rounded-full
@@ -125,16 +116,12 @@
                transition-all duration-300
                hover:scale-110" src="./image/profile.png" alt="Profile" />
                 </button>
-
-
-                <!-- Profile Preview -->
                 <div id="profile-modal" class="fixed inset-0 z-130
                     hidden items-center justify-center
                     bg-black/70 backdrop-blur-sm
                     px-4" onclick="closeProfile(event)">
                     <div class="relative" onclick="event.stopPropagation()">
 
-                        <!-- Close Button -->
                         <button type="button" onclick="closeProfile()" class="absolute -top-3 -right-3
                    w-9 h-9
                    rounded-full
@@ -148,7 +135,6 @@
                             &times;
                         </button>
 
-                        <!-- Large Image -->
                         <img src="./image/profile.png" alt="Profile" class="w-64 h-64
                    sm:w-80 sm:h-80
                    md:w-96 md:h-96
@@ -183,9 +169,6 @@
                         document.body.classList.remove("overflow-hidden");
                     }
                 </script>
-              
-
-                <!-- Mobile / Tablet Menu Button -->
                 <button id="menu-btn" type="button" class="lg:hidden w-9 h-9 p-2 rounded-md
                        hover:bg-gray-100 active:bg-gray-200
                        transition-all duration-200" aria-label="Open menu" aria-expanded="false">
@@ -204,7 +187,6 @@
             </div>
         </div>
 
-        <!-- Mobile / Tablet Menu -->
         <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-gray-100 pt-3">
             <div class="flex flex-col gap-1
                    bg-gray-50/70 rounded-xl p-2
@@ -308,7 +290,6 @@
         hover:border-blue-900
         hover:shadow-2xl hover:shadow-cyan-500/10">
 
-            <!-- Content -->
             <div class="flex-1 min-w-0">
 
                 <p class="text-xs text-blue-800 bg-blue-100 font-medium
@@ -327,7 +308,6 @@
                     group billing splits with instant micro-transfers.
                 </p>
 
-                <!-- Statistics -->
                 <div class="bg-blue-100 my-4 py-4 px-4
                 flex flex-row justify-between gap-4
                 rounded-md shadow mt-6">
@@ -342,7 +322,6 @@
                     </div>
                 </div>
 
-                <!-- Tags -->
                 <div class="flex flex-wrap gap-2 sm:gap-3">
                     <p class="text-sm font-medium bg-blue-50 px-3 py-1 rounded-full
                     transition-transform duration-300 ease-out
@@ -369,7 +348,6 @@
                     </p>
                 </div>
 
-                <!-- Buttons -->
                 <div class="mt-8 flex flex-wrap gap-2">
                     <button class="bg-blue-800 text-white font-semibold
                     py-2 px-3 rounded-md
@@ -389,7 +367,6 @@
                 </div>
             </div>
 
-            <!-- Image -->
             <div class="flex-1 flex justify-center items-center
             mt-4 lg:mt-0">
                 <img class="w-full 
@@ -401,15 +378,9 @@
 
 
     <section class="px-4 sm:px-6 lg:px-10 mb-10 mt-6">
-
-        <!--
-        PHONE   : 1 column
-        TABLET  : 2 columns
-        COMPUTER: 2 columns (same as original)
-    -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
 
-            <!-- ================= SCHOLAR AI ================= -->
             <div class="bg-white p-5 sm:p-6 shadow rounded-lg flex flex-col
             border-t-4 border-blue-800
             transition-all duration-300 ease-out
@@ -478,7 +449,6 @@
                 </div>
             </div>
 
-            <!-- ================= KHMER TYPO ================= -->
             <div class="bg-white p-5 sm:p-6 shadow rounded-lg flex flex-col
             border-t-4 border-blue-800
             transition-all duration-300 ease-out
@@ -541,9 +511,6 @@
                     </a>
                 </div>
             </div>
-
-
-            <!-- ================= CAMPUSBITE ================= -->
             <div class="bg-white p-5 sm:p-6 shadow rounded-lg flex flex-col
             border-t-4 border-blue-800
             transition-all duration-300 ease-out
@@ -603,9 +570,6 @@
                     <i class="fas fa-desktop-alt"></i>
                 </div>
             </div>
-
-
-            <!-- ================= DEVPULSE ================= -->
             <div class="bg-white p-5 sm:p-6 shadow rounded-lg flex flex-col
             border-t-4 border-blue-800
             transition-all duration-300 ease-out
@@ -665,9 +629,6 @@
                     <i class="fas fa-download"></i>
                 </div>
             </div>
-
-
-            <!-- ================= ALGOVIZ ================= -->
             <div class="bg-white p-5 sm:p-6 shadow rounded-lg flex flex-col
             border-t-4 border-blue-800
             transition-all duration-300 ease-out
@@ -727,9 +688,6 @@
                     <i class="far fa-play-circle"></i>
                 </div>
             </div>
-
-
-            <!-- ================= OPEN SOURCE ================= -->
             <div class="bg-blue-800 p-5 sm:p-6 shadow rounded-lg
             border-t-4 border-orange-300
             transition-all duration-300 ease-out
@@ -752,8 +710,6 @@
                     bespoke Tailwind plugins, and university lecture algorithm
                     implementations publicly accessible on GitHub.
                 </p>
-
-                <!-- NPM -->
                 <div class="flex flex-wrap items-center text-white bg-blue-900
                 mt-6 py-2 px-4 rounded-lg gap-2 text-xs">
                     <i>$</i>
@@ -767,8 +723,6 @@
                         1.8k dls
                     </p>
                 </div>
-
-                <!-- Github -->
                 <div class="flex flex-wrap items-center text-white bg-blue-900
                 mt-3 py-2 px-4 rounded-lg gap-2 text-xs">
                     <i>$</i>
@@ -782,8 +736,6 @@
                         MIT
                     </p>
                 </div>
-
-                <!-- Button -->
                 <div class="mt-8 lg:mt-70">
                     <p class="bg-blue-50 font-medium py-3 px-3
                     text-blue-800 rounded-lg text-center
@@ -804,14 +756,12 @@
         <div class="bg-white p-5 sm:p-6 lg:p-8
         rounded-lg shadow border-l-4 border-blue-800">
 
-            <!-- Heading -->
             <h3 class="font-semibold
             text-3xl sm:text-4xl lg:text-5xl
             leading-tight">
                 Have a project or internship opportunity in mind?
             </h3>
 
-            <!-- Description -->
             <p class="text-base sm:text-lg
             font-normal text-gray-500
             py-3 sm:py-4
@@ -820,8 +770,6 @@
                 Let's discuss your idea and translate complex requirements
                 into fluid user experiences.
             </p>
-
-            <!-- Buttons -->
             <div class="flex flex-col sm:flex-row
             gap-2
             justify-end">
@@ -875,23 +823,18 @@
         </div>
     </footer>
 
-<!-- =========================================================
-     ADDED FUNCTIONALITY ONLY — existing code kept unchanged
-     ========================================================= -->
 
-<!-- Scroll Progress -->
+
 <div id="scroll-progress"
     class="fixed top-0 left-0 z-[100p] h-1 w-0 bg-blue-800 transition-[width] duration-150 ease-out">
 </div>
 
-<!-- Back To Top -->
 <button id="back-to-top" type="button" aria-label="Back to top"
     class="fixed bottom-5 right-5 z-50 hidden h-11 w-11 items-center justify-center rounded-full bg-blue-800 text-white shadow-xl
     transition-all duration-300 hover:-translate-y-1 hover:bg-blue-900 active:translate-y-0">
     <i class="fa-solid fa-arrow-up"></i>
 </button>
 
-<!-- Project Quick View Modal -->
 <div id="project-modal"
     class="fixed inset-0 z-90 flex items-center justify-center bg-slate-950/60 p-4 opacity-0 pointer-events-none transition-all duration-300">
     <div id="project-modal-panel"
@@ -940,7 +883,6 @@
     </div>
 </div>
 
-<!-- Image Lightbox -->
 <div id="image-lightbox"
     class="fixed inset-0 z-120 flex items-center justify-center bg-slate-950/80 p-4 opacity-0 pointer-events-none transition-all duration-300">
     <button id="lightbox-close" type="button" aria-label="Close image"
@@ -954,7 +896,6 @@
     </div>
 </div>
 
-<!-- Toast -->
 <div id="project-toast"
     class="fixed bottom-5 left-1/2 z-110 -translate-x-1/2 translate-y-5 pointer-events-none opacity-0
     rounded-full bg-slate-900 px-4 py-2.5 text-xs font-medium text-white shadow-xl transition-all duration-300">
@@ -965,7 +906,6 @@
 (() => {
     "use strict";
 
-    // ---------- Helpers ----------
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
@@ -1046,7 +986,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // ---------- Find the project cards ----------
     const projectGridSection = $("img[src*='scholar.png']")?.closest("section");
     const projectGrid = projectGridSection?.querySelector(".grid");
 
@@ -1055,7 +994,6 @@
         projectCards = Array.from(projectGrid.children).filter((card) => card.querySelector("h3"));
     }
 
-    // Assign filter metadata without changing the original HTML.
     const projectMeta = [
         {
             keywords: ["scholarai", "academic", "research"],
@@ -1114,7 +1052,6 @@
         };
     });
 
-    // ---------- Filter buttons ----------
     const filterButtons = $$("main p.cursor-pointer.rounded-full");
     const filterMap = [
         "all",
@@ -1188,7 +1125,6 @@
         revealTargets.forEach((element) => observer.observe(element));
     });
 
-    // ---------- Project modal ----------
     const projectModal = $("#project-modal");
     const projectModalPanel = $("#project-modal-panel");
     const modalTitle = $("#modal-title");
@@ -1269,7 +1205,6 @@
         }
     });
 
-    // Handle existing project links/buttons without replacing them.
     $$("button, a, p").forEach((element) => {
         const label = element.textContent.trim().replace(/\s+/g, " ");
         const normalized = label.toLowerCase();
@@ -1323,7 +1258,6 @@
         });
     });
 
-    // ---------- Image lightbox ----------
     const lightbox = $("#image-lightbox");
     const lightboxImage = $("#lightbox-image");
     const lightboxClose = $("#lightbox-close");
@@ -1358,8 +1292,7 @@
         if (event.target === lightbox) closeLightbox();
     });
 
-    // ---------- Copy npm / GitHub command blocks ----------
-    $$("#" + "not-used-selector").length; // harmless no-op to keep selectors localized
+    $$("#" + "not-used-selector").length; 
 
     const codeBlocks = $$("p.break-all").filter((p) => {
         const text = p.textContent.trim();
@@ -1379,7 +1312,6 @@
         });
     });
 
-    // ---------- Keyboard shortcuts ----------
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             closeProjectModal();
@@ -1392,7 +1324,6 @@
         }
     });
 
-    // ---------- Subtle image hover ----------
     cardInfo.forEach((info) => {
         const image = $("img", info.card);
         if (!image) return;
@@ -1411,8 +1342,6 @@
 
 
     <script>
-        // Smooth transition when moving between pages.
-        // Existing design and page functionality are kept unchanged.
         document.addEventListener("DOMContentLoaded", () => {
             const links = document.querySelectorAll(
                 'a.page-link[href]:not([href^="#"]):not([target="_blank"])'
@@ -1426,8 +1355,6 @@
                         return;
                     }
 
-                    // Do not animate when the user uses Ctrl/Cmd-click,
-                    // Shift-click, middle-click, or another new-window action.
                     if (
                         event.ctrlKey ||
                         event.metaKey ||
