@@ -1,29 +1,23 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Arindra-Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   />
-
   <!-- Your existing stylesheet -->
   <link href="/src/style.css" rel="stylesheet" />
 <style>
-
         /* ===== Smooth page transition - added without changing the original design ===== */
         body {
             opacity: 0;
             animation: pageEnter 0.45s ease-out forwards;
         }
-
         @keyframes pageEnter {
             from {
                 opacity: 0;
@@ -32,11 +26,9 @@
                 opacity: 1;
             }
         }
-
         body.page-leaving {
             animation: pageLeave 0.28s ease-in forwards;
         }
-
         @keyframes pageLeave {
             from {
                 opacity: 1;
@@ -45,7 +37,6 @@
                 opacity: 0;
             }
         }
-
         @media (prefers-reduced-motion: reduce) {
             body,
             body.page-leaving {
@@ -54,17 +45,13 @@
                 transform: none;
             }
         }
-
         /* Keeps navbar links feeling smooth without changing their existing colors/layout */
         nav a {
             -webkit-tap-highlight-color: transparent;
         }
-
         nav a.page-link {
             will-change: transform, opacity;
         }
-
-
         /* ===== Modal / Lightbox visibility fixes ===== */
         #profile-modal,
         #project-modal,
@@ -72,17 +59,14 @@
         #contact-modal {
             z-index: 9999 !important;
         }
-
         #image-lightbox img {
             max-height: 90vh;
             max-width: min(92vw, 1200px);
         }
-
         #hero-profile-image,
         #project-image {
             cursor: zoom-in;
         }
-
         /* Keep fixed overlays independent from the page-enter animation */
         body:has(#image-lightbox.opacity-100),
         body:has(#project-modal.opacity-100),
@@ -92,9 +76,7 @@
         }
     </style>
 </head>
-
 <body class="bg-blue-50 m-0 p-0">
-
   <nav class="bg-white px-4 sm:px-6 lg:px-10 py-4 relative z-200">
     <div class="flex items-center justify-between gap-4">
       <div class="flex items-center gap-3 min-w-0">
@@ -106,7 +88,6 @@
           <span class="hidden sm:block">Available for internships</span>
         </div>
       </div>
-
       <!-- Right side -->
       <div class="flex items-center gap-2 sm:gap-3 text-gray-600 text-sm">
         <div id="desktop-menu" class="hidden lg:flex items-center gap-1 xl:gap-2">
@@ -126,7 +107,6 @@
             CONTACT ME
           </a>
         </div>
-
         <!-- Profile -->
         <button id="profile-button" type="button" aria-label="Open profile" class="shrink-0 focus:outline-none">
           <img
@@ -137,7 +117,6 @@
                    ring-offset-white hover:scale-110 transition-all duration-300"
           >
         </button>
-
         <!-- Mobile / Tablet menu -->
         <button
           id="menu-btn"
@@ -152,40 +131,33 @@
         </button>
       </div>
     </div>
-
     <!-- Mobile / Tablet navigation -->
     <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-gray-100 pt-3">
       <div class="flex flex-col gap-1 bg-gray-50/70 rounded-xl p-2 border border-gray-100">
-
         <a href="./index.html"
            class="page-link px-3 py-2.5 rounded-lg bg-blue-800 text-white shadow-sm">
           HOME
         </a>
-
         <a href="./about.html"
            class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
                   hover:bg-blue-800 hover:text-white active:bg-blue-900">
           ABOUT ME
         </a>
-
         <a href="./project.html"
            class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
                   hover:bg-blue-800 hover:text-white active:bg-blue-900">
           PROJECTS
         </a>
-
         <a href="./achievements.html"
            class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
                   hover:bg-blue-800 hover:text-white active:bg-blue-900">
           ACHIEVEMENTS
         </a>
-
         <a href="./contact.html"
            class="page-link px-3 py-2.5 rounded-lg transition-all duration-200
                   hover:bg-blue-800 hover:text-white active:bg-blue-900">
           CONTACT
         </a>
-
         <a href="./contact.html"
            class="page-link contact-trigger mt-1 w-full bg-blue-800 px-4 py-2.5
                   text-center text-white rounded-lg transition-all duration-200
@@ -195,7 +167,6 @@
       </div>
     </div>
   </nav>
-
   <script>
     (() => {
       const menuButton = document.getElementById("menu-btn");
@@ -205,7 +176,6 @@
         document.getElementById("bar2"),
         document.getElementById("bar3")
       ];
-
       const setMenuOpen = (isOpen) => {
         mobileMenu?.classList.toggle("hidden", !isOpen);
         menuButton?.setAttribute("aria-expanded", String(isOpen));
@@ -216,78 +186,56 @@
         bars[2]?.classList.toggle("-rotate-45", isOpen);
         bars[2]?.classList.toggle("-translate-y-1.5", isOpen);
       };
-
       menuButton?.addEventListener("click", () => {
         setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
       });
-
       mobileMenu?.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => setMenuOpen(false));
       });
-
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") setMenuOpen(false);
       });
     })();
   </script>
-
   <main class="px-4 sm:px-6 lg:px-10">
-
     <!-- =======================================================
          HERO
          ======================================================= -->
     <section
       id="about"
-      class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center py-10"
-    >
-
+      class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center py-10">
       <div class="lg:col-span-8 space-y-6">
-
         <span
           class="inline-block px-4 py-1 hover:underline text-xs md:text-xs font-normal text-primary bg-white rounded-full border border-slate-200 shadow-sm">
           Career Goal: COMPUTER SCIENCE STUDENT • UI/UX DESIGNER
         </span>
-
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-darkText leading-tight">
           Hello, I'm
           <span class="text-primary text-blue-600">Arindra</span>
         </h1>
-
         <p class="text-secondaryText text-base md:text-lg font-normal leading-relaxed max-w-2xl">
           Undergrad developer & product designer exploring the sweet spot between algorithmic logic and human delight.
           I craft simple, mathematically grounded digital experiences blending robust software architecture with
           human-centered product craft.
         </p>
-
-        <!-- Buttons -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
-
           <a
             href="./project.html"
             class="w-full sm:w-auto bg-blue-800 text-white font-medium py-2.5 px-4 rounded-md shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-900"
           >
             View My Projects
           </a>
-
           <a
             href="./contact.html"
-            class="contact-trigger w-full sm:w-auto bg-blue-100 text-black font-medium py-2.5 px-4 rounded-md shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-200"
-          >
+            class="contact-trigger w-full sm:w-auto bg-blue-100 text-black font-medium py-2.5 px-4 rounded-md shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-200">
             Contact Me
           </a>
-
         </div>
-
-
-        <!-- Availability + Social -->
         <div class="flex flex-wrap items-center gap-3 pt-4 text-xs md:text-sm text-secondaryText">
-
           <span class="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-slate-200 shadow-sm hover:underline">
             Available for summer 2026 Internship & Freelance
           </span>
-
           <div class="flex items-center space-x-1.5">
-
             <a
               href="https://www.linkedin.com/in/sem-dav-47241242b/?isSelfProfile=true"
               aria-label="LinkedIn"
@@ -295,7 +243,6 @@
             >
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-
             <a
               href="https://github.com/semdavdev-del"
               aria-label="GitHub"
@@ -303,7 +250,6 @@
             >
               <i class="fa-brands fa-github"></i>
             </a>
-
             <a
               href="#"
               aria-label="Telegram"
@@ -311,7 +257,6 @@
             >
               <i class="fa-brands fa-telegram"></i>
             </a>
-
             <a
               href="#"
               aria-label="Facebook"
@@ -319,16 +264,11 @@
             >
               <i class="fa-brands fa-facebook-f"></i>
             </a>
-
           </div>
         </div>
-
       </div>
-
-
       <!-- Profile -->
       <div class="lg:col-span-4 flex justify-center lg:justify-start">
-
         <div
           class="relative p-2 bg-white border border-slate-400 rounded-2xl shadow-lg max-w-xs md:max-w-sm hover:border-green-500 transition-all duration-300"
         >
@@ -340,48 +280,33 @@
             class="rounded-xl object-cover w-full h-auto cursor-pointer"
           />
         </div>
-
       </div>
-
     </section>
-
     <!-- =======================================================
          SKILLS
          ======================================================= -->
     <section class="space-y-6 py-4">
-
       <div>
-
         <span class="text-sm font-semibold text-success uppercase tracking-wider hover:underline">
           Core Toolkit & Competencies
         </span>
-
         <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-1 gap-2">
-
           <div>
             <h2 class="text-3xl md:text-4xl font-bold text-darkText">
               My Skills & Technologies
             </h2>
-
             <p class=" mt-1 text-sm">
               Technologies and tools I'm currently learning and using as a web developer student.
             </p>
           </div>
-
           <a
             href="#"
-            class="skills-placeholder text-sm text-blue-500 font-semibold text-primary hover:underline self-start sm:self-auto"
-          >
+            class="skills-placeholder text-sm text-blue-500 font-semibold text-primary hover:underline self-start sm:self-auto" >
             View All Skills
           </a>
-
         </div>
       </div>
-
-
-      <!-- Skill Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 pt-2">
-        <!-- HTML -->
         <div
           class="skill-card bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
           <img
@@ -391,446 +316,217 @@
           <span class="font-bold text-lg text-darkText">
             HTML
           </span>
-
           <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
-
-
-        <!-- CSS -->
         <div
-          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition"
-        >
+          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
             alt="CSS"
-            class="w-12 h-12 mb-1"
-          >
-
+            class="w-12 h-12 mb-1">
           <span class="font-bold text-lg text-darkText">
             CSS
           </span>
-
           <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
-
-
-        <!-- JavaScript -->
         <div
-          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition"
-        >
+          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
             alt="JavaScript"
-            class="w-12 h-12 mb-1 rounded-md"
-          >
-
+            class="w-12 h-12 mb-1 rounded-md" >
           <span class="font-bold text-lg text-darkText">
             JavaScript
           </span>
-
           <span class="text-sm text-slate-400">
             Beginner
           </span>
         </div>
-
-
-        <!-- Python -->
+        <div class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12 mb-1">
+          <span class="font-bold text-lg text-darkText">Python</span>
+          <span class="text-sm text-slate-400">
+            Beginner
+          </span>
+        </div>
         <div
-          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-            alt="Python"
-            class="w-12 h-12 mb-1"
-          >
-
-          <span class="font-bold text-lg text-darkText">
-            Python
-          </span>
-
-          <span class="text-sm text-slate-400">
-            Beginner
-          </span>
+          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-12 h-12 mb-1">
+          <span class="font-bold text-lg text-darkText">Java</span>
+          <span class="text-sm text-slate-400">Beginner</span>
         </div>
-
-
-        <!-- Java -->
-        <div
-          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-            alt="Java"
-            class="w-12 h-12 mb-1"
-          >
-
-          <span class="font-bold text-lg text-darkText">
-            Java
-          </span>
-
-          <span class="text-sm text-slate-400">
-            Beginner
-          </span>
+        <div class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Git & GitHub" class="w-12 h-12 mb-1">
+          <span class="font-bold text-lg text-darkText">Git & GitHub</span>
+          <span class="text-sm text-slate-400">Beginner</span>
         </div>
-
-
-        <!-- GitHub -->
-        <div
-          class="skill-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2 hover:shadow-md transition"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-            alt="Git & GitHub"
-            class="w-12 h-12 mb-1">
-
-          <span class="font-bold text-lg text-darkText">
-            Git & GitHub
-          </span>
-
-          <span class="text-sm text-slate-400">
-            Beginner
-          </span>
-        </div>
-
       </div>
-
     </section>
-
-
-    <!-- =======================================================
-         PROJECTS
-         ======================================================= -->
-    <section
-      class="space-y-6 pt-8"
-      id="projects"
-    >
-
+    
+    <section class="space-y-6 pt-8" id="projects">
       <div class="flex items-center justify-between gap-4">
-
         <div>
-          <h2 class="text-3xl font-extrabold text-darkText">
-            Featured Work
-          </h2>
-
-          <p class="text-secondaryText text-sm mt-1">
-            A few projects I've built to practice and improve my coding skills.
-            <br class="hidden sm:inline">
+          <h2 class="text-3xl font-extrabold text-darkText">Featured Work</h2>
+          <p class="text-secondaryText text-sm mt-1">A few projects I've built to practice and improve my coding skills.<br class="hidden sm:inline">
             These are learning projects, not real businesses.
           </p>
         </div>
-
-        <a
-          href="#"
-          class="projects-placeholder text-xs font-semibold text-primary hover:underline whitespace-nowrap"
-        >
+        <a href="#" class="projects-placeholder text-xs font-semibold text-primary hover:underline whitespace-nowrap" >
           View All Projects
         </a>
-
       </div>
-
-      <!-- Project Card -->
-      <div
-        id="project-card"
-        class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center transition-all duration-300"
-      >
-
-        <!-- Project Content -->
+      <div id="project-card" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center transition-all duration-300">
         <div class="md:col-span-6 space-y-4">
-
           <div class="flex items-center space-x-3 text-[11px] font-semibold text-slate-500">
-
-            <span class="px-2.5 py-1 bg-slate-100 rounded-md">
-              Mobile App
-            </span>
-
-            <span class="px-2.5 py-1 bg-slate-100 rounded-md">
-              UI/UX Design
-            </span>
-
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md"> Mobile App</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-md">UI/UX Design</span>
           </div>
-
-
-          <h3 class="text-xl sm:text-2xl font-extrabold text-darkText">
-            Unipay - Student Expense & Banking
-          </h3>
-
-
+          <h3 class="text-xl sm:text-2xl font-extrabold text-darkText">Unipay - Student Expense & Banking</h3>
           <p class="text-secondaryText text-sm leading-relaxed">
             A frictionless, mobile-first financial companion tailored to Southeast Asian undergraduate lifestyles.
             Re-engineered budget visualization and simplified group billing with instant micro-transfers.
           </p>
-
-
-          <!-- Project Stats -->
           <div class="bg-[#F8FAFC] p-4 rounded-xl border border-slate-100 grid grid-cols-2 gap-4">
-
             <div>
-              <span class="text-xl font-extrabold text-[#2B54D8]">
-                84%
-              </span>
-
-              <p class="text-[11px] text-slate-400 mt-0.5">
-                Task completion rate
-              </p>
+              <span class="text-xl font-extrabold text-[#2B54D8]">84%</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Task completion rate</p>
             </div>
-
             <div>
-              <span class="text-xl font-extrabold text-[#2B54D8]">
-                3.2m
-              </span>
-
-              <p class="text-[11px] text-slate-400 mt-0.5">
-                Active Monthly Users
-              </p>
+              <span class="text-xl font-extrabold text-[#2B54D8]">3.2m</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Active Monthly Users</p>
             </div>
-
           </div>
-
-
-          <!-- Tags -->
           <div class="flex flex-wrap gap-2 text-xs text-slate-600 pt-2">
-
-            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">
-              Figma UI kit
-            </span>
-
-            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">
-              User Interviews
-            </span>
-
-            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">
-              Design Tokens
-            </span>
-
-            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">
-              Interactive prototype
-            </span>
-
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">Figma UI kit</span>
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">User Interviews</span>
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">Design Tokens</span>
+            <span class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded-md">Interactive prototype</span>
           </div>
-
-
-          <!-- Project Buttons -->
           <div class="flex flex-wrap items-center gap-3 pt-2">
-
             <a
               href="#"
               id="case-study-button"
-              class="px-4 py-2 bg-[#2B54D8] hover:bg-blue-900 text-white text-xs font-semibold rounded-lg shadow-sm transition"
-            >
+              class="px-4 py-2 bg-[#2B54D8] hover:bg-blue-900 text-white text-xs font-semibold rounded-lg shadow-sm transition" >
               View Case Study
             </a>
-
             <a
               href="#"
               id="figma-button"
-              class="px-4 py-2 bg-slate-100 text-darkText text-xs font-semibold rounded-lg hover:bg-slate-200 transition"
-            >
+              class="px-4 py-2 bg-slate-100 text-darkText text-xs font-semibold rounded-lg hover:bg-slate-200 transition" >
               Figma Prototype
             </a>
-
           </div>
-
         </div>
-
-
-        <!-- Project Image -->
         <div class="md:col-span-6 bg-slate-50 rounded-2xl p-4 flex items-center justify-center border border-slate-100">
-
           <img
             id="project-image"
             data-zoomable="true"
             src="./image/photo-1551288049-bebda4e38f71.avif"
             alt="Unipay Project Showcase"
-            class="rounded-xl shadow-sm w-full h-auto max-h-80 object-cover cursor-zoom-in transition-transform duration-300 hover:scale-[1.01]"
-          >
-
+            class="rounded-xl shadow-sm w-full h-auto max-h-80 object-cover cursor-zoom-in transition-transform duration-300 hover:scale-[1.01]">
         </div>
-
       </div>
-
     </section>
-
-
-    <!-- =======================================================
-         CONTACT CTA
-         ======================================================= -->
     <section
       class="bg-[#2B54D8] text-white rounded-3xl p-8 sm:p-10 space-y-5 shadow-md my-10"
-      id="contact"
-    >
-
+      id="contact">
       <span class="inline-block px-3.5 py-1 text-xs font-medium bg-blue-600 rounded-full border border-blue-400">
         Typically responds within 24 hours
       </span>
-
-
       <div class="max-w-2xl space-y-3">
-
         <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
           Have a project or internship opportunity in mind?
         </h2>
-
         <p class="text-blue-100 text-xs sm:text-sm leading-relaxed">
           I am currently seeking summer 2026 internship roles (Software Engineering, UI/UX Design, or Product Design)
           as well as selective freelance product collaborations.
         </p>
-
       </div>
-
-
       <div class="flex flex-wrap items-center gap-3 pt-2">
-
         <a
           href="#"
-          class="projects-placeholder px-4 py-2.5 bg-white text-black text-xs font-bold rounded-lg shadow-sm hover:bg-slate-100 transition"
-        >
+          class="projects-placeholder px-4 py-2.5 bg-white text-black text-xs font-bold rounded-lg shadow-sm hover:bg-slate-100 transition" >
           View Case Study
         </a>
-
         <a
           href="./contact.html"
-          class="contact-trigger px-4 py-2.5 bg-blue-800 text-white text-xs font-semibold rounded-lg border border-blue-400 hover:bg-blue-900 transition"
-        >
+          class="contact-trigger px-4 py-2.5 bg-blue-800 text-white text-xs font-semibold rounded-lg border border-blue-400 hover:bg-blue-900 transition">
           Schedule a Quick Chat
         </a>
-
       </div>
-
     </section>
-
-
-    <!-- =======================================================
-         EXTRA CONTACT LINK
-         ======================================================= -->
     <div class="flex justify-center pb-10">
-
       <a
         href="contact.html"
-        class="text-[#2B54D8] font-bold hover:underline"
-      >
+        class="text-[#2B54D8] font-bold hover:underline">
         Get in Touch
       </a>
-
     </div>
-
   </main>
 
-
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
   <footer class="bg-slate-950 text-white">
-
     <div class="mx-auto max-w-8xl px-5 py-6 sm:px-8 lg:px-10">
-
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-
         <div>
-
           <div class="flex items-center gap-2">
-
             <span class="h-2 w-2 rounded-full bg-blue-500"></span>
-
             <p class="text-sm font-semibold tracking-wide">
               Arindra
             </p>
-
           </div>
-
         </div>
-
-
         <div class="flex flex-wrap items-center gap-4">
-
           <div class="flex items-center gap-4 text-xs font-medium text-slate-400 sm:gap-6">
-
             <a
               href="#"
-              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white"
-            >
+              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white" >
               GitHub
             </a>
-
             <a
               href="#"
-              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white"
-            >
+              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white" >
               LinkedIn
             </a>
-
             <a
               href="#"
-              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white"
-            >
+              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white">
               Figma
             </a>
-
             <a
               href="#"
-              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white"
-            >
+              class="footer-placeholder whitespace-nowrap transition duration-300 hover:text-white">
               Telegram
             </a>
-
           </div>
-
-
           <a
             href="./contact.html"
-            class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500"
-          >
+            class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500">
             Get in Touch
             <span class="ml-1">↗</span>
           </a>
-
         </div>
-
       </div>
-
     </div>
-
   </footer>
-
-
-  <!-- =========================================================
-       JAVASCRIPT
-       ========================================================= -->
   <script>
     (() => {
       "use strict";
-
-      // =========================================================
-      // HELPERS
-      // =========================================================
-
       const $ = (selector, root = document) =>
         root.querySelector(selector);
-
       const $$ = (selector, root = document) =>
         [...root.querySelectorAll(selector)];
-
       const normalize = (value = "") =>
         value.toLowerCase().replace(/\s+/g, " ").trim();
-
-
-      // =========================================================
-      // TOAST
-      // =========================================================
-
       let toastTimer;
-
       function showToast(message) {
         let toast = $("#project-toast");
-
         if (!toast) {
           toast = document.createElement("div");
-
           toast.id = "project-toast";
-
           toast.className =
             "fixed bottom-5 left-1/2 z-[130] " +
             "-translate-x-1/2 translate-y-5 " +
@@ -838,48 +534,34 @@
             "text-xs sm:text-sm font-medium text-white " +
             "shadow-xl opacity-0 pointer-events-none " +
             "transition-all duration-300";
-
           document.body.appendChild(toast);
         }
-
         toast.textContent = message;
-
         toast.classList.remove(
           "opacity-0",
           "translate-y-5"
         );
-
         toast.classList.add(
           "opacity-100",
           "translate-y-0"
         );
-
         clearTimeout(toastTimer);
-
         toastTimer = setTimeout(() => {
           toast.classList.add(
             "opacity-0",
             "translate-y-5"
           );
-
           toast.classList.remove(
             "opacity-100",
             "translate-y-0"
           );
         }, 1800);
       }
-
-
-      // =========================================================
-      // COPY HELPER
-      // =========================================================
-
       async function copyText(
         text,
         successMessage = "Copied to clipboard"
       ) {
         if (!text) return;
-
         try {
           if (
             navigator.clipboard &&
@@ -889,132 +571,88 @@
           } else {
             const helper =
               document.createElement("textarea");
-
             helper.value = text;
             helper.setAttribute("readonly", "");
-
             helper.style.position = "fixed";
             helper.style.left = "-9999px";
-
             document.body.appendChild(helper);
-
             helper.select();
-
             document.execCommand("copy");
-
             helper.remove();
           }
-
           showToast(successMessage);
-
         } catch {
           showToast("Copy failed");
         }
       }
-
-
-      // =========================================================
-      // SMOOTH SCROLL
-      // =========================================================
-
       document.documentElement.style.scrollBehavior = "smooth";
-
       $$('a[href^="#"]').forEach((link) => {
-
         link.addEventListener("click", (event) => {
-
           const targetId =
             link.getAttribute("href");
-
           if (
             !targetId ||
             targetId === "#"
           ) {
             return;
           }
-
           const target =
             $(targetId);
 
           if (!target) {
             return;
           }
-
           event.preventDefault();
-
           target.scrollIntoView({
             behavior: "smooth",
             block: "start"
           });
-
         });
 
       });
-
-
-      // =========================================================
-      // ACTIVE NAVIGATION
-      // =========================================================
-
       const navLinks =
         $$('nav a[href^="#"]');
-
       const navSections =
         navLinks
           .map((link) =>
             $(link.getAttribute("href"))
           )
           .filter(Boolean);
-
-
       if (
         navLinks.length &&
         navSections.length
       ) {
-
         const navObserver =
           new IntersectionObserver(
             (entries) => {
-
               entries.forEach((entry) => {
-
                 if (!entry.isIntersecting) {
                   return;
                 }
-
                 navLinks.forEach((link) => {
-
                   link.classList.remove(
                     "bg-blue-800",
                     "text-white"
                   );
-
                   link.classList.add(
                     "text-gray-600"
                   );
-
                 });
-
                 const active =
                   navLinks.find(
                     (link) =>
                       link.getAttribute("href") ===
                       `#${entry.target.id}`
                   );
-
                 if (active) {
-
                   active.classList.add(
                     "bg-blue-800",
                     "text-white"
                   );
-
                   active.classList.remove(
                     "text-gray-600"
                   );
-
                 }
-
               });
 
             },
@@ -1022,41 +660,25 @@
               threshold: 0.25
             }
           );
-
-
         navSections.forEach((section) => {
           navObserver.observe(section);
         });
-
       }
-
-
-      // =========================================================
-      // BACK TO TOP
-      // =========================================================
-
       let backToTop =
         $("#back-to-top");
-
       if (!backToTop) {
-
         backToTop =
           document.createElement("button");
-
         backToTop.id =
           "back-to-top";
-
         backToTop.type =
           "button";
-
         backToTop.setAttribute(
           "aria-label",
           "Back to top"
         );
-
         backToTop.innerHTML =
           '<i class="fa-solid fa-arrow-up"></i>';
-
         backToTop.className =
           "hidden fixed bottom-5 right-5 z-[100] " +
           "w-11 h-11 items-center justify-center " +
@@ -1064,40 +686,28 @@
           "shadow-xl transition-all duration-300 " +
           "hover:-translate-y-1 hover:bg-blue-900 " +
           "focus:outline-none focus:ring-4 focus:ring-blue-200";
-
         document.body.appendChild(
           backToTop
         );
       }
-
-
       function updateBackToTop() {
-
         if (window.scrollY > 450) {
-
           backToTop.classList.remove(
             "hidden"
           );
-
           backToTop.classList.add(
             "flex"
           );
 
         } else {
-
           backToTop.classList.add(
             "hidden"
           );
-
           backToTop.classList.remove(
             "flex"
           );
-
         }
-
       }
-
-
       window.addEventListener(
         "scroll",
         updateBackToTop,
@@ -1105,14 +715,10 @@
           passive: true
         }
       );
-
       updateBackToTop();
-
-
       backToTop.addEventListener(
         "click",
         () => {
-
           window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -1120,38 +726,25 @@
 
         }
       );
-
-
-      // =========================================================
-      // PROFILE MODAL
-      // =========================================================
-
       function createProfileModal() {
 
         if ($("#profile-modal")) {
           return $("#profile-modal");
         }
-
         const profileImage = $("#hero-profile-image");
         const profileImageSrc = profileImage?.currentSrc || profileImage?.src || "";
-
         const modal =
           document.createElement("div");
-
         modal.id =
           "profile-modal";
-
         modal.className =
           "fixed inset-0 z-[115] " +
           "hidden items-center justify-center " +
           "bg-black/70 backdrop-blur-sm " +
           "p-4";
-
         modal.innerHTML = `
           <div
-            class="relative max-w-md w-full flex justify-center"
-          >
-
+            class="relative max-w-md w-full flex justify-center">
             <button
               id="profile-close"
               type="button"
@@ -1160,11 +753,9 @@
               w-9 h-9 rounded-full bg-white
               text-gray-700 text-xl shadow-lg
               flex items-center justify-center
-              hover:bg-gray-100 transition"
-            >
+              hover:bg-gray-100 transition">
               ×
             </button>
-
             <img
               src="${profileImageSrc}"
               alt="Arindra profile"
@@ -1172,34 +763,23 @@
               md:w-96 md:h-96
               rounded-2xl object-cover
               ring-4 ring-blue-600
-              shadow-2xl"
-            >
-
+              shadow-2xl">
           </div>
         `;
-
         document.body.appendChild(modal);
-
         const closeProfile = () => {
-
           modal.classList.add("hidden");
           modal.classList.remove("flex");
-
           document.body.classList.remove(
             "overflow-hidden"
           );
-
         };
-
         const openProfile = () => {
-
           modal.classList.remove("hidden");
           modal.classList.add("flex");
-
           document.body.classList.add(
             "overflow-hidden"
           );
-
         };
 
 
@@ -1219,71 +799,47 @@
             ) {
               closeProfile();
             }
-
           }
         );
-
-
         return {
           modal,
           openProfile,
           closeProfile
         };
       }
-
-
       const profileButton =
         $("#profile-button");
-
       const heroProfileImage =
         $("#hero-profile-image");
-
-
       if (
         profileButton ||
         heroProfileImage
       ) {
-
         const profile =
           createProfileModal();
-
         profileButton?.addEventListener(
           "click",
           profile.openProfile
         );
-
         heroProfileImage?.addEventListener(
           "click",
           profile.openProfile
         );
-
       }
-
-
-      // =========================================================
-      // PROJECT MODAL
-      // =========================================================
-
       function createProjectModal() {
-
         if ($("#project-modal")) {
           return $("#project-modal");
         }
-
         const modal =
           document.createElement("div");
-
         modal.id =
           "project-modal";
-
         modal.className =
           "fixed inset-0 z-[110] " +
           "flex items-center justify-center " +
           "bg-black/60 p-4 " +
           "opacity-0 pointer-events-none " +
           "transition-opacity duration-300";
-
-
         modal.innerHTML = `
           <div
             id="project-modal-panel"
@@ -1291,9 +847,7 @@
             max-h-[90vh] overflow-y-auto
             rounded-2xl bg-white p-6
             shadow-2xl scale-95
-            transition-transform duration-300"
-          >
-
+            transition-transform duration-300">
             <button
               id="modal-close"
               type="button"
@@ -1302,350 +856,224 @@
               flex h-9 w-9 items-center justify-center
               rounded-full bg-slate-100
               text-slate-600
-              hover:bg-slate-200"
-            >
+              hover:bg-slate-200">
               <i class="fa-solid fa-xmark"></i>
             </button>
-
-
             <div class="pr-10">
-
               <span
                 id="modal-category"
                 class="text-xs font-bold
                 uppercase tracking-wider
                 text-blue-700"
               ></span>
-
-
               <h3
                 id="modal-title"
                 class="mt-2 text-2xl
                 font-extrabold text-gray-900"
               ></h3>
-
-
               <img
                 id="modal-image"
                 class="mt-5 w-full rounded-xl
                 object-cover"
-                alt=""
-              >
-
-
+                alt="" >
               <p
                 href="./contact.html"
-                class="mt-5 text-sm
-              >
+                class="mt-5 text-sm>
                 Contact Me
               </a>
                 leading-relaxed text-gray-600"
               ></p>
-
           href="./contact.html"
-              <div
-        >
+              <div >
           Contact Me
         </a>
                 id="modal-tags"
                 class="mt-5 flex flex-wrap gap-2"
               ></div>
-
-
               <div class="mt-6 flex justify-end">
-
                 <button
                   id="modal-secondary"
                   type="button"
                   class="rounded-lg bg-slate-100
                   px-4 py-2 text-sm
                   font-semibold text-gray-800
-                  hover:bg-slate-200"
-                >
+                  hover:bg-slate-200">
                   Close
                 </button>
-
               </div>
-
             </div>
-
           </div>
         `;
-
         document.body.appendChild(modal);
-
-
         const close = () => {
-
           modal.classList.add(
             "opacity-0",
             "pointer-events-none"
           );
-
           $("#project-modal-panel", modal)
             ?.classList.remove(
               "scale-100"
             );
-
           $("#project-modal-panel", modal)
             ?.classList.add(
               "scale-95"
             );
-
           document.body.classList.remove(
             "overflow-hidden"
           );
-
         };
-
-
         $("#modal-close", modal)
           ?.addEventListener(
             "click",
             close
           );
-
-
         $("#modal-secondary", modal)
           ?.addEventListener(
             "click",
             close
           );
-
-
         modal.addEventListener(
           "click",
           (event) => {
-
             if (
               event.target === modal
             ) {
               close();
             }
-
           }
         );
-
-
         return modal;
       }
-
-
       function showProjectModal(info) {
-
         const modal =
           createProjectModal();
-
         const panel =
           $("#project-modal-panel", modal);
-
-
         $("#modal-title", modal)
           .textContent =
           info.title;
-
-
         $("#modal-category", modal)
           .textContent =
           info.category;
-
-
         $("#modal-description", modal)
           .textContent =
           info.description;
-
-
         const modalImage =
           $("#modal-image", modal);
-
-
         if (info.image) {
-
           modalImage.src =
             info.image;
-
           modalImage.alt =
             info.alt ||
             info.title;
-
           modalImage.classList.remove(
             "hidden"
           );
-
         } else {
-
           modalImage.classList.add(
             "hidden"
           );
-
         }
-
-
         const tags =
           $("#modal-tags", modal);
-
         tags.innerHTML = "";
-
-
         [
           "Figma UI Kit",
           "User Interviews",
           "Design Tokens",
           "Interactive Prototype"
         ].forEach((tag) => {
-
           const pill =
             document.createElement("span");
-
           pill.className =
             "rounded-full bg-blue-50 " +
             "px-3 py-1.5 text-xs " +
             "font-medium text-blue-700";
-
           pill.textContent =
             tag;
-
           tags.appendChild(pill);
-
         });
-
-
         modal.classList.remove(
           "opacity-0",
           "pointer-events-none"
         );
-
-
         panel?.classList.remove(
           "scale-95"
         );
-
-
         panel?.classList.add(
           "scale-100"
         );
-
-
         document.body.classList.add(
           "overflow-hidden"
         );
-
       }
-
-
-      // =========================================================
-      // PROJECT EVENTS
-      // =========================================================
-
       const projectCard =
         $("#project-card");
-
       const projectImage =
         $("#project-image");
-
       const caseStudyButton =
         $("#case-study-button");
-
       const figmaButton =
         $("#figma-button");
-
-
       if (projectCard) {
-
         const title =
           $("h3", projectCard)
             ?.textContent.trim() ||
           "Featured Project";
-
-
         const description =
           $("p", projectCard)
             ?.textContent.trim() ||
           "Project details are available in this portfolio.";
-
-
         caseStudyButton?.addEventListener(
           "click",
           (event) => {
-
             event.preventDefault();
-
             showProjectModal({
-
               title,
-
               description,
-
               image:
                 projectImage?.src || "",
-
               alt:
                 projectImage?.alt ||
                 title,
-
               category:
                 "Mobile App • UI/UX Design"
-
             });
-
           }
         );
-
-
         figmaButton?.addEventListener(
           "click",
           (event) => {
-
             const href =
               figmaButton.getAttribute(
                 "href"
               );
-
             if (
               !href ||
               href === "#"
             ) {
-
               event.preventDefault();
-
               showToast(
                 "Add your real Figma Prototype URL here"
               );
-
             }
-
           }
         );
-
       }
-
-
-      // =========================================================
-      // LIGHTBOX
-      // =========================================================
-
       function createLightbox() {
-
         if ($("#image-lightbox")) {
           return $("#image-lightbox");
         }
-
-
         const lightbox =
           document.createElement("div");
-
         lightbox.id =
           "image-lightbox";
-
-
         lightbox.className =
           "fixed inset-0 z-[120] " +
           "flex items-center justify-center " +
           "bg-black/80 p-4 " +
           "opacity-0 pointer-events-none " +
           "transition-opacity duration-300";
-
-
         lightbox.innerHTML = `
           <button
             id="lightbox-close"
@@ -1655,48 +1083,33 @@
             flex h-10 w-10 items-center
             justify-center rounded-full
             bg-white/10 text-white
-            hover:bg-white/20"
-          >
+            hover:bg-white/20" >
             <i class="fa-solid fa-xmark"></i>
           </button>
-
-
           <img
             id="lightbox-image"
             class="max-h-[90vh]
             max-w-full rounded-xl
             object-contain shadow-2xl"
-            alt=""
-          >
+            alt="">
         `;
-
-
         document.body.appendChild(
           lightbox
         );
-
-
         const close = () => {
-
           lightbox.classList.add(
             "opacity-0",
             "pointer-events-none"
           );
-
           document.body.classList.remove(
             "overflow-hidden"
           );
-
         };
-
-
         $("#lightbox-close", lightbox)
           ?.addEventListener(
             "click",
             close
           );
-
-
         lightbox.addEventListener(
           "click",
           (event) => {
@@ -1706,152 +1119,95 @@
             ) {
               close();
             }
-
           }
         );
-
-
         return lightbox;
       }
-
-
       function showLightbox(
         src,
         alt
       ) {
-
         if (!src) return;
-
-
         const lightbox =
           createLightbox();
-
-
         const image =
           $("#lightbox-image", lightbox);
-
-
         image.src =
           src;
-
         image.alt =
           alt ||
           "Project image";
-
-
         lightbox.classList.remove(
           "opacity-0",
           "pointer-events-none"
         );
-
-
         document.body.classList.add(
           "overflow-hidden"
         );
-
       }
-
-
       projectImage?.addEventListener(
         "click",
         () => {
-
           showLightbox(
             projectImage.src,
             projectImage.alt
           );
-
         }
       );
-
-
-      // =========================================================
-      // CONTACT MODAL
-      // =========================================================
-
       function createContactModal() {
-
         if ($("#contact-modal")) {
           return $("#contact-modal");
         }
-
-
         const modal =
           document.createElement("div");
-
         modal.id =
           "contact-modal";
-
-
         modal.className =
           "fixed inset-0 z-[105] " +
           "hidden items-center justify-center " +
           "bg-slate-950/60 p-4 " +
           "backdrop-blur-sm";
-
-
         modal.innerHTML = `
           <div
             class="w-full max-w-md
             rounded-2xl bg-white
-            p-6 shadow-2xl sm:p-7"
-          >
-
+            p-6 shadow-2xl sm:p-7">
             <div
               class="flex items-start
-              justify-between gap-4"
-            >
-
+              justify-between gap-4">
               <div>
-
                 <p
                   href="./contact.html"
-                  class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500"
-                >
+                  class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500" >
                   Contact Me
                 </a>
                   uppercase tracking-wider
-                  text-blue-700"
-                >
+                  text-blue-700">
                   Let's connect
                 </p>
-
-
                 <h3
                   class="mt-1 text-2xl
-                  font-semibold text-slate-900"
-                >
+                  font-semibold text-slate-900">
                   Contact Me
                 </h3>
-
-
                 <p
                   href="./contact.html"
-                  leading-6 text-gray-500"
-                >
+                  leading-6 text-gray-500" >
                   Choose a contact method
                   and continue your conversation.
                 </p>
-
               </div>
-
-
               <button
                 type="button"
                 data-contact-close
                 class="h-9 w-9 rounded-full
                 text-gray-400
                 hover:bg-gray-100
-                hover:text-gray-700"
-              >
+                hover:text-gray-700">
                 <i class="fa-solid fa-xmark"></i>
               </button>
-
             </div>
-
-
             <div class="mt-6 grid gap-3">
-
               <!-- Email -->
               <a
                 href="mailto:sem.dav.dev@gmail.com"
@@ -1860,9 +1216,7 @@
                 p-4 transition
                 hover:-translate-y-0.5
                 hover:border-blue-300
-                hover:bg-blue-50"
-              >
-
+                hover:bg-blue-50">
                 <i
                   class="fa-solid fa-envelope
                   w-5 text-center text-blue-700"
@@ -1870,14 +1224,10 @@
 
                 <span
                   class="text-sm font-medium
-                  text-gray-700"
-                >
+                  text-gray-700">
                   Email
                 </span>
-
               </a>
-
-
               <!-- GitHub -->
               <a
                 href="https://github.com/semdavdev-del"
@@ -1890,22 +1240,17 @@
                 hover:border-blue-300
                 hover:bg-blue-50"
               >
-
                 <i
                   class="fa-brands fa-github
                   w-5 text-center text-slate-800"
                 ></i>
-
                 <span
                   class="text-sm font-medium
                   text-gray-700"
                 >
                   GitHub
                 </span>
-
               </a>
-
-
               <!-- LinkedIn -->
               <a
                 href="https://www.linkedin.com/in/sem-dav-47241242b/"
@@ -1918,22 +1263,16 @@
                 hover:border-blue-300
                 hover:bg-blue-50"
               >
-
                 <i
                   class="fa-brands fa-linkedin
                   w-5 text-center text-blue-700"
                 ></i>
-
                 <span
                   class="text-sm font-medium
-                  text-gray-700"
-                >
+                  text-gray-700" >
                   LinkedIn
                 </span>
-
               </a>
-
-
               <!-- Telegram -->
               <a
                 href="https://t.me/"
@@ -1946,359 +1285,211 @@
                 hover:border-blue-300
                 hover:bg-blue-50"
               >
-
                 <i
                   class="fa-brands fa-telegram
                   w-5 text-center text-blue-500"
                 ></i>
-
                 <span
                   class="text-sm font-medium
                   text-gray-700"
                 >
                   Telegram
                 </span>
-
               </a>
-
             </div>
-
           </div>
         `;
-
-
         document.body.appendChild(
           modal
         );
-
-
         return modal;
       }
-
-
       function openContactModal() {
-
         const modal =
           createContactModal();
-
-
         modal.classList.remove(
           "hidden"
         );
-
-
         modal.classList.add(
           "flex"
         );
-
-
         document.body.classList.add(
           "overflow-hidden"
         );
-
       }
-
-
       function closeContactModal() {
-
         const modal =
           $("#contact-modal");
-
-
         if (!modal) return;
-
-
         modal.classList.add(
           "hidden"
         );
-
-
         modal.classList.remove(
           "flex"
         );
-
-
         document.body.classList.remove(
           "overflow-hidden"
         );
-
       }
-
-
-      // =========================================================
-      // CONTACT BUTTONS
-      // =========================================================
-
       $$(".contact-trigger").forEach(
         (element) => {
-
           element.addEventListener(
             "click",
             (event) => {
-
               event.preventDefault();
-
               openContactModal();
-
             }
           );
-
         }
       );
-
-
       // "Get in Touch" text link
       $$("a").forEach(
         (element) => {
-
           const text =
             normalize(
               element.textContent
             );
-
           if (
             text === "get in touch"
           ) {
-
             element.addEventListener(
               "click",
               (event) => {
-
                 const href =
                   element.getAttribute(
                     "href"
                   );
-
-
                 if (
                   href === "contact.html" ||
                   href === "#"
                 ) {
-
                   event.preventDefault();
-
                   openContactModal();
-
                 }
-
               }
             );
-
           }
-
         }
       );
-
-
       document.addEventListener(
         "click",
         (event) => {
-
           if (
             event.target.closest(
               "[data-contact-close]"
             )
           ) {
-
             closeContactModal();
-
           }
-
         }
       );
-
-
       const contactModal =
         createContactModal();
-
-
       contactModal.addEventListener(
         "click",
         (event) => {
-
           if (
             event.target ===
             contactModal
           ) {
-
             closeContactModal();
-
           }
-
         }
       );
-
-
-      // =========================================================
-      // SOCIAL PLACEHOLDER LINKS
-      // =========================================================
-
       $$(".social-placeholder").forEach(
         (link) => {
-
           link.addEventListener(
             "click",
             (event) => {
-
               event.preventDefault();
-
               showToast(
                 "Add your real social media URL here"
               );
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // FOOTER PLACEHOLDER
-      // =========================================================
-
       $$(".footer-placeholder").forEach(
         (link) => {
-
           link.addEventListener(
             "click",
             (event) => {
-
               event.preventDefault();
-
               showToast(
                 `Add your real ${link.textContent.trim()} URL here`
               );
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // VIEW ALL SKILLS
-      // =========================================================
-
       $$(".skills-placeholder").forEach(
         (link) => {
-
           link.addEventListener(
             "click",
             (event) => {
-
               event.preventDefault();
-
               showToast(
                 "More skills will be added soon"
               );
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // VIEW ALL PROJECTS
-      // =========================================================
-
       $$(".projects-placeholder").forEach(
         (link) => {
-
           link.addEventListener(
             "click",
             (event) => {
-
               event.preventDefault();
-
               const projectTarget =
                 $("#projects");
-
               if (
                 projectTarget
               ) {
-
                 projectTarget.scrollIntoView({
                   behavior: "smooth",
                   block: "start"
                 });
-
               }
-
               showToast(
                 "You are viewing the featured project"
               );
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // SKILL CARD INTERACTION
-      // =========================================================
-
       $$(".skill-card").forEach(
         (card) => {
-
           card.style.cursor =
             "pointer";
-
-
           card.addEventListener(
             "click",
             () => {
-
               const skill =
                 card.querySelector(
                   "span.font-bold"
                 )?.textContent.trim();
-
-
               const level =
                 card.querySelector(
                   "span.text-xs"
                 )?.textContent.trim();
-
-
               if (
                 skill
               ) {
-
                 showToast(
                   `${skill} — ${level || "Beginner"}`
                 );
-
               }
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // SCROLL REVEAL
-      // =========================================================
-
       const revealTargets = [
-
         ...$$("main > section"),
-
         $("footer")
-
       ].filter(Boolean);
-
-
       revealTargets.forEach(
         (element, index) => {
-
           element.classList.add(
             "opacity-0",
             "translate-y-5",
@@ -2306,196 +1497,125 @@
             "duration-700",
             "ease-out"
           );
-
-
           element.style.transitionDelay =
             `${Math.min(index * 70, 420)}ms`;
-
         }
       );
-
-
       requestAnimationFrame(
         () => {
-
           const revealObserver =
             new IntersectionObserver(
               (entries, observer) => {
-
                 entries.forEach(
                   (entry) => {
-
                     if (
                       !entry.isIntersecting
                     ) {
                       return;
                     }
-
-
                     entry.target.classList.remove(
                       "opacity-0",
                       "translate-y-5"
                     );
-
-
                     entry.target.classList.add(
                       "opacity-100",
                       "translate-y-0"
                     );
-
-
                     observer.unobserve(
                       entry.target
                     );
-
                   }
                 );
-
               },
               {
                 threshold: 0.08
               }
             );
-
-
           revealTargets.forEach(
             (element) => {
-
               revealObserver.observe(
                 element
               );
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // CARD TILT EFFECT
-      // =========================================================
-
       const tiltCards = [
         projectCard,
         ...$$(".skill-card")
       ].filter(Boolean);
-
-
       tiltCards.forEach(
         (card) => {
-
           card.addEventListener(
             "pointermove",
             (event) => {
-
               if (
                 window.innerWidth < 768
               ) {
                 return;
               }
-
-
               const rect =
                 card.getBoundingClientRect();
-
-
               const x =
                 (event.clientX -
                   rect.left) /
                   rect.width -
                 0.5;
-
-
               const y =
                 (event.clientY -
                   rect.top) /
                   rect.height -
                 0.5;
-
-
               if (
                 card.classList.contains(
                   "skill-card"
                 )
               ) {
-
                 card.style.transform =
                   `perspective(900px)
                    rotateX(${(-y * 1.3).toFixed(2)}deg)
                    rotateY(${(x * 1.3).toFixed(2)}deg)
                    translateY(-4px)`;
-
               } else {
-
                 card.style.transform =
                   `perspective(900px)
                    rotateX(${(-y * 1.5).toFixed(2)}deg)
                    rotateY(${(x * 1.5).toFixed(2)}deg)
                    translateY(-4px)`;
-
               }
-
             }
           );
-
-
           card.addEventListener(
             "pointerleave",
             () => {
-
               card.style.transform =
                 "";
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // SCROLL PROGRESS BAR
-      // =========================================================
-
       const progress =
         document.createElement("div");
-
-
       progress.className =
         "fixed left-0 top-0 z-[140] " +
         "h-1 w-0 bg-blue-700 " +
         "transition-all duration-150";
-
-
       document.body.appendChild(
         progress
       );
-
-
       function updateProgress() {
-
         const doc =
           document.documentElement;
-
-
         const max =
           doc.scrollHeight -
           doc.clientHeight;
-
-
         const value =
           max > 0
             ? (doc.scrollTop / max) * 100
             : 0;
-
-
         progress.style.width =
           `${value}%`;
-
       }
-
-
       document.addEventListener(
         "scroll",
         updateProgress,
@@ -2503,152 +1623,88 @@
           passive: true
         }
       );
-
-
       updateProgress();
-
-
-      // =========================================================
-      // ACTIVE NAV FEEDBACK
-      // =========================================================
-
       const clickableNav =
         $$("nav a");
-
-
       clickableNav.forEach(
         (item) => {
-
           item.addEventListener(
             "click",
             () => {
-
               clickableNav.forEach(
                 (link) => {
-
                   link.classList.remove(
                     "ring-2",
                     "ring-blue-200"
                   );
-
                 }
               );
-
-
               item.classList.add(
                 "ring-2",
                 "ring-blue-200"
               );
-
             }
           );
-
         }
       );
-
-
-      // =========================================================
-      // KEYBOARD ESCAPE
-      // =========================================================
-
       document.addEventListener(
         "keydown",
         (event) => {
-
           if (
             event.key !== "Escape"
           ) {
             return;
           }
-
-
-          // Close project modal
           const projectModal =
             $("#project-modal");
-
-
           if (
             projectModal
           ) {
-
             projectModal.classList.add(
               "opacity-0",
               "pointer-events-none"
             );
-
           }
-
-
-          // Close lightbox
           const lightbox =
             $("#image-lightbox");
-
-
           if (
             lightbox
           ) {
-
             lightbox.classList.add(
               "opacity-0",
               "pointer-events-none"
             );
-
           }
-
-
-          // Close profile
           const profileModal =
             $("#profile-modal");
-
-
           if (
             profileModal
           ) {
-
             profileModal.classList.add(
               "hidden"
             );
-
             profileModal.classList.remove(
               "flex"
             );
-
           }
-
-
-          // Close contact
           closeContactModal();
-
-
           document.body.classList.remove(
             "overflow-hidden"
           );
-
         }
       );
-
-
-      // =========================================================
-      // EXTRA IMAGE / CARD ZOOM FALLBACK
-      // =========================================================
-
       function openUniversalLightbox(src, alt = "Image") {
         if (!src) return;
-
         const lightbox = createLightbox();
         const image = $("#lightbox-image", lightbox);
-
         image.src = src;
         image.alt = alt;
-
         lightbox.classList.remove(
           "opacity-0",
           "pointer-events-none"
         );
-
         document.body.classList.add("overflow-hidden");
       }
-
       // Hero/profile image
       $("#hero-profile-image")?.addEventListener("click", (event) => {
         event.preventDefault();
@@ -2657,7 +1713,6 @@
           event.currentTarget.alt
         );
       });
-
       // Featured project image
       $("#project-image")?.addEventListener("click", (event) => {
         event.preventDefault();
@@ -2666,14 +1721,12 @@
           event.currentTarget.alt
         );
       });
-
       // Make the featured project card itself clickable.
       // Buttons/links inside the card keep their own behavior.
       $("#project-card")?.addEventListener("click", (event) => {
         if (event.target.closest("a, button, input, textarea, select")) {
           return;
         }
-
         const image = $("#project-image");
         if (image) {
           openUniversalLightbox(
@@ -2682,19 +1735,11 @@
           );
         }
       });
-
-      // =========================================================
-      // LOG
-      // =========================================================
-
       console.log(
         "Index Portfolio JavaScript loaded successfully."
       );
-
     })();
   </script>
-
-
     <script>
         // Smooth transition when moving between pages.
         // Existing design and page functionality are kept unchanged.
@@ -2702,15 +1747,12 @@
             const links = document.querySelectorAll(
                 'a.page-link[href]:not([href^="#"]):not([target="_blank"])'
             );
-
             links.forEach((link) => {
                 link.addEventListener("click", (event) => {
                     const href = link.getAttribute("href");
-
                     if (!href || href.startsWith("http") || href.startsWith("mailto:")) {
                         return;
                     }
-
                     // Do not animate when the user uses Ctrl/Cmd-click,
                     // Shift-click, middle-click, or another new-window action.
                     if (
@@ -2722,11 +1764,8 @@
                     ) {
                         return;
                     }
-
                     event.preventDefault();
-
                     document.body.classList.add("page-leaving");
-
                     setTimeout(() => {
                         window.location.href = href;
                     }, 280);
@@ -2734,7 +1773,6 @@
             });
         });
     </script>
-
   <script src="/image-lightbox.js"></script>
   <script type="module" src="/src/site-features.js"></script>
 </body>
