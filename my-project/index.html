@@ -270,7 +270,7 @@
           </a>
 
           <a
-            href="./home.html"
+            href="./contact.html"
             class="contact-trigger w-full sm:w-auto bg-blue-100 text-black font-medium py-2.5 px-4 rounded-md shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-200"
           >
             Contact Me
@@ -700,7 +700,7 @@
         </a>
 
         <a
-          href="./home.html"
+          href="./contact.html"
           class="contact-trigger px-4 py-2.5 bg-blue-800 text-white text-xs font-semibold rounded-lg border border-blue-400 hover:bg-blue-900 transition"
         >
           Schedule a Quick Chat
@@ -788,7 +788,7 @@
 
 
           <a
-            href="./home.html"
+            href="./contact.html"
             class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500"
           >
             Get in Touch
@@ -1140,6 +1140,9 @@
           return $("#profile-modal");
         }
 
+        const profileImage = $("#hero-profile-image");
+        const profileImageSrc = profileImage?.currentSrc || profileImage?.src || "";
+
         const modal =
           document.createElement("div");
 
@@ -1171,7 +1174,7 @@
             </button>
 
             <img
-              src="./image/profile.png"
+              src="${profileImageSrc}"
               alt="Arindra profile"
               class="w-64 h-64 sm:w-80 sm:h-80
               md:w-96 md:h-96
@@ -1339,13 +1342,19 @@
 
 
               <p
-                id="modal-description"
+                href="./contact.html"
                 class="mt-5 text-sm
+              >
+                Contact Me
+              </a>
                 leading-relaxed text-gray-600"
               ></p>
 
-
+          href="./contact.html"
               <div
+        >
+          Contact Me
+        </a>
                 id="modal-tags"
                 class="mt-5 flex flex-wrap gap-2"
               ></div>
@@ -1804,7 +1813,11 @@
               <div>
 
                 <p
-                  class="text-xs font-semibold
+                  href="./contact.html"
+                  class="contact-trigger shrink-0 inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-[10px] sm:px-5 sm:py-2.5 sm:text-xs font-semibold text-white shadow-lg shadow-blue-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-500"
+                >
+                  Contact Me
+                </a>
                   uppercase tracking-wider
                   text-blue-700"
                 >
@@ -1821,7 +1834,7 @@
 
 
                 <p
-                  class="mt-2 text-sm
+                  href="./contact.html"
                   leading-6 text-gray-500"
                 >
                   Choose a contact method

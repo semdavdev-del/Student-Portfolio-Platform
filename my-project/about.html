@@ -124,32 +124,6 @@
         </div>
     </nav>
 
-    <script>
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const bar1 = document.getElementById("bar1");
-        const bar2 = document.getElementById("bar2");
-        const bar3 = document.getElementById("bar3");
-        menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-            const isOpen = !mobileMenu.classList.contains("hidden");
-            menuBtn.setAttribute("aria-expanded", isOpen);
-            menuBtn.setAttribute(
-                "aria-label",
-                isOpen ? "Close menu" : "Open menu"
-            );
-            if (isOpen) {
-                bar1.classList.add("rotate-45", "translate-y-1.5");
-                bar2.classList.add("opacity-0");
-                bar3.classList.add("-rotate-45", "-translate-y-1.5");
-            } else {
-                bar1.classList.remove("rotate-45", "translate-y-1.5");
-                bar2.classList.remove("opacity-0");
-                bar3.classList.remove("-rotate-45", "-translate-y-1.5");
-            }
-        });
-    </script>
-
     <main id="top">
         <section id="profile" class="flex flex-col lg:flex-row px-4 sm:px-6 md:px-10 gap-10 py-10">
             <div>
