@@ -792,7 +792,7 @@
                 });
             });
 
-            // 5) Create search + filter controls from existing content
+            // 5) Set up category filters from existing content
             const filterRow = Array.from(document.querySelectorAll('main p.cursor-pointer')).filter(el => el.textContent.trim());
             const detailedCards = Array.from(document.querySelectorAll('main ~ section'))
                 .flatMap(section => Array.from(section.querySelectorAll(':scope > div')))
@@ -804,11 +804,6 @@
                 return !/3x|3\.92|100%/.test(title);
             });
 
-            const searchWrap = document.createElement('div');
-            searchWrap.className = 'mx-auto mt-5 flex w-full max-w-6xl flex-col gap-3 px-4 sm:px-6 lg:px-10 sm:flex-row sm:items-center sm:justify-between';
-            const existingFilterParent = filterRow[0]?.parentElement;
-            if (existingFilterParent) existingFilterParent.insertAdjacentElement('afterend', searchWrap);
-
             const normalize = value => value.toLowerCase().replace(/\s+/g, ' ').trim();
 
             const getCategory = card => {
@@ -818,29 +813,22 @@
                 return 'academic';
             };
 
-            let activeCategory = 'all';
-            let query = '';
+            achievementCards.forEach(card => {
+                card.dataset.achievementCategory = getCategory(card);
+            });
 
-            const updateCount = visible => {
-                const countEl = document.getElementById('achievement-count');
-                if (!countEl) return;
-            };
+            let activeCategory = 'all';
 
             const applyFilter = () => {
-                let visible = 0;
                 achievementCards.forEach(card => {
-                    const haystack = normalize(card.textContent);
-                    const matchesCategory = activeCategory === 'all' || getCategory(card) === activeCategory;
-                    const matchesSearch = !query || haystack.includes(query);
-                    const show = matchesCategory && matchesSearch;
+                    const matchesCategory = activeCategory === 'all' || card.dataset.achievementCategory === activeCategory;
+                    const show = matchesCategory;
                     card.style.display = show ? '' : 'none';
                     if (show) {
-                        visible++;
                         card.classList.remove('opacity-0', 'scale-95');
                         card.classList.add('opacity-100', 'scale-100');
                     }
                 });
-                updateCount(visible);
             };
 
             const setActiveFilter = (clicked) => {
@@ -852,21 +840,22 @@
                 clicked.classList.add('bg-blue-800', 'text-white');
             };
 
-            filterRow.forEach(btn => {
+            const filterCategories = ['all', 'competition', 'academic', 'certification'];
+            filterRow.forEach((btn, index) => {
+                btn.setAttribute('role', 'button');
+                btn.setAttribute('tabindex', '0');
+                btn.dataset.category = filterCategories[index] || 'all';
                 btn.addEventListener('click', () => {
-                    const label = normalize(btn.textContent);
-                    if (label.startsWith('all')) activeCategory = 'all';
-                    else if (label.includes('competitions') || label.includes('hackathons')) activeCategory = 'competition';
-                    else if (label.includes('academic')) activeCategory = 'academic';
-                    else activeCategory = 'certification';
+                    activeCategory = btn.dataset.category;
                     setActiveFilter(btn);
                     applyFilter();
                 });
-            });
-
-            document.getElementById('achievement-search')?.addEventListener('input', e => {
-                query = normalize(e.target.value);
-                applyFilter();
+                btn.addEventListener('keydown', event => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        btn.click();
+                    }
+                });
             });
 
             applyFilter();
@@ -1105,5 +1094,6 @@
     </script>
 
     <script src="/image-lightbox.js"></script>
+    <script type="module" src="/src/site-features.js"></script>
 </body>
 </html>

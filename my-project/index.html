@@ -276,14 +276,6 @@
             Contact Me
           </a>
 
-          <a
-            href="#"
-            id="resume-link"
-            class="w-full sm:w-auto bg-white text-black font-medium py-2.5 px-4 rounded-md shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-50"
-          >
-            Resume (PDF)
-          </a>
-
         </div>
 
 
@@ -2186,36 +2178,6 @@
 
 
       // =========================================================
-      // RESUME
-      // =========================================================
-
-      $("#resume-link")?.addEventListener(
-        "click",
-        (event) => {
-
-          const href =
-            $("#resume-link")
-              .getAttribute("href");
-
-
-          if (
-            !href ||
-            href === "#"
-          ) {
-
-            event.preventDefault();
-
-            showToast(
-              "Add your Resume PDF link here"
-            );
-
-          }
-
-        }
-      );
-
-
-      // =========================================================
       // VIEW ALL SKILLS
       // =========================================================
 
@@ -2774,5 +2736,6 @@
     </script>
 
   <script src="/image-lightbox.js"></script>
+  <script type="module" src="/src/site-features.js"></script>
 </body>
 </html>

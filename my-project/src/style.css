@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -7,6 +8,10 @@
 
 html, body {
   font-family: "Inter", sans-serif;
+}
+
+html[lang="km"] body {
+    font-family: "Noto Sans Khmer", "Khmer OS System", "Khmer OS", sans-serif;
 }
 
 body {
@@ -49,3 +54,151 @@ body {
         nav a.page-link {
             will-change: transform, opacity;
         }
+
+html.theme-dark body {
+    background-color: #0a101d !important;
+    color: #e2e8f0 !important;
+}
+
+html.theme-dark .bg-white,
+html.theme-dark nav {
+    background-color: #182538 !important;
+    color: #e2e8f0 !important;
+}
+
+@media (min-width: 640px) {
+    html.theme-dark nav [class~="sm:bg-white"] {
+        color: #1e293b !important;
+    }
+}
+
+html.theme-dark .bg-blue-50,
+html.theme-dark .bg-gray-50,
+html.theme-dark .bg-slate-50,
+html.theme-dark [class~="bg-gray-50/70"] {
+    background-color: #1d2d42 !important;
+}
+
+html.theme-dark .bg-blue-100,
+html.theme-dark .bg-gray-100,
+html.theme-dark .bg-slate-100 {
+    background-color: #29415b !important;
+}
+
+html.theme-dark .bg-blue-200,
+html.theme-dark .bg-gray-200,
+html.theme-dark .bg-slate-200 {
+    background-color: #354b65 !important;
+}
+
+html.theme-dark .bg-amber-50,
+html.theme-dark .bg-orange-50 {
+    background-color: #352819 !important;
+}
+
+html.theme-dark .bg-amber-100,
+html.theme-dark .bg-orange-100 {
+    background-color: #432f19 !important;
+}
+
+html.theme-dark .bg-orange-500 {
+    background-color: #9a3412 !important;
+}
+
+html.theme-dark .bg-green-50,
+html.theme-dark .bg-green-100 {
+    background-color: #173427 !important;
+}
+
+html.theme-dark .bg-red-50 {
+    background-color: #3b2226 !important;
+}
+
+html.theme-dark .text-gray-900,
+html.theme-dark .text-slate-900,
+html.theme-dark .text-gray-800,
+html.theme-dark .text-gray-700,
+html.theme-dark .text-black,
+html.theme-dark .text-darkText {
+    color: #e2e8f0 !important;
+}
+
+html.theme-dark .text-gray-600,
+html.theme-dark .text-gray-500,
+html.theme-dark .text-slate-600,
+html.theme-dark .text-slate-500 {
+    color: #cbd5e1 !important;
+}
+
+html.theme-dark .text-blue-900,
+html.theme-dark .text-blue-800,
+html.theme-dark .text-blue-700 {
+    color: #bfdbfe !important;
+}
+
+html.theme-dark .text-blue-600,
+html.theme-dark .text-blue-500,
+html.theme-dark .text-blue-400 {
+    color: #93c5fd !important;
+}
+
+html.theme-dark [class*="text-[#2B54D8]"] {
+    color: #93c5fd !important;
+}
+
+html.theme-dark .text-orange-700,
+html.theme-dark .text-orange-600,
+html.theme-dark .text-amber-700 {
+    color: #fdba74 !important;
+}
+
+html.theme-dark .text-green-700,
+html.theme-dark .text-green-600 {
+    color: #86efac !important;
+}
+
+html.theme-dark .text-red-600,
+html.theme-dark .text-red-500 {
+    color: #fca5a5 !important;
+}
+
+html.theme-dark .border-gray-100,
+html.theme-dark .border-gray-200,
+html.theme-dark .border-slate-100,
+html.theme-dark .border-slate-200 {
+    border-color: #334155 !important;
+}
+
+html.theme-dark input,
+html.theme-dark textarea,
+html.theme-dark select {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+html.theme-dark input::placeholder,
+html.theme-dark textarea::placeholder {
+    color: #94a3b8;
+}
+
+html.theme-dark .theme-toggle {
+    border-color: #475569;
+    background-color: #182538;
+    color: #fbbf24;
+}
+
+html.theme-dark #bar1,
+html.theme-dark #bar2,
+html.theme-dark #bar3 {
+    background-color: #e2e8f0 !important;
+}
+
+html.theme-dark [class*="bg-[#F8FAFC]"] {
+    background-color: #1d2d42 !important;
+}
+
+html.theme-dark .language-toggle {
+    border-color: #475569;
+    background-color: #182538;
+    color: #e2e8f0;
+}

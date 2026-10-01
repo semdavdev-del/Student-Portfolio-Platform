@@ -478,7 +478,6 @@
                 </div>
             </div>
 
-
             <!-- ================= KHMER TYPO ================= -->
             <div class="bg-white p-5 sm:p-6 shadow rounded-lg flex flex-col
             border-t-4 border-blue-800
@@ -1047,7 +1046,7 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // ---------- Find the 6 project cards ----------
+    // ---------- Find the project cards ----------
     const projectGridSection = $("img[src*='scholar.png']")?.closest("section");
     const projectGrid = projectGridSection?.querySelector(".grid");
 
@@ -1059,14 +1058,9 @@
     // Assign filter metadata without changing the original HTML.
     const projectMeta = [
         {
-            keywords: ["unipay", "expense", "banking"],
-            categories: ["uiux", "mobile"],
-            type: "UI/UX Design • Mobile App"
-        },
-        {
             keywords: ["scholarai", "academic", "research"],
             categories: ["web"],
-            type: "Web Development"
+            type: "Web Application"
         },
         {
             keywords: ["khmertypo", "typography"],
@@ -1081,7 +1075,12 @@
         {
             keywords: ["devpulse", "activity", "health monitor"],
             categories: ["web"],
-            type: "Web Development"
+            type: "Developer Tools"
+        },
+        {
+            keywords: ["algoviz", "algorithm", "visualizer"],
+            categories: ["web"],
+            type: "Educational Software"
         },
         {
             keywords: ["open-source", "micro-tools", "repositories"],
@@ -1123,49 +1122,46 @@
         "web",
         "mobile"
     ];
+    let activeFilter = "all";
+
+    function applyProjectFilters() {
+        filterButtons.forEach((button) => {
+            const active = button.dataset.filter === activeFilter;
+            button.classList.toggle("bg-blue-800", active);
+            button.classList.toggle("text-white", active);
+            button.classList.toggle("bg-white", !active);
+            button.classList.toggle("text-gray-600", !active);
+        });
+
+        cardInfo.forEach((item) => {
+            const visible = activeFilter === "all" || item.categories.includes(activeFilter);
+            item.card.classList.toggle("hidden", !visible);
+        });
+    }
 
     filterButtons.forEach((button, index) => {
         button.setAttribute("role", "button");
         button.setAttribute("tabindex", "0");
         button.dataset.filter = filterMap[index] || "all";
-
-        const applyFilter = () => {
-            const filter = button.dataset.filter;
-
-            filterButtons.forEach((btn) => {
-                const active = btn === button;
-                btn.classList.toggle("bg-blue-800", active);
-                btn.classList.toggle("text-white", active);
-                btn.classList.toggle("bg-white", !active);
-                btn.classList.toggle("text-gray-600", !active);
-            });
-
-            cardInfo.forEach((item) => {
-                const visible = filter === "all" || item.categories.includes(filter);
-
-                item.card.classList.toggle("hidden", !visible);
-
-                if (visible) {
-                    item.card.classList.remove("opacity-0", "translate-y-4");
-                    item.card.classList.add("opacity-100", "translate-y-0");
-                }
-            });
-
-            showToast(
-                filter === "all"
-                    ? "Showing all projects"
-                    : `Showing ${button.textContent.trim().replace(/\(\d+\)/, "").trim()}`
-            );
-        };
-
-        button.addEventListener("click", applyFilter);
+        const label = button.textContent.trim().replace(/\s*\(\d+\)\s*$/, "");
+        const count = button.dataset.filter === "all"
+            ? cardInfo.length
+            : cardInfo.filter((item) => item.categories.includes(button.dataset.filter)).length;
+        button.textContent = `${label} (${count})`;
+        button.addEventListener("click", () => {
+            activeFilter = button.dataset.filter;
+            applyProjectFilters();
+        });
         button.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                applyFilter();
+                activeFilter = button.dataset.filter;
+                applyProjectFilters();
             }
         });
     });
+
+    applyProjectFilters();
 
     // ---------- Scroll reveal for cards/sections ----------
     const revealTargets = [
@@ -1454,6 +1450,7 @@
         });
     </script>
 
+    <script type="module" src="/src/site-features.js"></script>
 </body>
 
 <script src="/image-lightbox.js"></script>

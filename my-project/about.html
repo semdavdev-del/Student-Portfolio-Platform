@@ -149,12 +149,6 @@
                     </div>
 
                     <div class="flex flex-wrap gap-3">
-                        <button id="resume-button" type="button" class="flex py-2 gap-2 items-center justify-center px-3 bg-blue-800 rounded-sm mt-5 hover:bg-blue-900 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-amber-50" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-                            </svg>
-                            <p class="text-sm text-white">Download Resume(PDF)</p>
-                        </button>
                         <button type="button" class="contact-trigger px-4 bg-blue-100 rounded-sm mt-5 hover:bg-blue-200 transition" aria-label="Contact me">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="text-blue-800" viewBox="0 0 16 16">
@@ -204,7 +198,7 @@
                     </p>
                 </div>
                 <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold mt-2">Designing Interfaces, Writing Clean Code.</h1>
-                <p class="text-gray-500 text-base lg:text-lg font-sans mt-3 w-full lg:w-5xl">
+                <p class="text-gray-500 text-base lg:text-lg font-sans mt-3 w-full max-w-5xl">
                     Senior Computer Science student exploring the sweet spot between
                     mathematical logic and human-centered design. I architect modular
                     frontends and craft cohesive design systems that feel delightful,
@@ -217,7 +211,7 @@
                         <h2 class="text-2xl font-medium text-blue-800">99</h2>
                         <h2 class="text-2xl font-medium text-blue-800">Engineering & Design Philosophy</h2>
                     </div>
-                    <p class="text-gray-600 text-base lg:text-lg font-sans mt-3 w-full lg:w-4xl">
+                    <p class="text-gray-600 text-base lg:text-lg font-sans mt-3 w-full max-w-4xl">
                         “Code without empathetic design becomes sterile. Design without technical
                         feasibility remains fragile. My goal is to eliminate that friction by
                         understanding token architecture, runtime performance, and visual balance
@@ -277,7 +271,7 @@
             <p class="px-10 p-3 text-blue-600 font-medium text-sm">COMPETENCY OVERVIEW</p>
             <h1 class="px-10 text-3xl font-bold">Full Technical & Design Matrix</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-10 py-5">
-                <div class="interactive-card bg-white p-6 rounded-xl shadow h-auto min-h-500px transition duration-300">
+                <div class="interactive-card flex h-full min-h-[520px] flex-col bg-white p-6 rounded-xl shadow transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                         class="bg-blue-100 w-13 p-1 rounded-sm text-blue-800" viewBox="0 0 16 16">
                         <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
@@ -305,7 +299,7 @@
                         <p class="bg-blue-50 p-1.5 rounded-2xl">Information Architecture</p>
                         <p class="bg-blue-50 p-1.5 rounded-2xl">User platform</p>
                     </div>
-                    <div class="bg-blue-100 mt-16 p-4 w-full transition duration-300 hover:-translate-y-2 rounded-xl">
+                    <div class="mt-auto flex min-h-[76px] w-full items-center rounded-xl bg-blue-100 p-4 transition duration-300 hover:-translate-y-2">
                         <div class="flex justify-between gap-4">
                             <p class="font-medium">Figma & Token Architecture</p>
                             <p class="text-green-700 font-medium">Advanced</p>
@@ -313,7 +307,7 @@
                     </div>
                 </div>
                 <!-- Frontend -->
-                <div class="interactive-card bg-white p-6 rounded-xl shadow min-h-480px transition duration-300">
+                <div class="interactive-card flex h-full min-h-[520px] flex-col bg-white p-6 rounded-xl shadow transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                         class="bg-blue-100 w-13 p-1 rounded-sm text-blue-800" viewBox="0 0 16 16">
                         <path d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3M2.19 3q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742"/>
@@ -336,14 +330,14 @@
                     <div class="mt-3 text-xs font-medium text-blue-500">
                         <p class="bg-blue-50 py-1.5 px-3 w-fit rounded-2xl">Canvas API</p>
                     </div>
-                    <div class="bg-blue-100 mt-28 p-4 w-full transition duration-300 hover:-translate-y-2 rounded-xl">
+                    <div class="mt-auto flex min-h-[76px] w-full items-center rounded-xl bg-blue-100 p-4 transition duration-300 hover:-translate-y-2">
                         <div class="flex justify-between gap-4">
                             <p class="font-medium">React & Modern TypeScript</p>
                             <p class="text-green-700 font-medium">Proficient</p>
                         </div>
                     </div>
                 </div>
-                <div class="interactive-card bg-white p-6 rounded-xl shadow min-h-480px transition duration-300">
+                <div class="interactive-card flex h-full min-h-[520px] flex-col bg-white p-6 rounded-xl shadow transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bg-blue-100 w-13 p-1 rounded-sm text-blue-800" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"/>
                         <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
@@ -370,7 +364,7 @@
                         <p class="bg-blue-50 py-1.5 px-3 w-28 rounded-2xl">Vercel & Cloud</p>
                     </div>
 
-                    <div class="flex justify-between gap-4 bg-blue-100 mt-18 p-4 transition duration-300 hover:-translate-y-2 rounded-xl">
+                    <div class="mt-auto flex min-h-[76px] w-full items-center justify-between gap-4 rounded-xl bg-blue-100 p-4 transition duration-300 hover:-translate-y-2">
                         <p class="font-medium">Python & RESTful</p>
                         <p class="text-green-700 font-medium">Intermediate</p>
                     </div>
@@ -1056,19 +1050,6 @@
             });
 
             // =====================================================
-            // RESUME BUTTON
-            // =====================================================
-            $("#resume-button")
-                ?.addEventListener(
-                    "click",
-                    () => {
-                        showToast(
-                            "Add your Resume PDF file or link here"
-                        );
-                    }
-                );
-
-            // =====================================================
             // FOOTER PLACEHOLDER LINKS
             // =====================================================
             $$(".footer-link").forEach((link) => {
@@ -1500,5 +1481,6 @@
     </script>
 
     <script src="/image-lightbox.js"></script>
+    <script type="module" src="/src/site-features.js"></script>
 </body>
 </html>
